@@ -1,0 +1,4 @@
+node_modules/
+.git
+sass-cache/
+root/_guide/

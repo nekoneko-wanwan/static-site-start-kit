@@ -1,0 +1,23 @@
+.button {
+	font-weight: bold;
+	border: 5px solid green;
+	border-radius: 50%;
+}
+.button:hover {
+	-webkit-transform: scale(1.2);
+	    -ms-transform: scale(1.2);
+	        transform: scale(1.2);
+}
+
+.button2 {
+	color: #ffffff;
+	background-color: blue;
+}
+
+h1 {
+	border-left: 3px solid #000000;
+}
+
+h1.sp {
+	color: red;
+}
