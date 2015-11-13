@@ -1,477 +1,488 @@
-// ------------------------------------------------------------------------------
-//   @group Variables - Colors, Fonts, etc.
-// ------------------------------------------------------------------------------
-@kss-colors-background     : #fff;
+html {
+  font-family:sans-serif;
+  -ms-text-size-adjust:100%;
+  -webkit-text-size-adjust:100%;
+}
 
-@kss-colors-foreground     : #444;
-@kss-colors-heading        : #111;
-@kss-colors-quotes         : #666;
-
-@kss-colors-link           : #0645ad;
-@kss-colors-link-visited   : #0645ad;
-@kss-colors-link-hover     : lighten(@kss-colors-link, 20%);
-@kss-colors-link-active    : #faa700;
-
-@kss-font-body             : Helvetica, 'Helvetica Neue', Arial, sans-serif;
-@kss-font-code             : Menlo, 'Ubuntu Mono', 'Lucida Console', 'Courier New', Courier, monospace;
-
-@kss-font-size             : 16px;
-@kss-vertical-rhythm       : @kss-font-size * 1.5;
-
-// ------------------------------------------------------------------------------
-// Wrap all of this template's base HTML styling inside a .kss-style selector.
-// ------------------------------------------------------------------------------
-
-.kss-style {
-  color: @kss-colors-foreground;
-  font-family: @kss-font-body;
-  font-size: @kss-font-size;
-  line-height: @kss-vertical-rhythm;
-
-  a {
-    color: @kss-colors-link;
-    text-decoration: none;
-    transition-property: color;
-    transition-duration: 0.5s;
-
-    &:visited { color: @kss-colors-link-visited; }
-    &:hover,
-    &:focus   { color: @kss-colors-link-hover;   }
-    &:active  { color: @kss-colors-link-active;  }
-
-    &:hover,
-    &:active {
-      outline: 0;
-    }
+.styleguide-reset {
+  * {
+    line-height: 1.4;
   }
 
-  p {
-    margin: (@kss-vertical-rhythm/2) 0 @kss-vertical-rhythm 0;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    margin: @kss-vertical-rhythm 0 0 0;
-    font-family: @kss-font-body;
-    color: @kss-colors-heading;
-    line-height: 1.15em;
-  }
-
-  h4, h5, h6 {
-    font-weight: bold;
-  }
-
-  h1 { font-size: @kss-font-size * 2.5;   }
-  h2 { font-size: @kss-font-size * 2.25;  }
-  h3 { font-size: @kss-font-size * 2.125; }
-  h4 { font-size: @kss-font-size * 2;     }
-  h5 { font-size: @kss-font-size * 1.875; }
-  h6 { font-size: @kss-font-size * 1.75;  }
-
-  blockquote {
-    color: @kss-colors-quotes;
-    margin: 0;
-    padding-left: @kss-vertical-rhythm;
-    border-left: 0.5em mix(@kss-colors-quotes, @kss-colors-background, 25%) solid;
+  abbr[title] {
+    border-bottom:1px dotted;
   }
 
   hr {
-    display: block;
-    height: 2px;
-    border: 0;
-    border-top: 1px solid lighten(@kss-colors-foreground, 60%);
-    border-bottom: 1px solid darken(@kss-colors-background, 10%);
-    margin: @kss-vertical-rhythm 0;
-    padding: 0;
-  }
-
-  pre, code, kbd, samp {
-    font-family: @kss-font-code;
-    color: mix(@kss-colors-foreground, @kss-colors-heading, 50%);
-    font-size: 1em;
-  }
-
-  pre {
-    white-space: pre;
-    overflow: scroll;
-  }
-
-  ins {
-    color: @kss-colors-heading;
-    background: #ff9;
-    text-decoration: none;
+    -moz-box-sizing:content-box;
+    box-sizing:content-box;
+    height:0;
   }
 
   mark {
-    color: @kss-colors-heading;
-    background: #ff0;
-    font-weight: bold;
+    background:#ff0;
+    color:#000;
   }
 
-  sub, sup {
-    font-size: 75%;
-    line-height: 0;
-    position: relative;
-    vertical-align: baseline;
-  }
-  sup { top: -0.5em;     }
-  sub { bottom: -0.25em; }
-
-  ul, ol {
-    margin: @kss-vertical-rhythm 0;
-    padding: 0 0 0 @kss-vertical-rhythm;
-  }
-  li p:last-child {
-    margin: 0;
-  }
-  dd {
-    margin: 0 0 0 @kss-vertical-rhythm;
+  code,kbd,pre,samp {
+    font-family:monospace, serif;
+    font-size:1em;
   }
 
-  img {
-    max-width:100%;
-    border: 0;
-    -ms-interpolation-mode: bicubic;
-    vertical-align: middle;
+  q {
+    quotes:\201C \201D \2018 \2019;
+  }
+
+  small {
+    font-size:90%;
+  }
+
+  sub,sup {
+    font-size:75%;
+    line-height:0;
+    position:relative;
+    vertical-align:baseline;
+  }
+
+  sup {
+    top:-.5em;
+  }
+
+  sub {
+    bottom:-.25em;
+  }
+
+  fieldset {
+    border:0;
+    margin:0;
+    padding:0;
+  }
+
+  button,input,select,textarea {
+    font-family:inherit;
+    font-size:100%;
+    margin:0;
+  }
+
+  button,select {
+    text-transform:none;
+  }
+
+  button,html input[type="button"],input[type="reset"],input[type="submit"] {
+    -webkit-appearance:button;
+    cursor:pointer;
+  }
+
+  input[type="checkbox"],input[type="radio"] {
+    box-sizing:border-box;
+    padding:0;
+  }
+
+  input[type="search"] {
+    -webkit-appearance:textfield;
+    -moz-box-sizing:content-box;
+    -webkit-box-sizing:content-box;
+    box-sizing:content-box;
+  }
+
+  input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance:none;
+  }
+
+  textarea {
+    overflow:auto;
+    vertical-align:top;
   }
 
   table {
-    border-collapse: collapse;
-    border-spacing: 0;
-  }
-  td {
-    vertical-align: top;
+    border-collapse:collapse;
+    border-spacing:0;
   }
 
-  @media print {
-    a, a:visited { text-decoration: underline; }
-    hr { height: 1px; border:0; border-bottom:1px solid black; }
-    a[href]:after { content: " (" attr(href) ")"; }
-    a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
-    abbr[title]:after { content: " (" attr(title) ")"; }
-    pre, blockquote { border: 1px solid #999; padding-right: 1em; page-break-inside: avoid; }
-    tr, img { page-break-inside: avoid; }
-    img { max-width: 100% !important; }
-    p, h2, h3 { orphans: 3; widows: 3; }
-    h2, h3 { page-break-after: avoid; }
+  h1,h2,h3,h4,h5,h6 {
+    margin-top:15px;
+    margin-bottom:15px;
+    line-height:1.1;
   }
-}
 
-// ------------------------------------------------------------------------------
-// Layout and page background
-// ------------------------------------------------------------------------------
+  h1 {
+    font-size:30px;
+    margin: 15px 0;
+  }
 
-#kss-node {
-  margin: 0;
-  padding: 20px;
-  background: #fff;
+  h2 {
+    font-size:21px;
+  }
 
-  @media screen and (min-width: 769px) {
+  h3 {
+    font-size:16px;
+  }
+
+  ul, ol {
     padding: 0;
-
-    /* Old browsers */
-    background: #eee;
-    /* FF3.6+ */
-    background: -webkit-linear-gradient(left, #eee, #e5e5e5 50%, #d7d7d7 100%) 20% 0 ~"/ 10px 1px" repeat-y,
-                -webkit-linear-gradient(left, #eee, #eee 20%, #fff 20%) 0 0 ~"/ 100% 1px";
-    /* Chrome, Safari4+ */
-    background:        -webkit-gradient(linear, left top, right top, color-stop(0%,#eee), color-stop(50%,#e5e5e5), color-stop(100%,#d7d7d7)) 20% 0 ~"/ 10px 1px" repeat-y,
-                       -webkit-gradient(linear, left top, right top, color-stop(0%,#eee), color-stop(20%,#eee), color-stop(20%,#fff)) 0 0 ~"/ 100% 1px";
-    /* Chrome10+, Safari5.1+ */
-    background: -webkit-linear-gradient(to right, #eee, #e5e5e5 50%, #d7d7d7 100%) 20% 0 ~"/ 10px 1px" repeat-y,
-                -webkit-linear-gradient(to right, #eee, #eee 20%, #fff 20%) 0 0 ~"/ 100% 1px";
-    /* Opera 11.10+ */
-    background:      -o-linear-gradient(to right, #eee, #e5e5e5 50%, #d7d7d7 100%) 20% 0 ~"/ 10px 1px" repeat-y,
-                     -o-linear-gradient(to right, #eee, #eee 20%, #fff 20%) 0 0 ~"/ 100% 1px";
-    /* IE10+ */
-    background:     -ms-linear-gradient(to right, #eee, #e5e5e5 50%, #d7d7d7 100%) 20% 0 ~"/ 10px 1px" repeat-y,
-                    -ms-linear-gradient(to right, #eee, #eee 20%, #fff 20%) 0 0 ~"/ 100% 1px";
-    /* W3C */
-    background:         linear-gradient(to right, #eee, #e5e5e5 50%, #d7d7d7 100%) 20% 0 ~"/ 10px 1px" repeat-y,
-                        linear-gradient(to right, #eee, #eee 20%, #fff 20%) 0 0 ~"/ 100% 1px";
-
-    .kss-main,
-    .kss-sidebar {
-      float: left;
-      margin-right: -100%;
-      box-sizing: border-box;
-    }
-  }
-
-  .kss-main {
-    width: 100%;
-    margin: 0 auto;
-
-    @media screen and (min-width: 769px) {
-      width: 80%;
-      margin-left: 20%;
-      padding: 0 20px 0 30px;
-    }
-  }
-
-  .kss-sidebar {
-    border-bottom:1px solid #ddd;
-
-    @media screen and (min-width: 769px) {
-      width: 20%;
-      padding: 0 10px 0 20px;
-      border-bottom: 0;
-    }
-  }
-}
-
-// ------------------------------------------------------------------------------
-// Sidebar-area components
-// ------------------------------------------------------------------------------
-
-#kss-node {
-
-  .kss-doc-title {
     margin: 0;
-
-    @media screen and (min-width: 769px) {
-      font-size: 1.5em;
-    }
   }
 
-  .kss-header,
-  .kss-nav {
-    @media screen and (min-width: 769px) {
-      margin-top: 2em;
-    }
+  a img{ border:none; }
+
+  tt, code, pre {
+    font-family: Consolas, "Liberation Mono", Courier, monospace;
+    font-size: 12px;
   }
 
-  .kss-nav__menu {
-    margin-top: (@kss-vertical-rhythm/2);
-    margin-bottom: (@kss-vertical-rhythm/2);
-    padding: 0;
-    list-style-type: none;
-  }
-
-  .kss-nav__menu-item {
-    display: inline-block;
-    padding-right: @kss-vertical-rhythm;
-
-    @media screen and (min-width: 769px) {
-      display: list-item;
-      padding-right: 0;
-    }
-  }
-
-  .kss-nav__menu-child {
-    display: none;
-
-    @media screen and (min-width: 769px) {
-      display: block;
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-
-      // @TODO: The ul is output even when there are no children. Fix this, so
-      // we can put these :first-child and :last child styles back on the ul.
-      li:first-child {
-        margin: 10px 0 0;
-        border-top: 1px solid #ccc;
-        padding: 10px 0 0;
-      }
-
-      li:last-child {
-        margin: 0 0 10px;
-        border-bottom: 1px solid #ccc;
-        padding: 0 0 10px;
-      }
-    }
-  }
-
-  .kss-nav__ref {
-    color: #333;
-    font-weight: bold;
-
-    &:after {
-      content: ' ';
-    }
-  }
-  .kss-nav__menu-child .kss-nav__ref {
-    font-weight: normal;
-  }
-}
-
-// ------------------------------------------------------------------------------
-// Content-area components
-// ------------------------------------------------------------------------------
-
-#kss-node {
-
-  .kss-section {
-    max-width: 48em;
-    margin-bottom: (@kss-vertical-rhythm * 2);
-  }
-
-
-  .kss-title {
+  pre {
+    margin-top: 0;
     margin-bottom: 0;
   }
-  .kss-title__ref {
-    display: block;
-    font-size: @kss-font-size;
-    line-height: @kss-font-size;
-    color: #666;
 
-    &:before {
-      content: 'Section ';
-    }
-  }
-  .kss-title__permalink {
-    display: block;
-    color: #000;
+  a {
+    color: #4183c4;
     text-decoration: none;
 
-    &:hover,
-    &:focus,
-    &:active {
-      color: @kss-colors-link;
+    &:hover {
+      color: #4183c4;
+      text-decoration: underline;
+    }
 
-      @media screen and (min-width: 607px) {
-        .kss-title__permalink-hash {
-          display: inline;
+    &:focus {
+      outline:thin dotted;
+    }
+
+    &:active, &:hover {
+      outline:0;
+    }
+  }
+}
+
+
+#styleguide {
+  min-width:1020px;
+  color:#333;
+  background-color:#fff;
+  margin:0;
+  font-family:Helvetica, Arial, sans-serif;
+  font-size:14px;
+  line-height: 1.4;
+
+  .styleguide-container {
+    width: 980px;
+    margin-left: auto;
+    margin-right: auto;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    
+    &:before, &:after {
+    content: " ";
+    display: table;
+    }
+
+    &:after {
+      clear: both;
+    }
+  }
+
+  .styleguide-header {
+    position: relative;
+    margin-bottom: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+
+    h1 {
+      margin-top: 0;
+      margin-bottom: 0;
+      font-size: 20px;
+      font-weight: normal;
+      line-height: 28px;
+    }
+  }
+
+
+  .styleguide-menu {
+    float: left;
+    width: 200px;
+    padding: 3px;
+    font-size: 13px;
+    background: #efefef;
+    border-radius: 2px;
+
+    .styleguide-menu-list {
+      background: #fafafb;
+      border-radius: 2px;
+      border: 1px solid #d8d8d8;
+      list-style: none;
+
+      li {
+        border-bottom: 1px solid #eee;
+        border-top: 1px solid #fff;
+
+        &:first-child {
+          border-top: none;
+        }
+
+        &::last-child {
+          border-bottom: none;
+        }
+      }
+      a {
+        color: #4183c4;
+        text-decoration: none;
+
+        &:hover {
+          color: #4183c4;
+          text-decoration: underline;
+        }
+
+        &:focus {
+          outline:thin dotted;
+        }
+
+        &:active, &:hover {
+          outline:0;
+        }
+      }
+
+      a {
+        display: block;
+        padding: 8px 10px 8px 8px;
+        text-shadow: 0 1px 0 #fff;
+        border-left: 2px solid #fafafb;
+
+        &:hover {
+          background: #fdfdfe;
+          text-decoration: none;
+        }
+
+        &:focus, &:active {
+          text-decoration: none;
+        }
+
+        &.selected {
+          background: #fff;
+          border-left: 2px solid #d26911;
+          font-weight: bold;
+          color: #222;
+          cursor: default;
+          box-shadow: inset 0 0px 1px rgba(0,0,0,0.1);
         }
       }
     }
   }
-  .kss-title__permalink-hash {
-    display: none;
-    color: #ccc;
-  }
 
-  .kss-parameters {
-    display: table;
-    list-style-type: none;
-    margin-left: 0;
-    padding-left: 0;
-  }
-  .kss-parameters__item {
-    display: table-row;
-  }
-  .kss-parameters__name {
-    display: table-cell;
-    padding-right: 20px;
-  }
-  .kss-parameters__description {
-    display: table-cell;
-  }
-
-  .kss-modifier__wrapper {
-    border: 1px solid #ccc;
-    padding: 10px;
-  }
-  .kss-modifier__heading {
-    margin: -10px -10px 10px -10px;
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-    background-color: #eee;
-    font-weight: bold;
-  }
-  .kss-modifier__default-name {
-    font-weight: bold;
-    margin-bottom: (@kss-vertical-rhythm / 2);
-  }
-  .kss-modifier__name {
+  .styleguide-content {
     float: left;
-    padding-right: 10px;
-    font-weight: bold;
-  }
-  .kss-modifier__description {
-    margin-bottom: (@kss-vertical-rhythm / 2);
-  }
-  .kss-modifier__example {
-    clear: left;
-    padding: 1px 0; // Contain the example's margins.
-    margin: 0 0 (@kss-vertical-rhythm - 1px) 0;
-
-    &:last-child {
-      margin: 0;
-    }
+    width: 754px;
+    margin-left: 20px;
+    font-size: 14px;
   }
 
-  .kss-markup {
-    margin: -1px 0 @kss-vertical-rhythm 0;
-    border: 1px solid #999;
-  }
-  .kss-markup pre {
-    margin: 0;
-  }
+  .styleguide-markdown-body {
+    font-size: 15px;
+    overflow: hidden;
+    line-height: 1.7;
+    word-wrap: break-word;
 
-  .kss-github {
-    display:none;
-
-    @media screen and (min-width: 501px) {
-      display: block;
-      position: absolute;
-      top: 0;
-      right: 0;
+    * {
+      line-height: 1.7;
     }
 
-    img {
-      border: 0;
+    p, blockquote, ul, ol, dl, table, pre {
+      margin: 15px 0;
     }
-  }
 
-  // ------------------------------------------------------------------------------
-  //   @group prettyprint.js styling
-  // ------------------------------------------------------------------------------
-  /* Pretty printing styles. Used with prettify.js. */
+    h1, h2, h3, h4, h5, h6 {
+      margin: 1em 0 15px;
+      padding: 0;
+      font-weight: bold;
+      cursor: text;
+      position: relative;
+    }
 
-  /* SPAN elements with the classes below are added by prettyprint. */
-  .pln { color: #000 }  /* plain text */
+    ol, ul {
+      padding-left: 30px;
+    }
 
-  .str { color: #080 }  /* string content */
-  .kwd { color: #008 }  /* a keyword */
-  .com { color: #800 }  /* a comment */
-  .typ { color: #606 }  /* a type name */
-  .lit { color: #066 }  /* a literal value */
-  /* punctuation, lisp open bracket, lisp close bracket */
-  .pun, .opn, .clo { color: #660 }
-  .tag { color: #008 }  /* a markup tag name */
-  .atn { color: #606 }  /* a markup attribute name */
-  .atv { color: #080 }  /* a markup attribute value */
-  .dec, .var { color: #606 }  /* a declaration; a variable name */
-  .fun { color: red }  /* a function name */
+    & > *:first-child {
+      margin-top: 0 !important;
+    }
 
-  /* Use higher contrast and text-weight for printable form. */
-  @media print, projection {
-    .str { color: #060 }
-    .kwd { color: #006; font-weight: bold }
-    .com { color: #600; font-style: italic }
-    .typ { color: #404; font-weight: bold }
-    .lit { color: #044 }
-    .pun, .opn, .clo { color: #440 }
-    .tag { color: #006; font-weight: bold }
-    .atn { color: #404 }
-    .atv { color: #060 }
-  }
+    & > *:last-child {
+      margin-bottom: 0 !important;
+    }
 
-  /* Specify class=linenums on a pre to get line numbering */
-  ol.linenums {
-    margin: 0;
-    padding: 0 0 3px 0;
-    list-style-type: none;
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #ddd;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+      word-wrap:normal;
 
-    li {
-      min-height: @kss-vertical-rhythm;
-      border-bottom: 1px solid #eee;
-      padding: 0 10px;
-      background: #fff;
-
-      &:first-child {
-        padding-top: 3px;
+      code,tt {
+        background-color:transparent;
+        border:none;
+        word-wrap:normal;
+        margin:0;
+        padding:0;
       }
     }
-    /* Alternate shading for lines */
-    li.L0,
-    li.L2,
-    li.L4,
-    li.L6,
-    li.L8 {
-      background: #fcfcfc;
+
+    code,tt {
+      margin: 0 2px;
+      padding: 0px 5px;
+      border: 1px solid #ddd;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      border-bottom: 1px solid #ddd;
+    }
+
+    h2 {
+      font-size: 2em;
+      border-bottom: 1px solid #eee;
+    }
+
+    h3 {
+      font-size: 1.5em;
+    }
+
+    h4 {
+      font-size: 1em;
+    }
+
+  }
+
+
+
+  .styleguide-example {
+    margin: 15px auto;
+    background: rgba(255,255,255,0.5);
+    border: 1px solid #ddd;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    & > .styleguide-example-header {
+      h3 {
+        margin: -1px -1px 0;
+        padding: 10px;
+        color: #fff;
+        font-size: 12px;
+        text-transform: uppercase;
+        background: #333;
+        border-top: 1px solid #000;
+
+        em {
+          float: right;
+          text-transform: none;
+          font-style: normal;
+          font-weight: normal;
+          color: #999;
+          line-height: 1;
+        }
+      }
+    }
+
+    .styleguide-description {
+      padding: 15px 10px;
+      background: #f1f1f1;
+      border-bottom: 1px solid #ddd;
+
+      p:first-child {
+        margin-top: 0;
+      }
+
+      p:last-child {
+        margin-bottom: 0;
+      }
+
+      code, tt {
+        margin: 0 2px;
+        padding: 0px 5px;
+        border: 1px solid #ddd;
+        background-color: #f8f8f8;
+        border-radius: 3px;
+      }
+    }
+
+    .styleguide-element {
+      position: relative;
+      padding: 20px;
+
+      & + .styleguide-element {
+        margin-top: -5px;
+        padding-top: 15px;
+        border-top: 1px solid #eee;
+      }
+
+       .styleguide-modifier-name {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 5px 15px;
+        margin: 0;
+        font-size: 11px;
+        color: #999;
+        background: #f9f9f9;
+        border: 1px solid #eee;
+        border-top: none;
+      }
+    }
+
+    .styleguide-html {
+      padding: 15px 15px;
+      background: #edf6f8;
+      border-top: 1px solid #dde7ea;
+      overflow: auto;
+
+      .styleguide-html-highlight {
+        background: none;
+      }
+    }
+  }
+
+  ul.styleguide-modifier {
+    list-style-type: disc;
+    li {
+      strong {
+        font-weight: bold;
+      }
+      p {
+        display: inline;
+        margin: 0;
+      }
+    }
+  }
+
+  .styleguide-footer {
+    position: relative;
+    margin-top: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #777;
+    border-top: 1px solid #eee;
+
+    p{
+      margin: 0;
+
+      &:first-child {
+        float: left;
+      }
+      &:last-child {
+        float: right;
+      }
     }
   }
 }
+
+@import "github.css";

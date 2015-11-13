@@ -12,5 +12,8 @@
 
 ###メモ
 
-> csscomb.json
->  http://csscomb.com/config
+- csscomb.json
+- http://csscomb.com/config
+- normarize.cssを使用
+- スタイルガイドで一度作成されたhtmlはそのままなので、不要なものは一旦すべて削除してから再出力すると最適なものに
+

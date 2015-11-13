@@ -94,10 +94,11 @@ gulp.task('sass', function () {
 
 /* kss-nodeを利用したガイド生成 */
 gulp.task('guide', $.shell.task([
-    'kss-node <%= source %> <%= destination %> --template <%= template%> --css <%= cssfile %>'
+    'kss-node <%= source %> --homepage <%= mdFile%> <%= destination %> --template <%= template%> --css <%= cssfile %>'
   ], {
     templateData: {
       source: CSS.SRC_DIR,  // ファイルを直接指定だと動かない
+      mdFile: 'styleguide-intro.md',
       destination: GUIDE,
       template: './kss-template/',
       cssfile: CSS.DOC_ROOT + 'style.css'  // ドキュメントルートからの位置になることに注意
@@ -124,13 +125,13 @@ gulp.task('js', function(){
 
 
 gulp.task('watch', function() {
-  gulp.watch(CSS.SRC, ['sass', 'guide']);  // guideが重たくなってきたら外す
+  gulp.watch(CSS.SRC, ['sass']);
   gulp.watch(JS.SRC,  ['js']);
   gulp.watch(WATCH).on('change', browserSync.reload);
 });
 
 
-gulp.task('default', ['server', 'watch', 'sass', 'guide', 'js']);
+gulp.task('default', ['server', 'watch', 'sass', 'js']);
 
 
 /* remove */

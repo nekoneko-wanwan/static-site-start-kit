@@ -1,0 +1,49 @@
+@charset "utf-8";
+/////////////////////////////////////////////
+// グローバル変数・関数を管理します
+/////////////////////////////////////////////
+
+//-------------------------------------------
+// 色設計
+//-------------------------------------------
+
+// Project Colors
+// 
+// - プロジェクトで使用する基本色
+// - 共通モジュール・スタイルにも影響する
+// - 変数名はscssファイルを参考
+// - 以下表示されるclass名はガイドのために用意したものなので実際には使用しない
+//
+// Markup:
+// <div class="sample-color-style col1"></div>
+// <div class="sample-color-style col2"></div>
+// <div class="sample-color-style col3"></div>
+// <div class="sample-color-style col4"></div>
+//
+// Styleguide: 1
+$g_mainColor  : #3498db;
+$g_subColor   : #eaf9fb;
+$g_baseColor  : #ff6685;
+$g_accentColor: #ff9900;
+
+.sample-color-style {
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	&.col1 {background-color: $g_mainColor;}
+	&.col2 {background-color: $g_subColor;}
+	&.col3 {background-color: $g_baseColor;}
+	&.col4 {background-color: $g_accentColor;}
+}
+
+
+
+
+
+//-------------------------------------------
+//画像に関する変数
+//-------------------------------------------
+
+
+
+

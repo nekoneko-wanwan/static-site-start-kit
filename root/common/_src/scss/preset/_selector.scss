@@ -1,0 +1,89 @@
+@charset "utf-8";
+/* ******************************************
+セレクタの初期値を設定
+****************************************** */
+
+
+// 全体に関する指定
+body {
+	color: #333;
+	font-family: 'メイリオ',Meiryo,'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro',Verdana,'ＭＳ Ｐゴシック','MS PGothic',sans-serif;
+	font-size: 82%;
+	line-height: 1.8;
+	word-break: keep-all;
+	word-wrap: break-word;
+}
+
+
+// block要素
+p {
+	margin-bottom: 1.5em;
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+table {
+	th {
+		vertical-align: top;
+	}
+}
+
+
+// inline要素
+strong, b {
+	//bは非推奨だが、先方入力にタグがあるため
+	font-weight: bold;
+}
+a {
+	&:link {
+		text-decoration: underline;
+	}
+	&:visited {
+	}
+	&:hover {
+		text-decoration: none;
+	}
+	a:active {
+	}
+}
+
+
+// 置換要素
+label {
+	cursor: pointer;
+	+ label {
+		margin-left: 1em;
+	}
+}
+img {
+	vertical-align: top;
+}
+input {
+	&[type=text],
+	&[type=password] {
+		border: 1px solid #ccc;
+		margin: 0;
+		padding: 5px 0;
+	}
+	&[type=submit],
+	&[type=button],
+	&[type=reset] {
+		cursor: pointer;
+		font-weight: bold;
+		margin: 0;
+		padding: 5px 10px;
+		vertical-align: top;
+		+ input[type=submit],
+		+ input[type=button],
+		+ input[type=reset] {
+			margin-left: 1em;
+		}
+	}
+	&[type=radio],
+	&[type=checkbox] {
+		label & {
+			cursor: pointer;
+			vertical-align: text-top;
+		}
+	}
+}
