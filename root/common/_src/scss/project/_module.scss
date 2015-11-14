@@ -17,9 +17,12 @@
 // Markup:
 // <h1 class="m-heading-1">見出しです</h1>
 //
-// Styleguide: 2
+// Styleguide: 3
 .m-heading-1 {
 	border-top: 3px solid $g_mainColor;
+	&:before {
+		@include bgFontAwesome('\f013');
+	}
 }
 
 
@@ -31,6 +34,6 @@
 //
 // Markup:
 //
-// Styleguide: 2.1
+// Styleguide: 3.1
 
 

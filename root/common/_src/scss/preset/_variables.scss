@@ -7,7 +7,7 @@
 // 色設計
 //-------------------------------------------
 
-// Project Colors
+// Colors
 // 
 // - プロジェクトで使用する基本色
 // - 共通モジュール・スタイルにも影響する
@@ -41,9 +41,54 @@ $g_accentColor: #ff9900;
 
 
 //-------------------------------------------
-//画像に関する変数
+// アイコン
 //-------------------------------------------
 
+// Icon
+// 
+// - font-awesomeをbackgroundで使用する
+// - beforeもしくはafterでmixin()を呼び出す
+//     - @include bgFontAwesome("f013", 0 0 0 0.2em);
+//     - @param {str} 使用する文字列からはエスケープ \ を除外する（後述）
+//     - @param {margin} marginを渡す
+// - 使えるアイコンはhttp://fontawesome.io/cheatsheet/ を参考（ただし最新のものは使えない可能性あり）
+//
+// [注意事項]
+// - 文字列にエスケープが含まれているとsassのコンパイル時に文字化けしてしまう。
+// - 表示上は問題ないが（chromeでのみ確認）、cssファイル上で文字化ける。
+// - font-awesomeで定義されている変数にはエスケープが含まれているので変数名をそのまま使用はできない
+// - そのためにエスケープを動的に追加するfunctionをかませる、および引数はからエスケープを外すことで対応とした
+// - sassのバージョンによっては不要になるかも
+//
+// Markup:
+// <div class="sample-icon-before-style">アイコン</div>
+// <div class="sample-icon-after-style">アイコン</div>
+//
+// Styleguide: 2
 
+@function unicode($str){
+ @return unquote("\"")+unquote(str-insert($str, "\\", 1))+unquote("\"");
+}
+@mixin bgFontAwesome($content, $margin: 0 .2em 0 0) {
+	font-family: FontAwesome;
+	content: unicode($content);
+	display: inline-block;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	margin: $margin;
+}
+.sample-icon-before-style {
+	&:before {
+		@include bgFontAwesome("f013");
+	}
+}
+.sample-icon-after-style {
+	&:after {
+		@include bgFontAwesome("f170", 0 0 0 0.2em);
+	}
+}
 
 
