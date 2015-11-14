@@ -207,17 +207,32 @@ td, th {
 	width: 50px;
 	height: 50px;
 }
-.sample-color-style.col1 {
+.sample-color-style.main {
 	background-color: #3498db;
 }
-.sample-color-style.col2 {
+.sample-color-style.sub {
 	background-color: #eaf9fb;
 }
-.sample-color-style.col3 {
+.sample-color-style.base {
 	background-color: #ff6685;
 }
-.sample-color-style.col4 {
+.sample-color-style.accent {
 	background-color: #ff9900;
+}
+
+.sample-gray-color-style {
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+}
+.sample-gray-color-style.light {
+	background-color: #f7f7f7;
+}
+.sample-gray-color-style.normal {
+	background-color: #cccccc;
+}
+.sample-gray-color-style.dark {
+	background-color: #aaaaaa;
 }
 
 .sample-icon-before-style:before {
@@ -256,6 +271,31 @@ body {
 	word-wrap: break-word;
 	word-break: keep-all;
 	color: #333333;
+}
+
+h1, h2, h3, h4, h5 {
+	font-weight: bold;
+	margin: 0 0 20px 0;
+}
+
+h1 {
+	font-size: 130%;
+}
+
+h2 {
+	font-size: 120%;
+}
+
+h3 {
+	font-size: 110%;
+}
+
+h4 {
+	font-size: 100%;
+}
+
+h5 {
+	font-size: 100%;
 }
 
 p {
@@ -339,20 +379,143 @@ footer
 ※blockの接頭辞には、「m-」を付与
 ※詳しいルールはスタイルガイドを参照
 ****************************************** */
+.m-section {
+	margin-bottom: 60px;
+}
+.m-section.is-sub {
+	margin-bottom: 30px;
+}
+.m-section:last-child {
+	margin-bottom: 0;
+}
+
+.m-section__body {
+	padding: 0 20px 20px;
+}
+.m-section__body.has-no-gutter {
+	padding: 0;
+}
+
 .m-heading-1 {
+	position: relative;
+	z-index: 1;
+	padding: 0.5em 1em;
+	border: 1px solid #cccccc;
 	border-top: 3px solid #3498db;
+	background-color: #ffffff;
+	background-image: linear-gradient(to bottom,#ffffff, #f7f7f7);
+}
+.m-heading-1:before, .m-heading-1:after {
+	position: absolute;
+	z-index: 10;
+	left: -1px;
+	display: block;
+	box-sizing: content-box;
+	width: 100%;
+	padding-right: 2px;
+	content: '';
 }
 .m-heading-1:before {
-	font-family: FontAwesome;
-	font-weight: normal;
-	font-style: normal;
-	line-height: 1;
-	display: inline-block;
-	margin: 0 0.2em 0 0;
-	content: '\';
+	top: -3px;
+	border-top: 3px solid #3498db;
+}
+.m-heading-1:after {
+	bottom: -4px;
+	border-top: 3px solid #f7f7f7;
+}
 
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+.m-heading-2 {
+	position: relative;
+	z-index: 1;
+	padding: 0.5em 1em;
+	border: 1px solid #cccccc;
+	border-bottom: 3px solid #3498db;
+	background-color: #ffffff;
+	background-image: linear-gradient(to bottom,#ffffff, #f7f7f7);
+}
+.m-heading-2:before {
+	position: absolute;
+	z-index: 10;
+	bottom: -3px;
+	left: -1px;
+	display: block;
+	box-sizing: content-box;
+	width: 100%;
+	padding-right: 2px;
+	content: '';
+	border-top: 3px solid #3498db;
+}
+
+.m-heading-3 {
+	position: relative;
+	z-index: 1;
+	padding: 0.5em 1.3em;
+	border-bottom: 2px solid #3498db;
+}
+.m-heading-3:before, .m-heading-3:after {
+	position: absolute;
+	display: block;
+	width: 8px;
+	height: 8px;
+	content: '';
+}
+.m-heading-3:before {
+	z-index: 2;
+	top: 1em;
+	left: 0.2em;
+	background-color: #99cbed;
+}
+.m-heading-3:after {
+	z-index: 3;
+	top: 0.8em;
+	left: 0;
+	background-color: #3498db;
+}
+
+.m-heading-4 {
+	position: relative;
+	z-index: 1;
+	padding: 0.5em 1em;
+	border: 1px solid #cccccc;
+	background-color: #ffffff;
+	background-image: linear-gradient(to bottom,#ffffff, #f7f7f7);
+}
+.m-heading-4:before {
+	position: absolute;
+	z-index: 10;
+	top: 50%;
+	left: -1px;
+	display: block;
+	width: 10px;
+	height: 6px;
+	margin-top: -3px;
+	content: '';
+	background: #3498db;
+}
+
+.m-heading-5 {
+	position: relative;
+	z-index: 1;
+	padding: 0.5em 1.3em;
+	color: #ffffff;
+	background-color: #3498db;
+}
+.m-heading-5:before {
+	position: absolute;
+	z-index: 10;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 0;
+	content: '';
+	border-top: 10px solid #ffffff;
+	border-right: 10px solid #1f5b83;
+}
+
+.m-heading-6 {
+	padding: 0.5em 1em;
+	border-radius: 6px;
+	background: #f7f7f7;
 }
 
 /* ******************************************

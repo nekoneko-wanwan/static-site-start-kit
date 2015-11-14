@@ -98,7 +98,7 @@ gulp.task('guide', $.shell.task([
   ], {
     templateData: {
       source: CSS.SRC_DIR,  // ファイルを直接指定だと動かない
-      mdFile: 'styleguide-intro.md',
+      mdFile: 'styleguide-intro.md', // scssファイル内に含む
       destination: GUIDE,
       template: './kss-template/',
       cssfile: CSS.DOC_ROOT + 'style.css'  // ドキュメントルートからの位置になることに注意

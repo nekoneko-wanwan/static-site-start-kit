@@ -7,33 +7,387 @@
 
 
 //-------------------------------------------
-// 見出し
+// セクション
 //-------------------------------------------
 
-// Heading
-// 
-// - classはプロジェクトによって適宜に変更すること
+// Section
 //
+// 主にメインコンテンツ内でのセクションの余白を管理する
+//
+// - "m-section" に "is-sub" をつけることで余白を狭くする（子セクションに使用）
+// - "m-section__body" に "has-no-gutter" をつけることで内側余白を消す
+// - スタイルガイド上は分かりやすく色をつけている（実際にはつかないので注意）
+// 
 // Markup:
-// <h1 class="m-heading-1">見出しです</h1>
+// <section class="m-section" style="background-color: #ccc;">
+//   <h1>見出し</h1>
+//   <div class="m-section__body">
+//     <p>セクション本文</p>
+//     <section class="m-section is-sub" style="background-color: #f7f7f7;">
+//       <h2>見出し</h2>
+//       <div class="m-section__body">
+//         <p>セクション本文</p>
+//       </div>
+//     </section>
+//   </div>
+// </section>
+// <section class="m-section" style="background-color: #ccc;">
+//   <h1>見出し</h1>
+//   <div class="m-section__body">
+//     <p>セクション本文</p>
+//     <section class="m-section is-sub" style="background-color: #f7f7f7;">
+//       <h2>見出し</h2>
+//       <div class="m-section__body">
+//         <p>セクション本文</p>
+//       </div>
+//     </section>
+//     <section class="m-section is-sub" style="background-color: #f7f7f7;">
+//       <h2>見出し</h2>
+//       <div class="m-section__body has-no-gutter">
+//         <p>セクション本文</p>
+//       </div>
+//     </section>
+//   </div>
+// </section>
 //
 // Styleguide: 3
-.m-heading-1 {
-	border-top: 3px solid $g_mainColor;
-	&:before {
-		@include bgFontAwesome('\f013');
+.m-section {
+	margin-bottom: 60px;
+	&.is-sub {
+		margin-bottom: 30px;
+	}
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+.m-section__body {
+	padding: 0 20px 20px;
+	&.has-no-gutter {
+		padding: 0;
 	}
 }
 
 
 
-// Heading2
+
+
+//-------------------------------------------
+// サブメニュー
+//-------------------------------------------
+
+// Submenu
 // 
-// - 
-// - 
+// - class名はプロジェクトによって柔軟に変更すること
 //
 // Markup:
 //
-// Styleguide: 3.1
+// Styleguide: 4
+
+
+
+
+
+//-------------------------------------------
+// グリッド
+//-------------------------------------------
+
+// Grid Base
+//
+// グリッドで構成されたモジュール（カード型）
+// 
+// - class名はプロジェクトによって柔軟に変更すること
+//
+// Markup:
+//
+// Styleguide: 5
+
+
+
+
+
+
+//-------------------------------------------
+// メディア
+//-------------------------------------------
+
+// Media
+// 
+// 画像などの組み合わせモジュール
+//
+// - class名はプロジェクトによって柔軟に変更すること
+//
+// Markup:
+//
+// Styleguide: 6
+
+
+
+
+
+
+//-------------------------------------------
+// 説明用ブロック
+//-------------------------------------------
+
+// Desc Block
+//
+// 説明用に少し目立たせるモジュール
+// 
+// - class名はプロジェクトによって柔軟に変更すること
+//
+// Markup:
+//
+// Styleguide: 7
+
+
+
+
+
+
+//-------------------------------------------
+// 見出し
+//-------------------------------------------
+
+// Heading
+// 
+// - class名はプロジェクトによって柔軟に変更すること
+//
+// Markup:
+// <h1 class="m-heading-1">見出しです</h1>
+// <h2 class="m-heading-1">見出しです</h2>
+// <h3 class="m-heading-1">見出しです</h3>
+// <h4 class="m-heading-1">見出しです</h4>
+//
+// Styleguide: 8
+.m-heading-1 {
+	$borderWidth: 3px;
+	$borderColor:  $g_mainColor;
+	border-top: $borderWidth solid $borderColor;
+	border: 1px solid $g_grayNormal;
+	padding: 0.5em 1em;
+	position: relative;
+	z-index: 1;
+	@include linear-gradient(to bottom, #ffffff, $g_grayLight);
+	&:before, &:after {
+		position: absolute;
+		content: '';
+		display: block;
+		left: -1px;
+		padding-right: 2px;
+		box-sizing: content-box;
+		width: 100%;
+		z-index: 10;
+	}
+	&:before {
+		border-top: $borderWidth solid $borderColor;
+		top: -$borderWidth;
+	}
+	&:after {
+		border-top: $borderWidth solid $g_grayLight;
+		bottom: -$borderWidth - 1;
+	}
+}
+
+
+// Heading2
+// 
+// - class名はプロジェクトによって柔軟に変更すること
+//
+// Markup:
+// <h1 class="m-heading-2">見出しです</h1>
+// <h2 class="m-heading-2">見出しです</h2>
+// <h3 class="m-heading-2">見出しです</h3>
+// <h4 class="m-heading-2">見出しです</h4>
+//
+// Styleguide: 8.2
+.m-heading-2 {
+	$borderWidth: 3px;
+	$borderColor:  $g_mainColor;
+	border-bottom: $borderWidth solid $borderColor;
+	border: 1px solid $g_grayNormal;
+	padding: 0.5em 1em;
+	position: relative;
+	z-index: 1;
+	@include linear-gradient(to bottom, #ffffff, $g_grayLight);
+	&:before {
+		border-top: $borderWidth solid $borderColor;
+		bottom: -$borderWidth;
+		position: absolute;
+		content: '';
+		display: block;
+		left: -1px;
+		padding-right: 2px;
+		box-sizing: content-box;
+		width: 100%;
+		z-index: 10;
+	}
+}
+
+
+// Heading3
+// 
+// - class名はプロジェクトによって柔軟に変更すること
+//
+// Markup:
+// <h1 class="m-heading-3">見出しです</h1>
+// <h2 class="m-heading-3">見出しです</h2>
+// <h3 class="m-heading-3">見出しです</h3>
+// <h4 class="m-heading-3">見出しです</h4>
+//
+// Styleguide: 8.3
+
+.m-heading-3 {
+	$borderWidth: 2px;
+	$borderColor:  $g_mainColor;
+	border-bottom: $borderWidth solid $borderColor;
+	padding: 0.5em 1.3em;
+	position: relative;
+	z-index: 1;
+	&:before, &:after {
+		content: '';
+		display: block;
+		height: 8px;
+		width: 8px;
+		position: absolute;
+	}
+	&:before {
+		left: 0.2em;
+		top: 1em;
+		background-color: tint($borderColor, 50%);
+		z-index: 2;
+	}
+	&:after {
+		left: 0px;
+		top: 0.8em;
+		background-color: $borderColor;
+		z-index: 3;
+	}
+}
+
+
+// Heading4
+// 
+// - class名はプロジェクトによって柔軟に変更すること
+//
+// Markup:
+// <h1 class="m-heading-4">見出しです</h1>
+// <h2 class="m-heading-4">見出しです</h2>
+// <h3 class="m-heading-4">見出しです</h3>
+// <h4 class="m-heading-4">見出しです</h4>
+//
+// Styleguide: 8.4
+.m-heading-4 {
+	@include linear-gradient(to bottom, #ffffff, $g_grayLight);
+	border: 1px solid $g_grayNormal;
+	padding: 0.5em 1em;
+	position: relative;
+	z-index: 1;
+	&:before {
+		@include position(absolute, 50% null null -1px);
+		background: $g_mainColor;
+		content: '';
+		display: block;
+		margin-top: -3px;
+		height: 6px;
+		width: 10px;
+		z-index: 10;
+	}
+}
+
+
+// Heading5
+// 
+// - class名はプロジェクトによって柔軟に変更すること
+//
+// Markup:
+// <h1 class="m-heading-5">見出しです</h1>
+// <h2 class="m-heading-5">見出しです</h2>
+// <h3 class="m-heading-5">見出しです</h3>
+// <h4 class="m-heading-5">見出しです</h4>
+//
+// Styleguide: 8.5
+.m-heading-5 {
+	background-color: $g_mainColor;
+	color: #fff;
+	padding: 0.5em 1.3em;
+	position: relative;
+	z-index: 1;
+	&:before {
+		@include triangle(10px 10px, #fff shade($g_mainColor, 40%), up-left);
+		@include position(absolute, 0 null null 0);
+		content: '';
+		z-index: 10;
+	}
+}
+
+
+// Heading6
+// 
+// - class名はプロジェクトによって柔軟に変更すること
+//
+// Markup:
+// <h1 class="m-heading-6">見出しです</h1>
+// <h2 class="m-heading-6">見出しです</h2>
+// <h3 class="m-heading-6">見出しです</h3>
+// <h4 class="m-heading-6">見出しです</h4>
+//
+// Styleguide: 8.6
+.m-heading-6 {
+	background: $g_grayLight;
+	padding: 0.5em 1em;
+	border-radius: 6px;
+}
+
+
+
+
+
+//-------------------------------------------
+// ボタン
+//-------------------------------------------
+
+// Button
+// 
+// - class名はプロジェクトによって柔軟に変更すること
+//
+// Markup:
+//
+// Styleguide: 9
+
+
+
+
+//-------------------------------------------
+// テーブル
+//-------------------------------------------
+
+// Table
+// 
+// - class名はプロジェクトによって柔軟に変更すること
+//
+// Markup:
+//
+// Styleguide: 10
+
+
+
+
+
+//-------------------------------------------
+// リスト
+//-------------------------------------------
+
+// List
+// 
+// - class名はプロジェクトによって柔軟に変更すること
+//
+// Markup:
+//
+// Styleguide: 11
+
+
+
+
+
 
 

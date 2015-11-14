@@ -15,10 +15,10 @@
 // - 以下表示されるclass名はガイドのために用意したものなので実際には使用しない
 //
 // Markup:
-// <div class="sample-color-style col1"></div>
-// <div class="sample-color-style col2"></div>
-// <div class="sample-color-style col3"></div>
-// <div class="sample-color-style col4"></div>
+// <div class="sample-color-style main"></div>
+// <div class="sample-color-style sub"></div>
+// <div class="sample-color-style base"></div>
+// <div class="sample-color-style accent"></div>
 //
 // Styleguide: 1
 $g_mainColor  : #3498db;
@@ -30,13 +30,37 @@ $g_accentColor: #ff9900;
 	display: inline-block;
 	width: 50px;
 	height: 50px;
-	&.col1 {background-color: $g_mainColor;}
-	&.col2 {background-color: $g_subColor;}
-	&.col3 {background-color: $g_baseColor;}
-	&.col4 {background-color: $g_accentColor;}
+	&.main {background-color: $g_mainColor;}
+	&.sub {background-color: $g_subColor;}
+	&.base {background-color: $g_baseColor;}
+	&.accent {background-color: $g_accentColor;}
 }
 
+// Gray Colors
+// 
+// - プロジェクトで使用するグレーのパターン
+// - 共通モジュール・スタイルにも影響する
+// - 変数名はscssファイルを参考
+// - 以下表示されるclass名はガイドのために用意したものなので実際には使用しない
+//
+// Markup:
+// <div class="sample-gray-color-style light"></div>
+// <div class="sample-gray-color-style normal"></div>
+// <div class="sample-gray-color-style dark"></div>
+//
+// Styleguide: 1.1
+$g_grayLight : #f7f7f7;
+$g_grayNormal: #ccc;
+$g_grayDark  : #aaa;
 
+.sample-gray-color-style {
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	&.light {background-color: $g_grayLight;}
+	&.normal {background-color: $g_grayNormal;}
+	&.dark {background-color: $g_grayDark;}
+}
 
 
 
