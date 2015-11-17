@@ -3,6 +3,40 @@
 // グローバル変数・関数を管理します
 /////////////////////////////////////////////
 
+
+//-------------------------------------------
+// メディアクエリ
+// 必要に応じて調整すること
+// use:: @include mQuery_pc {}
+//-------------------------------------------
+$g_width-pc: 940px;
+$g_width-tablet: 768px;
+$g_width-smartphone: 480px;
+$g_width-scrollbar: 20px;
+
+@mixin mQuery_pc {
+	// PC表示: 768+20=788px～
+	@media only screen and (min-width: $g_width-tablet + $g_width-scrollbar) {
+		@content;
+	}
+}
+@mixin mQuery_tablet {
+	// タブレット表示: 480+20=500px ～ 768+20-1=787px
+	@media only screen and (min-width: $g_width-smartphone + $g_width-scrollbar) and (max-width: $g_width-tablet + $g_width-scrollbar - 1) {
+		@content;
+	}
+}
+@mixin mQuery_sp {
+	// スマートフォン表示: 480+20-1=499px～
+	@media only screen and (max-width: $g_width-smartphone + $g_width-scrollbar - 1) {
+		@content;
+	}
+}
+
+
+
+
+
 //-------------------------------------------
 // 色設計
 //-------------------------------------------

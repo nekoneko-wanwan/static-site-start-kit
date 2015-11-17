@@ -22,7 +22,7 @@
 ------------------------------------------- */
 $u_spaceClass: true !default;
 $u_spacePadding: true !default;
-$u_endValue: 6 !default;
+$u_endValue: 5 !default;
 
 @if $u_spaceClass {
 	@for $i from 0 through $u_endValue {

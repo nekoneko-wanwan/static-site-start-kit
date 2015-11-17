@@ -6,6 +6,342 @@
 ****************************************** */
 
 
+
+//-------------------------------------------
+// ベース
+//-------------------------------------------
+
+// Base
+// 
+// 汎用性を強くもったテンプレートをまとめたもの。<br>
+// **Modifierが多くなりそう**、**細かい調整が必要になりそう**な場合は、専用モジュールを作成するためのベースとしても使用する<br>
+// もし汎用テンプレが不要であればmixinだけ残して削除する
+// 
+// Styleguide: 3.0
+
+// Grid Neat
+//
+// Neatを元にしたグリッド型モジュールのベース
+// 
+// - 高さは自動揃いしない
+// - nth-childが効かないブラウザを考慮するならば高さを揃えor固定する（nth-でclearしているため、clearが効かずに高さが異なると崩れる）
+// - 自動でマージンが約1emが付与されるので、余白なしや細かい調整が必要なものは別モジュールを
+// - borderやbackgroundなどのスタイルは子要素の子要素に付与する
+//
+// .is-2col - 2カラムにする
+// .is-3col - 3カラムにする
+// .is-4col - 4カラムにする
+//
+// Markup:
+// <div class="m-grid-1 {{[modifier_class]}}">
+//   <div class="m-grid-1__inner">
+//     <div style="background: #ccc;">テキストテキスト<br>テキストテキストテキスト</div>
+//   </div>
+//   <div class="m-grid-1__inner">
+//     <div style="background: #ccc;">テキストテキストテキストテキストテキスト</div>
+//   </div>
+//   <div class="m-grid-1__inner">
+//      <div style="background: #ccc;">テキストテキストテキストテキストテキスト</div>
+//   </div>
+//   <div class="m-grid-1__inner">
+//      <div style="background: #ccc;">テキストテキストテキスト<br>テキストテキスト</div>
+//   </div>
+//   <div class="m-grid-1__inner">
+//     <div style="background: #ccc;">テキストテキストテキストテキストテキスト</div>
+//   </div>
+//   <div class="m-grid-1__inner">
+//     <div style="background: #ccc;">テキストテキストテキストテキストテキスト</div>
+//   </div>
+// </div>
+// 
+// Styleguide: 3.1
+
+// http://neat.bourbon.io/examples/ を参考に作成する
+
+// メディアクエリを使う場合はomegaを打ち消す必要があるため、このmixinを使用する
+@mixin omega-reset($nth) {
+	&:nth-child(#{$nth}) { margin-right: flex-gutter(); }
+	&:nth-child(#{$nth}+1) { clear: none }
+}
+@mixin baseGrid-neat(
+		$div: '*',  // __innerとして設定する要素名（classごと指定）
+		$col: 2     // カラム数
+	) {
+	@include outer-container(100%);
+	> #{$div} {
+		@include span-columns(12/$col);
+		@include omega(#{$col}n);
+		margin-bottom: 2.35765%;
+	}
+}
+.m-grid-1 {
+	&.is-2col {
+		@include baseGrid-neat($div: '.m-grid-1__inner', $col: 2);
+		// レスポンシブ対応例
+		@include mQuery_sp {
+			@include omega-reset(2n);
+			@include baseGrid-neat($div: '.m-grid-1__inner', $col: 1);
+		}
+	}
+	&.is-3col { @include baseGrid-neat($div: '.m-grid-1__inner', $col: 3);}
+	&.is-4col { @include baseGrid-neat($div: '.m-grid-1__inner', $col: 4);}
+}
+
+
+
+// Grid Adjust
+//
+// 独自のグリッド型モジュールのベース
+// 
+// - 余白を柔軟に設定できる
+// - 高さは自動揃いしない
+// - nth-childが効かないブラウザを考慮するならば高さを揃えor固定すること
+// - Grid neatと比べて1つネストが深いのに注意
+//
+// .is-2col-10gutter - サンプル
+// .is-3col-20gutter - サンプル
+// .is-4col-30gutter - サンプル
+//
+// Markup:
+// <div class="m-grid-2 {{[modifier_class]}}">
+//   <div class="m-grid-2__outer">
+//     <div class="m-grid-2__inner">
+//       <div style="background: #ccc;">テキストテキストテキスト</div>
+//     </div>
+//     <div class="m-grid-2__inner">
+//       <div style="background: #ccc;">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</div>
+//     </div>
+//     <div class="m-grid-2__inner">
+//        <div style="background: #ccc;">テキストテキストテキストテキストテキスト</div>
+//     </div>
+//     <div class="m-grid-2__inner ">
+//        <div style="background: #ccc;">テキストテキストテキスト<br>テキストテキスト</div>
+//     </div>
+//     <div class="m-grid-2__inner ">
+//       <div style="background: #ccc;">テキストテキストテキストテキストテキスト</div>
+//     </div>
+//     <div class="m-grid-2__inner ">
+//       <div style="background: #ccc;">テキストテキストテキストテキストテキスト</div>
+//     </div>
+//   </div>
+// </div>
+// 
+// Styleguide: 3.2
+@mixin baseGrid-org(
+		 // __outerとしてinnerを包括する要素名（classごと指定）
+		$div_outer: '*',
+		// __innerとして設定する要素名（classごと指定）※必須とする（出力されるcssの無駄を無くすため）
+		$div_inner: '',
+		// カラム数
+		$col: 2,
+		// 余白
+		$gutter: 0
+	) {
+	overflow: hidden;
+
+	// __outer
+	> #{$div_outer} {
+		@include clearfix;
+		margin: 0 -#{$gutter} 0 0;
+	}
+
+	// __inner
+	#{$div_inner} {
+		box-sizing: border-box;
+		display: block;
+		float: left;
+		padding: 0;
+		width: percentage(1/$col);
+		padding-right: $gutter;
+		padding-bottom: $gutter;
+		&:nth-child(#{$col}n + 1) {
+			clear: left;
+		}
+	}
+}
+
+.m-grid-2 {
+	&.is-2col-10gutter {
+		@include baseGrid-org($div_inner: '.m-grid-2__inner', $col: 2, $gutter: 10px);
+	}
+	&.is-3col-20gutter {
+		@include baseGrid-org($div_inner: '.m-grid-2__inner', $col: 3, $gutter: 20px);
+	}
+	&.is-4col-30gutter {
+		@include baseGrid-org($div_inner: '.m-grid-2__inner', $col: 4, $gutter: 30px);
+	}
+}
+
+
+// Card flex
+// 
+// flexboxを元にしたカード型モジュールのベース
+//
+// - flexを使用しているので、対応ブラウザに注意する
+// - neatはprefixのために使用している
+// - 細かいところは要調整
+//
+// .is-2width - カードの横幅を2倍に
+// .is-3width - カードの横幅を3倍に
+//
+// Markup:
+// <div class="m-card">
+//   <div class="m-card__inner {{[modifier_class]}}">
+//     <div style="background: #ccc;">テキスト<br>テキスト<br>テキスト</div>
+//   </div>
+//   <div class="m-card__inner">
+//     <div style="background: #ccc;">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</div>
+//   </div>
+//   <div class="m-card__inner">
+//     <div style="background: #ccc;">テキスト</div>
+//   </div>
+//   <div class="m-card__inner">
+//     <div style="background: #ccc;">テキスト<br>テキスト<br>テキスト</div>
+//   </div>
+// </div>
+//
+// Styleguide: 3.3
+@mixin baseCard-neat(
+		// __innerとして設定する要素名（classごと指定）
+		$div: '*',
+		// カラムの横幅（カラム数に影響）
+		$colWidth: 29%,
+		// 余白
+		$margin: 2%,
+		// 大きくするModifierのclass名
+		$big2_div: null,
+		$big3_div: null
+	) {
+	@include display(flex);
+	@include flex-wrap(wrap);
+	@include justify-content(space-between);
+	> #{$div} {
+		@include flex-basis($colWidth);
+		@include flex-grow(1);
+		margin: 0 #{$margin} #{$margin};
+
+	}
+	@if ($big2_div != null) {
+	// Cardを大きくする
+		#{$big2_div} {
+			@include flex-basis($colWidth * 2);
+		}
+	}
+	@if ($big3_div != null) {
+		#{$big3_div} {
+			@include flex-basis($colWidth * 3);
+		}
+	}
+}
+.m-card {
+	@include baseCard-neat(
+		$colWidth: 29%,
+		$margin: 2%,
+		$big2_div: '.is-2width',
+		$big3_div: '.is-3width'
+	);
+}
+
+
+// Media
+// 
+// 画像などの組み合わせモジュール
+//
+// - Modifierの種類が多くなりがちなので、これをベースにスタイルを作成することを前提
+//
+// .is-left-wide - サンプル
+// .is-right-narrow - サンプル
+// .is-left-narrow-sneak - サンプル
+//
+// Markup:
+// <div class="m-side-media {{[modifier_class]}}">
+//   <div class="m-side-media__img">
+//     <img src="http://placehold.jp/150x150.png" alt="" />
+//   </div>
+//   <p class="m-side-media__text">テキスト<br>テキストテキスト<br>テキストテキスト<br>テキストテキスト<br>テキストテキスト<br>テキストテキスト<br>テキストテキスト<br>テキストテキスト<br>テキストテキスト<br>テキストテキスト<br>テキストテキスト</p>
+// </div>
+//
+// Styleguide: 3.4
+@mixin sideMedia(
+		// ※必須。メディアおよびテキストを格納する要素（class名ごと指定）
+		$img: '.__img',
+		$txt: '.__text',
+		// 余白
+		$margin: 30px,
+		// メディアは左配置かどうか
+		$isLeft: true,
+		// メディアの下に回り込ませるかどうか
+		$isSneak: false
+	){
+	@include clearfix;
+
+	// メディア側
+	#{$img} {
+		@if ($isLeft) {
+			float: left;
+			margin-right: $margin;
+		} @else {
+			float: right;
+			margin-left: $margin;
+			margin-right: 0;
+		}
+		@if ($isSneak) {
+			margin-bottom: $margin;
+		}
+		> * {
+			display: block;
+		}
+	}
+
+	// テキスト側
+	> #{$txt} {
+		@if ($isSneak) {
+			overflow: visible;
+		} @else {
+			overflow: hidden;
+		}
+	}
+}
+
+.m-side-media {
+	$_img: '.m-side-media__img';
+	$_txt: '.m-side-media__text';
+
+	// デフォルト
+	@include sideMedia(
+		$img: $_img,
+		$txt: $_txt
+	);
+	&.is-left-wide {
+		@include sideMedia(
+			$img: $_img,
+			$txt: $_txt,
+			$margin: 50px
+		);
+	}
+	&.is-right-narrow {
+		@include sideMedia(
+			$img: $_img,
+			$txt: $_txt,
+			$margin: 10px,
+			$isLeft: false
+		);
+	}
+	&.is-left-narrow-sneak {
+		@include sideMedia(
+			$img: $_img,
+			$txt: $_txt,
+			$margin: 10px,
+			$isSneak: true
+		);
+	}
+}
+
+
+
+
+
+
 //-------------------------------------------
 // セクション
 //-------------------------------------------
@@ -50,7 +386,7 @@
 //   </div>
 // </section>
 //
-// Styleguide: 3
+// Styleguide: 4
 .m-section {
 	margin-bottom: 60px;
 	&.is-sub {
@@ -71,17 +407,19 @@
 
 
 
+
+
 //-------------------------------------------
 // サブメニュー
 //-------------------------------------------
 
 // Submenu
 // 
-// - class名はプロジェクトによって柔軟に変更すること
-//
+// サブメニューに使用するスタイル<br>必ずしも1つ/pageとは限らないためモジュール化
+// 
 // Markup:
 //
-// Styleguide: 4
+// Styleguide: 5
 
 
 
@@ -91,15 +429,15 @@
 // グリッド
 //-------------------------------------------
 
-// Grid Base
+// Grid
 //
-// グリッドで構成されたモジュール（カード型）
+// Base を元にしたグリッドのパターン<br>ある程度スタイルもまとめて行ってしまう
 // 
 // - class名はプロジェクトによって柔軟に変更すること
 //
 // Markup:
 //
-// Styleguide: 5
+// Styleguide: 6
 
 
 
@@ -111,14 +449,14 @@
 //-------------------------------------------
 
 // Media
-// 
-// 画像などの組み合わせモジュール
 //
+// Baseを元にしたメディアとテキストの複合パターン<br>ある程度スタイルもまとめて行ってしまう
+// 
 // - class名はプロジェクトによって柔軟に変更すること
 //
 // Markup:
 //
-// Styleguide: 6
+// Styleguide: 7
 
 
 
@@ -137,7 +475,7 @@
 //
 // Markup:
 //
-// Styleguide: 7
+// Styleguide: 8
 
 
 
@@ -158,7 +496,7 @@
 // <h3 class="m-heading-1">見出しです</h3>
 // <h4 class="m-heading-1">見出しです</h4>
 //
-// Styleguide: 8
+// Styleguide: 9
 .m-heading-1 {
 	$borderWidth: 3px;
 	$borderColor:  $g_mainColor;
@@ -199,7 +537,7 @@
 // <h3 class="m-heading-2">見出しです</h3>
 // <h4 class="m-heading-2">見出しです</h4>
 //
-// Styleguide: 8.2
+// Styleguide: 9.2
 .m-heading-2 {
 	$borderWidth: 3px;
 	$borderColor:  $g_mainColor;
@@ -234,7 +572,7 @@
 // <h3 class="m-heading-3">見出しです</h3>
 // <h4 class="m-heading-3">見出しです</h4>
 //
-// Styleguide: 8.3
+// Styleguide: 9.3
 
 .m-heading-3 {
 	$borderWidth: 2px;
@@ -275,7 +613,7 @@
 // <h3 class="m-heading-4">見出しです</h3>
 // <h4 class="m-heading-4">見出しです</h4>
 //
-// Styleguide: 8.4
+// Styleguide: 9.4
 .m-heading-4 {
 	@include linear-gradient(to bottom, #ffffff, $g_grayLight);
 	border: 1px solid $g_grayNormal;
@@ -305,7 +643,7 @@
 // <h3 class="m-heading-5">見出しです</h3>
 // <h4 class="m-heading-5">見出しです</h4>
 //
-// Styleguide: 8.5
+// Styleguide: 9.5
 .m-heading-5 {
 	background-color: $g_mainColor;
 	color: #fff;
@@ -331,7 +669,7 @@
 // <h3 class="m-heading-6">見出しです</h3>
 // <h4 class="m-heading-6">見出しです</h4>
 //
-// Styleguide: 8.6
+// Styleguide: 9.6
 .m-heading-6 {
 	background: $g_grayLight;
 	padding: 0.5em 1em;
@@ -352,7 +690,7 @@
 //
 // Markup:
 //
-// Styleguide: 9
+// Styleguide: 10
 
 
 
@@ -367,7 +705,7 @@
 //
 // Markup:
 //
-// Styleguide: 10
+// Styleguide: 11
 
 
 
@@ -383,7 +721,25 @@
 //
 // Markup:
 //
-// Styleguide: 11
+// Styleguide: 12
+
+
+
+
+
+
+//-------------------------------------------
+// リンク
+//-------------------------------------------
+
+// Link
+// 
+// - class名はプロジェクトによって柔軟に変更すること
+//
+// Markup:
+//
+// Styleguide: 13
+
 
 
 
