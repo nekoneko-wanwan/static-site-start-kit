@@ -1,0 +1,66 @@
+@charset "utf-8";
+//-------------------------------------------
+// セクション
+//-------------------------------------------
+
+// Section
+//
+// ・主にメインコンテンツ内でのセクションの余白を管理する<br>
+// ・スタイルガイド上は分かりやすく色をつけている（実際にはつかないので注意）
+//
+// Styleguide: 4
+
+// Section
+//
+// - "m-section" に "is-sub" をつけることで余白を狭くする（子セクションに使用）
+// - "m-section__body" に "has-no-gutter" をつけることで内側余白を消す
+// 
+// Markup:
+// <section class="m-section" style="background-color: #ccc;">
+//   <h1>見出し</h1>
+//   <div class="m-section__body">
+//     <p>セクション本文</p>
+//     <section class="m-section is-sub" style="background-color: #f7f7f7;">
+//       <h2>見出し</h2>
+//       <div class="m-section__body">
+//         <p>セクション本文</p>
+//       </div>
+//     </section>
+//   </div>
+// </section>
+// <section class="m-section" style="background-color: #ccc;">
+//   <h1>見出し</h1>
+//   <div class="m-section__body">
+//     <p>セクション本文</p>
+//     <section class="m-section is-sub" style="background-color: #f7f7f7;">
+//       <h2>見出し</h2>
+//       <div class="m-section__body">
+//         <p>セクション本文</p>
+//       </div>
+//     </section>
+//     <section class="m-section is-sub" style="background-color: #f7f7f7;">
+//       <h2>見出し</h2>
+//       <div class="m-section__body has-no-gutter">
+//         <p>セクション本文</p>
+//       </div>
+//     </section>
+//   </div>
+// </section>
+//
+// Styleguide: 4.1
+.m-section {
+	margin-bottom: 60px;
+	&.is-sub {
+		margin-bottom: 30px;
+	}
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+.m-section__body {
+	padding: 0 20px 20px;
+	&.has-no-gutter {
+		padding: 0;
+	}
+}
+

@@ -88,7 +88,7 @@ gulp.task('sass', function () {
     // ガイド生成用に別途concatしてdestしておく
     .pipe($.concat('style.css'))
     .pipe($.minifyCss())
-    .pipe(gulp.dest(GUIDE));  // publicの中だと上書きされてしまう
+    .pipe(gulp.dest(GUIDE));  // publicの中だと書き換えられてしまうため、ひとつ上に出す
 });
 
 
@@ -125,9 +125,17 @@ gulp.task('js', function(){
 
 
 gulp.task('watch', function() {
+  var timer;
   gulp.watch(CSS.SRC, ['sass']);
   gulp.watch(JS.SRC,  ['js']);
-  gulp.watch(WATCH).on('change', browserSync.reload);
+
+  gulp.watch(WATCH).on('change',  function() {
+    /* 連続イベントの間引き処理 */
+    clearTimeout(timer);
+    timer = setTimeout(function() {
+      browserSync.reload();
+    }, 200);
+  });
 });
 
 

@@ -1,0 +1,147 @@
+@charset "utf-8";
+//-------------------------------------------
+// サブメニュー
+//-------------------------------------------
+
+// Submenu
+// 
+// ・サブメニューに使用するスタイル<br>
+// ・必ずしも1個/pageとは限らないためモジュール化
+//
+// Styleguide: 5
+
+// Submenu
+// 
+// - class名はプロジェクトに応じて柔軟に変更すること
+// 
+// Markup:
+// <div class="m-snav-1">
+//   <p class="m-snav-1__head">見出し</p>
+//   <ul class="m-snav-1__body">
+//     <li><a href="/" class="is-active">ハイライトリンク</a></li>
+//     <li><a href="/">リンク</a></li>
+//     <li><a href="/">リンク</a></li>
+//     <li>
+//       <p class="m-snav-1__nest-head">小見出し</p>
+//       <ul class="m-snav-1__nest-body">
+//         <li><a href="/">リンク</a></li>
+//         <li><a href="/">リンク</a></li>
+//       </ul>
+//     </li>
+//     <li><a href="/">リンク</a></li>
+//     <li>
+//       <ul class="m-snav-1__nest-body">
+//         <li><a href="/" class="is-active">リンク</a></li>
+//         <li><a href="/">リンク</a></li>
+//       </ul>
+//     </li>
+//   </ul>
+// </div>
+//
+// Styleguide: 5.1
+
+.m-snav-1 {
+	$active: '.is-active';
+	margin-bottom: 30px;
+	// common
+	ul {
+		padding: 0;
+		list-style: none;
+	}
+	a {
+		display: inline-block;
+		text-decoration: none;
+	}
+
+	// head
+	&__head {
+		font-size: 110%;
+		font-weight: bold;
+		position: relative;
+		display: block;
+		margin: 0;
+		padding: 10px 20px;
+		color: #fff;
+		background-color: $g_mainColor;
+		&:after {
+			position: absolute;
+			bottom: -2px;
+			left: 0;
+			width: 100%;
+			content: "";
+			border-bottom: 1px solid $g_mainColor;
+		}
+	}
+
+	// nest-head
+	&__nest-head {
+		font-weight: bold;
+		display: block;
+		margin: 15px 0 0;
+		padding: 7px 10px;
+		background-color: lighten($g_mainColor, 40%);
+	}
+
+	// body
+	&__body {
+		margin-top: 3px;
+		> li {
+			line-height: 1.6;
+			border-bottom: 1px dashed $g_grayNormal;
+			> a {
+				font-size: 90%;
+				padding: 12px 0 12px 15px;
+				color: #333;
+				transition: all 0.3s;
+				&:before {
+					@include bgFontAwesome("f061", 0 7px 0 0);
+				}
+				&:hover {
+					text-decoration: underline;
+					transform: translateX(5px);
+				}
+				&#{$active} {
+					font-weight: bold;
+					color: $g_accentColor;
+					border-left: 2px solid $g_accentColor;
+					&:hover {
+						transform: translateX(0);
+					}
+				}
+			}
+		}
+	}
+
+	// nest-body
+	&__nest-body {
+		margin: 15px;
+		> li {
+			border-bottom: none;
+			+ li {
+				margin-top: 5px;
+			}
+			> a {
+				color: #333;
+				font-size: 90%;
+				transition: all 0.3s;
+				&:before {
+					@include bgFontAwesome("f101", 0 7px 0 0);
+				}
+				&:hover {
+					text-decoration: underline;
+					transform: translateX(5px);
+				}
+				&.is-active {
+					font-weight: bold;
+					color: $g_accentColor;
+					&:hover {
+						transform: translateX(0);
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
