@@ -5,14 +5,36 @@
 
 // Media
 //
-// Baseを元にしたメディアとテキストの複合パターン<br>ある程度スタイルもまとめて行ってしまう
-// 
-// - class名はプロジェクトによって柔軟に変更すること
-//
-// Markup:
+// ・Baseを元にしたメディアとテキストの複合パターン<br>
+// ・class名はプロジェクトによって柔軟に変更する
 //
 // Styleguide: 7
 
+// Media
+//
+// Markup:
+// <div class="m-media-1">
+//   <div class="m-media-1__img">
+//     <img src="http://placehold.jp/150x150.png" alt="" />
+//   </div>
+//   <p class="m-media-1__text">テキスト<br>テキストテキスト</p>
+// </div>
+// <div class="m-media-1 is-right">
+//   <div class="m-media-1__img">
+//     <img src="http://placehold.jp/150x150.png" alt="" />
+//   </div>
+//   <p class="m-media-1__text">テキスト<br>テキストテキスト</p>
+// </div>
+//
+// Styleguide: 7.1
 
+.m-media-1 {
+	@include sideMedia() {
+		padding: 20px;
+		+ #{&} {
+			border-top: 1px dashed $g_grayNormal;
+		}
+	}
+}
 
 

@@ -62,8 +62,12 @@ gulp.task('server', function() {
         ssi({
           baseDir: __dirname + '/' + ROOT,  // サーバからのパスに注意
           ext: ".html"
-        })
-      ]
+        }),
+        function(req, res, next) {
+          res.setHeader('Access-Control-Allow-Origin', '*');
+          next();
+        }
+      ],
     },
     open: false,
     port: 9999
@@ -79,7 +83,7 @@ gulp.task('sass', function () {
     })
     .pipe($.plumber())
     .pipe($.autoprefixer({
-        browsers: ['last 2 versions', 'ie 9'],
+        browsers: ['last 2 versions', 'ie 9', 'ios 6', 'android 4'],
         cascade: false
     }))
     .pipe($.csscomb())  // もし重たくなってきたら場合は別タスク化

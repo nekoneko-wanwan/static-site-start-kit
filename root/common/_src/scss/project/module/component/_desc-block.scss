@@ -5,11 +5,91 @@
 
 // Desc block
 // 
-// - class名はプロジェクトによって柔軟に変更すること
-//
-// Markup:
+// ・説明用として目立たせたい装飾エリアのスタイル<br>
+// ・class名はプロジェクトによって柔軟に変更する<br>
+// ・modifierは必要に応じて調整する
 //
 // Styleguide: 8
+
+
+// Desc-1
+//
+// - 無理に要素一つだけで完結させようとすると使い勝手が悪くなりそうなためinnerを用意
+//
+// .is-normal - 線の太さ
+// .is-bold - 線の太さ
+// .is-gray - 色を消す
+// 
+// Markup:
+// <div class="m-desc-1 {{[modifier_class]}}">
+//   <div class="m-desc-1__inner">
+//     <p>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト</p>
+//   </div>
+// </div>
+//
+// Styleguide: 8.1
+
+.m-desc-1 {
+	background: $g_patUrl_thin 0 0 repeat $g_mainColor;
+	padding: 5px;
+	&.is-normal {
+		background-image: $g_patUrl_normal;
+	}
+	&.is-bold {
+		background-image: $g_patUrl_bold;
+	}
+	&.is-gray {
+		background-color: $g_grayNormal;
+	}
+	&__inner {
+		background-color: #fff;
+		padding: 20px;
+	}
+}
+
+
+// Desc-2
+//
+// .is-gray - 色を消す
+//
+// Markup:
+// <div class="m-desc-2 {{[modifier_class]}}">
+//   <p>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト</p>
+// </div>
+//
+// Styleguide: 8.2
+
+.m-desc-2 {
+	border: 5px solid tint($g_mainColor, 90%);
+	box-shadow: inset 0 0 0 1px $g_mainColor;
+	padding: 20px;
+	&.is-gray {
+		border-color: $g_grayLight;
+		box-shadow: inset 0 0 0 1px $g_grayNormal;
+	}
+}
+
+
+// Desc-3
+//
+// .is-gray - 色を消す
+//
+// Markup:
+// <div class="m-desc-3 {{[modifier_class]}}">
+//   <p>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト</p>
+// </div>
+//
+// Styleguide: 8.3
+
+.m-desc-3 {
+	border: 3px double $g_mainColor;
+	padding: 20px;
+	&.is-gray {
+		border-color: $g_grayNormal;
+	}
+}
+
+
 
 
 

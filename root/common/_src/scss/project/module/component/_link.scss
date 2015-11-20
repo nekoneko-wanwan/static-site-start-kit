@@ -5,16 +5,59 @@
 
 // Link
 // 
-// - class名はプロジェクトによって柔軟に変更すること
-//
-// Markup:
+// ・リンクに使用するスタイル<br>
+// ・ボタンより固くない、シンプルなデザイン<br>
+// ・class名はプロジェクトによって柔軟に変更すること
 //
 // Styleguide: 13
 
 
+// Link-1
+//
+// - 色々なアイコンを設定
+// - 単体で完結させる
+//
+// .is-external - 外部リンク
+// .is-pdf - pdf
+// .is-home - ホーム
+// .is-image - 画像
+// .is-zoom - ズームアップ
+//
+// Markup:
+// <a href="#" class="m-link-icon {{[modifier_class]}}">リンク</a>
+//
+// Styleguide: 13.1
 
-
-
-
+.m-link-icon {
+	&:before {
+		font-size: 90%;
+		@include bgFontAwesome("f105");
+	}
+	&.is-external {
+		&:before {
+			content: "\f08e";
+		}
+	}
+	&.is-pdf {
+		&:before {
+			content: "\f1c1";
+		}
+	}
+	&.is-home {
+		&:before {
+			content: "\f015";
+		}
+	}
+	&.is-image {
+		&:before {
+			content: "\f1c1";
+		}
+	}
+	&.is-zoom {
+		&:before {
+			content: "\f00e";
+		}
+	}
+}
 
 

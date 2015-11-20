@@ -38,12 +38,12 @@ $g_width-scrollbar: 20px;
 
 
 //-------------------------------------------
-// 色設計
+// 色と画像パターン
 //-------------------------------------------
 
-// Colors
+// Colors & Pattern
 // 
-// ・プロジェクトで使用する基本色<br>
+// ・プロジェクトで使用する基本色と画像パターン<br>
 // ・**共通モジュール・スタイルにも影響**する<br>
 // ・変数名はscssファイルを参考<br>
 // ・以下表示されるclass名はガイドのために用意したものなので実際には使用しない
@@ -52,17 +52,25 @@ $g_width-scrollbar: 20px;
 
 // Colors
 //
+// - main: メインカラー
+// - sub: サブカラー
+// - base: ベースカラー（多くの場合、無彩色）
+// - accent: アクセントカラー（多くの場合、彩度の高い色。複数可）
+// - link: リンクカラー
+//
 // Markup:
 // <div class="sample-color-style main"></div>
 // <div class="sample-color-style sub"></div>
 // <div class="sample-color-style base"></div>
 // <div class="sample-color-style accent"></div>
+// <div class="sample-color-style link"></div>
 //
 // Styleguide: 1.1
 $g_mainColor  : #3498db;
 $g_subColor   : #eaf9fb;
 $g_baseColor  : #ff6685;
 $g_accentColor: #ff9900;
+$g_linkColor: #0074be;
 
 .sample-color-style {
 	display: inline-block;
@@ -72,7 +80,9 @@ $g_accentColor: #ff9900;
 	&.sub {background-color: $g_subColor;}
 	&.base {background-color: $g_baseColor;}
 	&.accent {background-color: $g_accentColor;}
+	&.link {background-color: $g_linkColor;}
 }
+
 
 // Gray Colors
 //
@@ -94,6 +104,44 @@ $g_grayDark  : #aaa;
 	&.normal {background-color: $g_grayNormal;}
 	&.dark {background-color: $g_grayDark;}
 }
+
+
+// Stripe pattern
+//
+// - 背景として使えるストライプのパターン画像
+// - 白ベースで作成しているため、背景色を設定して適用する
+// - データはbase64化
+//
+// Markup:
+// <div class="sample-stripe-pat thin"></div>
+// <div class="sample-stripe-pat normal"></div>
+// <div class="sample-stripe-pat bold"></div>
+//
+// Styleguide: 1.3
+$g_patUrl_thin: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABxJREFUeNpi/P//PwMU/GeCMYCYkQnGAIkABBgApQoGAnr9sboAAAAASUVORK5CYII=');
+$g_patUrl_normal: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACtJREFUeNpi/P//PwMQgAkoYAQRTNgEYRIYgiDFTNgEYTowBNGNQrELIMAAd4sJCXtYYfQAAAAASUVORK5CYII=');
+$g_patUrl_bold: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACVJREFUeNpi/P//PwMa+M+ELgDEjEzoAiAGE7oATBBFAAQAAgwANPoIBshsvPIAAAAASUVORK5CYII=');
+
+.sample-stripe-pat {
+	background-position: 0 0;
+	background-repeat: repeat;
+	background-color: #000;
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	&.thin {
+		background-image: $g_patUrl_thin;
+	}
+	&.normal {
+		background-image: $g_patUrl_normal;
+	}
+	&.bold {
+		background-image: $g_patUrl_bold;
+	}
+}
+
+
+
 
 
 
@@ -135,7 +183,7 @@ $g_grayDark  : #aaa;
 @function unicode($str){
  @return unquote("\"")+unquote(str-insert($str, "\\", 1))+unquote("\"");
 }
-@mixin bgFontAwesome($content, $margin: 0 .2em 0 0) {
+@mixin bgFontAwesome($content, $margin: 0 .3em 0 0) {
 	font-family: FontAwesome;
 	content: unicode($content);
 	display: inline-block;
@@ -158,3 +206,20 @@ $g_grayDark  : #aaa;
 }
 
 
+
+
+
+//-------------------------------------------
+// グラデーション
+//-------------------------------------------
+// isReverse: trueでfrom<->toを入れ替える
+@mixin simple-grad($from: #fff, $to: shade($g_grayLight, 2%), $base: shade($g_grayLight, 5%), $isReverse: false) {
+	background-color: $base;
+	@if ($isReverse) {
+		background: -webkit-linear-gradient(#{$to} 0%,#{$from} 100%);
+		background: linear-gradient(#{$to} 0%,#{$from} 100%);
+	} @else {
+		background: -webkit-linear-gradient(#{$from} 0%,#{$to} 100%);
+		background: linear-gradient(#{$from} 0%,#{$to} 100%);
+	}
+}
