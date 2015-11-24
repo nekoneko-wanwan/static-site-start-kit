@@ -6,10 +6,122 @@
 // List
 // 
 // ・リスト要素に使用するスタイル<br>
-// ・シンプルなデザインにする<br>
+// ・ul, ol にclassをつける<br>
 // ・class名はプロジェクトによって柔軟に変更する
 //
 // Styleguide: 12
+
+// List-1
+//
+// ・色々なアイコンを設定
+// ・単体で完結させる
+//
+// .is-check - チェックマーク
+// .is-arrow - 大きな矢印
+//
+// Markup:
+// <ul class="m-list-icon {{[modifier_class]}}">
+//   <li>リスト</li>
+//   <li>リスト</li>
+//   <li>リスト</li>
+// </ul>
+//
+// Styleguide: 12.1
+
+.m-list-icon {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	> li {
+		position: relative;
+		&:before {
+			@include bgFontAwesome('f105');
+		}
+		+ li {
+			margin-top: 10px;
+		}
+	}
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	&.is-check {
+		> li {
+			&:before {
+				content: '\f00c';
+			}
+		}
+	}
+	&.is-arrow {
+		> li {
+			&:before {
+				content: '\f061';
+			}
+		}
+	}
+}
+
+
+
+// List-2
+//
+// ・シンプルなリスト<br>
+// ・単体で完結させる
+//
+// Markup:
+// <ul class="m-list-2">
+//   <li>リスト</li>
+//   <li>リスト</li>
+//   <li>リスト</li>
+// </ul>
+//
+// Styleguide: 12.2
+
+.m-list-2 {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	> li {
+		padding: 10px 0;
+		position: relative;
+		&:before {
+			content: '・';
+		}
+		+ li {
+			border-top: 1px dashed $g_grayNormal;
+		}
+	}
+}
+
+
+
+// List-3
+//
+// ・シンプルなしましまリスト<br>
+// ・単体で完結させる
+//
+// Markup:
+// <ul class="m-list-3">
+//   <li>リスト</li>
+//   <li>リスト</li>
+//   <li>リスト</li>
+// </ul>
+//
+// Styleguide: 12.3
+
+.m-list-3 {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	> li {
+		padding: 10px;
+		position: relative;
+		&:nth-child(even) {
+			background-color: $g_grayLight;
+		}
+	}
+}
 
 
 

@@ -10,3 +10,198 @@
 //
 // Styleguide: 11
 
+
+// table-1
+//
+// ・左にヘッダータイプ<br>
+// ・ワンポイントカラー
+//
+// Markup:
+// <div class="m-table-1">
+//   <table>
+//     <tr>
+//       <th>見出し</th>
+//       <td>テキスト</td>
+//     </tr>
+//     <tr>
+//       <th>見出し</th>
+//       <td>テキスト</td>
+//     </tr>
+//     <tr>
+//       <th>見出し</th>
+//       <td>テキスト</td>
+//     </tr>
+//     <tr>
+//       <th>見出し</th>
+//       <td>テキスト</td>
+//     </tr>
+//     <tr>
+//       <th>見出し</th>
+//       <td>テキスト</td>
+//     </tr>
+//   </table>
+// </div>
+//
+// Styleguide: 11.1
+.m-table-1 {
+	table {
+		border-collapse: collapse;
+		width: 100%;
+	}
+	th, td {
+		border-bottom: 1px dashed $g_grayNormal;
+		padding: 12px 20px;
+		vertical-align: text-bottom;
+	}
+	th {
+		background-color: $g_grayLight;
+		text-align: left;
+		padding-left: 15px;
+		padding-right: 15px;
+		width: 20%;
+	}
+	tr:first-child {
+		th {
+			border-top: 3px solid $g_mainColor;
+		}
+		td {
+			border-top: 1px solid $g_grayNormal;
+		}
+	}
+	tr:last-child {
+		th, td {
+			border-bottom: none;
+			border-bottom: none;
+		}
+	}
+}
+
+
+
+// table-2
+//
+// ・左にヘッダータイプ<br>
+// ・シンプル
+//
+// Markup:
+// <div class="m-table-2">
+//   <table>
+//     <tr>
+//       <th>見出し</th>
+//       <td>テキスト</td>
+//     </tr>
+//     <tr>
+//       <th>見出し</th>
+//       <td>テキスト</td>
+//     </tr>
+//     <tr>
+//       <th>見出し</th>
+//       <td>テキスト</td>
+//     </tr>
+//     <tr>
+//       <th>見出し</th>
+//       <td>テキスト</td>
+//     </tr>
+//     <tr>
+//       <th>見出し</th>
+//       <td>テキスト</td>
+//     </tr>
+//   </table>
+// </div>
+//
+// Styleguide: 11.2
+.m-table-2 {
+	table {
+		border-collapse: collapse;
+		width: 100%;
+	}
+	th, td {
+		border-bottom: 1px dashed tint($g_mainColor, 60%);
+		padding: 12px 20px;
+		vertical-align: text-bottom;
+	}
+	th {
+		background-color: tint($g_mainColor, 85%);
+		text-align: left;
+		padding-left: 15px;
+		padding-right: 15px;
+		width: 20%;
+	}
+	tr:last-child {
+		th, td {
+			border-bottom: none;
+			border-bottom: none;
+		}
+	}
+}
+
+
+
+// table-3
+//
+// ・左にヘッダータイプ<br>
+//
+// Markup:
+// <div class="m-table-3">
+//   <table>
+//     <tr>
+//       <th>見出し</th>
+//       <td>テキスト</td>
+//     </tr>
+//     <tr>
+//       <th>見出し</th>
+//       <td>テキスト</td>
+//     </tr>
+//     <tr>
+//       <th>見出し</th>
+//       <td>テキスト</td>
+//     </tr>
+//     <tr>
+//       <th>見出し</th>
+//       <td>テキスト</td>
+//     </tr>
+//     <tr>
+//       <th>見出し</th>
+//       <td>テキスト</td>
+//     </tr>
+//   </table>
+// </div>
+//
+// Styleguide: 11.3
+.m-table-3 {
+	table {
+		border-collapse: collapse;
+		border: 1px solid $g_grayNormal;
+		width: 100%;
+		box-shadow: 0 0 0 5px $g_grayLight;
+	}
+	th, td {
+		border: 1px dashed $g_grayNormal;
+		border-right: none;
+		border-left: none;
+		padding: 12px 20px;
+		vertical-align: text-bottom;
+	}
+	th {
+		background-color: $g_grayLight;
+		text-align: left;
+		padding-left: 15px;
+		padding-right: 15px;
+		width: 20%;
+	}
+	td {
+		position: relative;
+		&:after {
+			
+			@include triangle(12px, gray, left);
+		}
+	}
+}
+
+
+
+
+
+
+
+
