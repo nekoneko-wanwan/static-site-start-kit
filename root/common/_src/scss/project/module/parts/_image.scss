@@ -9,7 +9,7 @@
 // ・imgタグのみだと表現に限界があるため、一つ要素で囲む<br>
 // ・class名はプロジェクトによって柔軟に変更すること
 //
-// Styleguide: 14
+// Styleguide: 13
 
 // Image-1
 //
@@ -22,7 +22,7 @@
 //   <img src="http://placehold.jp/150x150.png" alt="" />
 // </div>
 //
-// Styleguide: 14.1
+// Styleguide: 13.1
 
 .m-image-1 {
 	position: relative;
@@ -56,7 +56,7 @@
 //   <img src="http://placehold.jp/150x150.png" alt="" />
 // </div>
 //
-// Styleguide: 14.2
+// Styleguide: 13.2
 
 .m-image-2 {
 	position: relative;
@@ -90,7 +90,7 @@
 //   <img src="http://placehold.jp/150x150.png" alt="" />
 // </div>
 //
-// Styleguide: 14.3
+// Styleguide: 13.3
 
 .m-image-3 {
 	display: inline-block;
@@ -118,10 +118,10 @@
 //   <img src="http://placehold.jp/150x150.png" alt="" />
 // </div>
 //
-// Styleguide: 14.4
+// Styleguide: 13.4
 
 .m-image-4 {
-	background: $g_patUrl_normal 0 0 repeat shade($g_grayLight, 5%);
+	background: $g_pat-url-normal 0 0 repeat shade($g_gray-light, 5%);
 	display: inline-block;
 	transition: all .3s;
 	padding: 8px;
@@ -130,7 +130,7 @@
 		border: 2px solid #fff;
 	}
 	&:hover {
-		background-color: shade($g_grayLight, 20%);
+		background-color: shade($g_gray-light, 20%);
 	}
 }
 

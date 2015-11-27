@@ -9,7 +9,7 @@
 // ・ボタンより固くない、シンプルなデザイン<br>
 // ・class名はプロジェクトによって柔軟に変更すること
 //
-// Styleguide: 13
+// Styleguide: 12
 
 
 // Link-1
@@ -26,12 +26,12 @@
 // Markup:
 // <a href="#" class="m-link-icon {{[modifier_class]}}">リンク</a>
 //
-// Styleguide: 13.1
+// Styleguide: 12.1
 
 .m-link-icon {
 	&:before {
 		font-size: 90%;
-		@include bgFontAwesome("f105");
+		@include bg-font-awesome("f105");
 	}
 	&.is-external {
 		&:before {

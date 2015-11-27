@@ -7,7 +7,7 @@
 // 全体に関する指定
 body {
 	color: #333;
-	font-family: 'メイリオ',Meiryo,'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro',Verdana,'ＭＳ Ｐゴシック','MS PGothic',sans-serif;
+	font-family: $g_font-family;
 	font-size: 82%;
 	line-height: 1.8;
 	word-wrap:break-word;
@@ -53,18 +53,17 @@ strong, b {
 	font-weight: bold;
 }
 a {
+	color: $g_link-color;
 	&:link {
-		color: $g_linkColor;
 		text-decoration: underline;
 	}
 	&:visited {
-		color: $g_linkColor;
 	}
 	&:hover {
 		text-decoration: none;
 	}
 	a:active {
-		color: $g_accentColor;
+		color: $g_accent-color;
 	}
 }
 

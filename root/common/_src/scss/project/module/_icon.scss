@@ -1,0 +1,40 @@
+@charset "utf-8";
+//-------------------------------------------
+// アイコンのサンプル
+//-------------------------------------------
+
+// Icon Sample
+// 
+// ・font-awesomeを使ったサンプル<br>
+// ・専用のmixinを使っているだけなので詳細はmixin内を参照<br>
+// ・使えるアイコンはhttp://fontawesome.io/cheatsheet/ を参考（ただし最新のものは使えない可能性あり）<br>
+// ・以下表示されるclass名はガイドのために用意したものなので実際には使用しない
+//
+// Styleguide: 2
+
+// Font-awesome
+//
+// [注意事項]
+// - 文字列にエスケープが含まれているとsassのコンパイル時に文字化けする
+// - （ブラウザ上は問題ないが（chromeでのみ確認）、cssファイル上で文字化け）
+// - font-awesomeで定義されている変数にはエスケープが含まれているので変数名をそのまま使用はできない
+// - そのためにエスケープを動的に追加するfunctionをかませる、および引数からはエスケープを外すことで対応とした
+// - sassのバージョンによっては不要になるかも
+//
+// Markup:
+// <div class="sample-icon-before-style">アイコン</div>
+// <div class="sample-icon-after-style">アイコン</div>
+//
+// Styleguide: 2.1
+.sample-icon-before-style {
+	&:before {
+		@include bg-font-awesome("f013");
+	}
+}
+.sample-icon-after-style {
+	&:after {
+		@include bg-font-awesome("f170", 0 0 0 0.2em);
+	}
+}
+
+

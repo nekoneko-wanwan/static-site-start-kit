@@ -1,0 +1,264 @@
+@charset "utf-8";
+//-------------------------------------------
+// 見出し
+//-------------------------------------------
+
+// Heading
+// 
+// ・見出しとして使うスタイル<br>
+// ・基本的に単体で簡潔させる<br>
+// ・class名はプロジェクトによって柔軟に変更する
+//
+// Styleguide: 8
+
+
+// Heading-1
+// 
+// - @block   : m-heading-1
+// - @modifier: m-heading-1.is-reverse
+//
+// .is-reverse - 太いborderの位置を上下反転させる
+// 
+// Markup:
+// <h1 class="m-heading-1 {{[modifier_class]}}">見出しです</h1>
+// <h2 class="m-heading-1 {{[modifier_class]}}">見出しです</h2>
+// <h3 class="m-heading-1 {{[modifier_class]}}">見出しです</h3>
+// <h4 class="m-heading-1 {{[modifier_class]}}">見出しです</h4>
+//
+// Styleguide: 8.1
+.m-heading-1 {
+	$border-width: 3px;
+	$border-color:  $g_main-color;
+	border-top: $border-width solid $border-color;
+	border: 1px solid $g_gray-normal;
+	padding: 0.5em 1em;
+	position: relative;
+	z-index: 1;
+	box-shadow: inset 0 0 0 1px #fff;
+	@include simple-grad();
+	&:before, &:after {
+		position: absolute;
+		content: '';
+		display: block;
+		left: -1px;
+		padding-right: 2px;
+		box-sizing: content-box;
+		width: 100%;
+		z-index: 1;
+	}
+	&:before {
+		border-top: $border-width solid $border-color;
+		top: -$border-width;
+	}
+	&:after {
+		border-top: $border-width solid $g_gray-light;
+		bottom: -$border-width - 1;
+	}
+	&.is-reverse {
+		border-top: 1px solid $g_gray-normal;
+		border-bottom: $border-width solid $border-color;
+		&:after {
+			border-top: $border-width solid $border-color;
+			bottom: -$border-width;
+		}
+		&:before {
+			display: none;
+		}
+	}
+}
+
+
+
+// Heading-2
+//
+// - @block   : m-heading-2
+// - @modifier: m-heading-2.is-reverse
+//
+// .is-reverse - 太いborderの位置を上下反転させる
+//
+// Markup:
+// <h1 class="m-heading-2 {{[modifier_class]}}">見出しです</h1>
+// <h2 class="m-heading-2 {{[modifier_class]}}">見出しです</h2>
+// <h3 class="m-heading-2 {{[modifier_class]}}">見出しです</h3>
+// <h4 class="m-heading-2 {{[modifier_class]}}">見出しです</h4>
+//
+// Styleguide: 8.2
+.m-heading-2 {
+	$border-width: 2px;
+	$border-color:  $g_main-color;
+	border-top: $border-width solid $border-color;
+	padding: 0.5em 1.3em;
+	position: relative;
+	z-index: 1;
+	&:before, &:after {
+		content: '';
+		display: block;
+		height: 8px;
+		width: 8px;
+		position: absolute;
+	}
+	&:before {
+		left: 0.2em;
+		top: 1em;
+		background-color: tint($border-color, 50%);
+		z-index: 2;
+	}
+	&:after {
+		left: 0px;
+		top: 0.8em;
+		background-color: $border-color;
+		z-index: 3;
+	}
+	&.is-reverse {
+		border-bottom: $border-width solid $border-color;
+		border-top: none;
+	}
+}
+
+
+
+// Heading-3
+//
+// - @block   : m-heading-3
+// - @modifier: m-heading-3.is-reverse
+//
+// .is-reverse - 太いborderの位置を上下反転させる
+//
+// Markup:
+// <h1 class="m-heading-3 {{[modifier_class]}}">見出しです</h1>
+// <h2 class="m-heading-3 {{[modifier_class]}}">見出しです</h2>
+// <h3 class="m-heading-3 {{[modifier_class]}}">見出しです</h3>
+// <h4 class="m-heading-3 {{[modifier_class]}}">見出しです</h4>
+//
+// Styleguide: 8.3
+.m-heading-3 {
+	$border-width: 2px;
+	$border-color:  $g_main-color;
+	position: relative;
+	border-top: $border-width solid $g_gray-normal;
+	padding: 0.5em;
+	&:after {
+		position: absolute;
+		content: '';
+		display: block;
+		border-top: $border-width solid $border-color;
+		left: 0;
+		top: -$border-width;
+		width: 25%;
+	}
+	&.is-reverse {
+		border-bottom: $border-width solid $g_gray-normal;
+		border-top: none;
+		&:after {
+			top: auto;
+			bottom: -$border-width;
+		}
+	}
+}
+
+
+
+// Heading-4
+//
+// Markup:
+// <h1 class="m-heading-4">見出しです</h1>
+// <h2 class="m-heading-4">見出しです</h2>
+// <h3 class="m-heading-4">見出しです</h3>
+// <h4 class="m-heading-4">見出しです</h4>
+//
+// Styleguide: 8.4
+.m-heading-4 {
+	@include linear-gradient(to bottom, #ffffff, $g_gray-light);
+	border: 1px solid $g_gray-normal;
+	padding: 0.5em 1em;
+	position: relative;
+	z-index: 1;
+	&:before {
+		@include position(absolute, 50% null null -1px);
+		background: $g_main-color;
+		content: '';
+		display: block;
+		margin-top: -3px;
+		height: 6px;
+		width: 10px;
+		z-index: 10;
+	}
+}
+
+
+// Heading-5
+//
+// - @block   : m-heading-5
+// - @modifier: m-heading-5.is-reverse
+//
+// .is-reverse - 三角を右上に
+//
+// Markup:
+// <h1 class="m-heading-5 {{[modifier_class]}}">見出しです</h1>
+// <h2 class="m-heading-5 {{[modifier_class]}}">見出しです</h2>
+// <h3 class="m-heading-5 {{[modifier_class]}}">見出しです</h3>
+// <h4 class="m-heading-5 {{[modifier_class]}}">見出しです</h4>
+//
+// Styleguide: 8.5
+.m-heading-5 {
+	background-color: $g_main-color;
+	color: #fff;
+	overflow: hidden;
+	padding: 0.5em 1.3em;
+	position: relative;
+	z-index: 1;
+	&:before {
+		@include triangle(10px 10px, #fff shade($g_main-color, 40%), up-left);
+		@include position(absolute, 0 null null 0);
+		content: '';
+		z-index: 10;
+	}
+	&.is-reverse {
+		&:before {
+			@include triangle(10px 10px, #fff shade($g_main-color, 40%), up-right);
+			@include position(absolute, 0 -10px auto auto);
+		}
+	}
+}
+
+
+// Heading-6
+//
+// - @block   : m-heading-6
+// - @modifier: m-heading-6.is-reverse
+//
+// .is-reverse - ストライプの位置を上下反転させる
+//
+// Markup:
+// <h1 class="m-heading-6 {{[modifier_class]}}">見出しです</h1>
+// <h2 class="m-heading-6 {{[modifier_class]}}">見出しです</h2>
+// <h3 class="m-heading-6 {{[modifier_class]}}">見出しです</h3>
+// <h4 class="m-heading-6 {{[modifier_class]}}">見出しです</h4>
+//
+// Styleguide: 8.6
+.m-heading-6 {
+	$border-width: 4px;
+	$border-color:  $g_gray-normal;
+	background: $g_gray-light;
+	padding: 0.5em 1em;
+	border-radius: 6px;
+	position: relative;
+	&:before {
+		position: absolute;
+		content: '';
+		background: $g_pat-url-thin 0 0 repeat $border-color;
+		left: 0;
+		bottom: -$border-width;
+		height: $border-width;
+		width: 100%;
+	}
+	&.is-reverse {
+		&:before {
+			bottom: auto;
+			top: -$border-width;
+		}
+	}
+}
+
+
+

@@ -1,0 +1,232 @@
+@charset "utf-8";
+/////////////////////////////////////////////
+// モジュールを生成するために使うテンプレート的なmixinを管理
+/////////////////////////////////////////////
+
+
+//-------------------------------------------
+// グリッド生成mixin
+// グリッド型モジュールを生成する
+//
+// - Modifierにより余白を調整する
+// - 高さは自動揃いしない
+// - nth-childが効かないブラウザを考慮するならば高さを揃えるor固定すること
+// - borderやbackgroundなどの装飾スタイルはblockの孫要素に設定する
+//
+// @block   : 任意
+// @element : {block}__outer
+// @element : {block}__inner
+// @modifier: {block}.has-gutter_xxx
+//
+// @markup
+// <div class="grid {{[modifier_class]}}">
+//   <div class="grid__outer">
+//     <div class="grid__inner">
+//       <div>テキストテキストテキスト</div>
+//     </div>
+//     <div class="grid__inner">
+//       <div>テキストテキストテキスト</div>
+//     </div>
+//   </div>
+// </div>
+//
+// @use
+// .grid {
+// 	$col-pc: 3;
+// 	$col-sp: 1;
+// 	$gutter: 10px;
+// 	$modifiers: (
+// 		'.has-gutter_none': 0px,
+// 		'.has-gutter_small': 10px,
+// 		'.has-gutter_middle': 30px,
+// 		'.has-gutter_large': 50px
+// 	);
+// 	@include create-grid($col-pc, $col-sp, $gutter, $modifiers);
+// }
+//
+// @paramはmixin内コメントを参照
+//-------------------------------------------
+@mixin create-grid-module(
+	$col-pc: 2, // PCのカラム数
+	$col-sp: 1, // スマホのカラム数
+	$gutter: 10px, // 初期の余白
+	$modifiers: null // Modifiersのクラスと余白の連想配列
+) {
+
+	// 初期設定
+	overflow: hidden;
+	&__outer {
+		@include clearfix;
+		margin: 0 -#{$gutter} 0 0;
+	}
+	&__inner {
+		box-sizing: border-box;
+		display: block;
+		float: left;
+		padding: 0;
+		width: percentage(1/$col-pc);
+		padding-right: $gutter;
+		padding-bottom: $gutter;
+		&:nth-child(#{$col-pc}n + 1) {
+			clear: left;
+		}
+
+		// media
+		@include media-query-sp {
+			width: percentage(1/$col-sp);
+			&:nth-child(#{$col-sp}n + 1) {
+				clear: left;
+			}
+		}
+	}
+
+	// modifier
+	$that: &;
+	@each $class, $val in $modifiers {
+		&#{$class} {
+			#{$that}__outer {
+				margin-right: -$val;
+			}
+			#{$that}__inner {
+				padding-right: $val;
+				padding-bottom:  $val;
+			}
+		}
+	}
+}
+
+
+
+
+//-------------------------------------------
+// カード生成mixin
+// flexboxを元にしたカード型モジュールを生成する
+//
+// - neatを使用
+// - flexを使用しているので、対応ブラウザに注意する
+//
+// @block   : 任意
+// @element : {block}__inner
+// @modifier: {block}__inner.任意
+//
+// @markup
+// <div class="card">
+//   <div class="card__inner {{[modifier_class]}}">
+//     <div style="background: #ccc;">テキスト<br>テキスト<br>テキスト</div>
+//   </div>
+//   <div class="card__inner">
+//     <div style="background: #ccc;">テキスト</div>
+//   </div>
+//   <div class="card__inner">
+//     <div style="background: #ccc;">テキスト</div>
+//   </div>
+//   <div class="card__inner">
+//     <div style="background: #ccc;">テキスト<br>テキスト<br>テキスト</div>
+//   </div>
+// </div>
+//
+// @use
+// .card {
+//   @include create-card-module(
+//     $col-width: 29%,
+//     $margin: 2%,
+//     $big2-div: '.is-2width',
+//     $big3-div: '.is-3width'
+//   );
+// }
+//
+// @paramはmixin内コメントを参照
+//-------------------------------------------
+@mixin create-card-module(
+		// カラムの横幅（カラム数に影響）
+		$col-width: 29%,
+		// 余白
+		$margin: 2%,
+		// 大きくするModifierのclass名
+		$big2-div: null,
+		$big3-div: null
+	) {
+	@include display(flex);
+	@include flex-wrap(wrap);
+	@include justify-content(space-between);
+	&__inner {
+		@include flex-basis($col-width);
+		@include flex-grow(1);
+		margin: 0 #{$margin} #{$margin};
+
+		// Cardを大きくする
+		@if ($big2-div != null) {
+			&#{$big2-div} {
+				@include flex-basis($col-width * 2);
+			}
+		}
+		@if ($big3-div != null) {
+			&#{$big3-div} {
+				@include flex-basis($col-width * 3);
+			}
+		}
+	}
+}
+
+
+
+
+//-------------------------------------------
+// 横配置メディア生成mixin
+// 横に画像などを配置したモジュールを生成する
+//
+// - Modifierは左右の位置のみ
+// - 余白の調整と回りこみの調整はモジュール単位で行う
+// - ただし頻繁に調整が必要になりそうな場合は、Modifierで対応できるようにする
+//
+// @block   : 任意
+// @element : {block}__img
+// @element : {block}__text
+// @modifier: {block}__img.is-right
+//
+// @markup
+// <div class="media">
+//   <div class="media__img media__img--right">
+//     <img src="http://placehold.jp/150x150.png" alt="" />
+//   </div>
+//   <p class="media__text">テキスト</p>
+// </div>
+//
+// @paramはmixin内コメントを参照
+//-------------------------------------------
+@mixin create-side-media-module(
+		$margin: 30px,
+		$isSneak: false // メディアの下に回り込ませるかどうか
+	){
+
+	@include clearfix;
+	&__img {
+		float: left;
+		margin-right: $margin;
+		@if ($isSneak) {
+			margin-bottom: $margin;
+		}
+		> * {
+			display: block;
+		}
+	}
+	// テキスト側
+	&__text {
+		@if ($isSneak) {
+			overflow: visible;
+		} @else {
+			overflow: hidden;
+		}
+	}
+
+	// Modifier
+	&__img.is-right {
+		float: right;
+		margin-left: $margin;
+		margin-right: 0;
+	}
+
+	@content;
+}
+
+

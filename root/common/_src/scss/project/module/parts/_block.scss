@@ -1,0 +1,137 @@
+@charset "utf-8";
+//-------------------------------------------
+// ブロック
+//-------------------------------------------
+
+// Block
+// 
+// ・ブロックとして目立たせたい要素の装飾のスタイル<br>
+// ・画像を組み込む場合は、_media.scssや_image.scssの方を検討する<br>
+// ・modifierは必要に応じて調整する<br>
+// ・class名はプロジェクトによって柔軟に変更する
+//
+// Styleguide: 7
+
+
+// Block-1
+//
+// 枠線にストライプを用いた明るいブロック
+//
+// - @block   : m-block-1
+// - @element : m-block-1__inner
+// - @modifier: m-block-1.is-normal
+// - @modifier: m-block-1.is-bold
+// - @modifier: m-block-1.is-gray
+// 
+// .is-normal - 線の太さ
+// .is-bold - 線の太さ
+// .is-gray - 色を消す
+// 
+// Markup:
+// <div class="m-block-1 {{[modifier_class]}}">
+//   <div class="m-block-1__inner">
+//     <p>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト</p>
+//   </div>
+// </div>
+//
+// Styleguide: 7.1
+.m-block-1 {
+	background: $g_pat-url-thin 0 0 repeat $g_main-color;
+	padding: 5px;
+	&.is-normal {
+		background-image: $g_pat-url-normal;
+	}
+	&.is-bold {
+		background-image: $g_pat-url-bold;
+	}
+	&.is-gray {
+		background-color: $g_gray-normal;
+	}
+}
+.m-block-1__inner {
+	background-color: #fff;
+	padding: 20px;
+}
+
+
+
+// Block-2
+//
+// 薄い背景と枠を合わせたクールなブロック
+//
+// - @block   : m-block-2
+// - @modifier: m-block-2.is-gray
+//
+// .is-gray - 色を消す
+//
+// Markup:
+// <div class="m-block-2 {{[modifier_class]}}">
+//   <p>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト</p>
+// </div>
+//
+// Styleguide: 7.2
+
+.m-block-2 {
+	border: 5px solid tint($g_main-color, 90%);
+	box-shadow: inset 0 0 0 1px $g_main-color;
+	padding: 20px;
+	&.is-gray {
+		border-color: $g_gray-light;
+		box-shadow: inset 0 0 0 1px $g_gray-normal;
+	}
+}
+
+
+
+// Block-3
+//
+// 二重枠をあしらったブロック
+//
+// - @block   : m-block-3
+// - @modifier: m-block-3.is-gray
+//
+// .is-gray - 色を消す
+//
+// Markup:
+// <div class="m-block-3 {{[modifier_class]}}">
+//   <p>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト</p>
+// </div>
+//
+// Styleguide: 7.3
+
+.m-block-3 {
+	border: 3px double $g_main-color;
+	padding: 20px;
+	&.is-gray {
+		border-color: $g_gray-normal;
+	}
+}
+
+
+
+// Block-4
+//
+// 外側に影をつけたブロック
+//
+// - @block   : m-block-4
+// - @modifier: m-block-4.is-gray
+//
+// .is-gray - 色を消す
+//
+// Markup:
+// <div class="m-block-4 {{[modifier_class]}}">
+//   <p>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト</p>
+// </div>
+//
+// Styleguide: 7.4
+.m-block-4 {
+	border: 1px solid $g_gray-normal;
+	padding: 20px;
+	box-shadow: 0 0px 3px 0 $g_gray-normal, inset 0 0 0 3px $g_gray-light;
+	&.is-gray {
+		border-color: $g_gray-normal;
+	}
+}
+
+
+

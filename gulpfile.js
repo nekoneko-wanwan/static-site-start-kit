@@ -131,7 +131,7 @@ gulp.task('js', function(){
 gulp.task('watch', function() {
   var timer;
   gulp.watch(CSS.SRC, ['sass']);
-  gulp.watch(JS.SRC,  ['js']);
+  // gulp.watch(JS.SRC,  ['js']);
 
   gulp.watch(WATCH).on('change',  function() {
     /* 連続イベントの間引き処理 */
@@ -143,7 +143,9 @@ gulp.task('watch', function() {
 });
 
 
-gulp.task('default', ['server', 'watch', 'sass', 'js']);
+// 一旦jsのコンパイルは無効にしている
+// 有効にするには、wachタスクのコメントを有効化し、defaultタスクに'js'を追加する
+gulp.task('default', ['server', 'watch', 'sass']);
 
 
 /* remove */

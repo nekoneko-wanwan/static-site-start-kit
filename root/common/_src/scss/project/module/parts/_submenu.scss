@@ -1,0 +1,420 @@
+@charset "utf-8";
+//-------------------------------------------
+// サブメニュー
+//-------------------------------------------
+
+// Submenu
+// 
+// ・サブメニューに使用するスタイル<br>
+// ・必ずしも1つ/1pとは限らないためモジュール化<br>
+// ・class名はプロジェクトに応じて柔軟に変更する
+//
+// Styleguide: 4
+
+// Submenu-1
+// 
+// - @block   : m-snav-1
+// - @element : m-snav-1__head
+// - @element : m-snav-1__body
+// - @element : m-snav-1__nest-head
+// - @element : m-snav-1__nest-body
+// - @element : m-snav-1__item
+// - @element : m-snav-1__nest-item
+// - @modifier: m-snav-1__item.is-active
+// - @modifier: m-snav-1__nest-item.is-active
+// 
+// Markup:
+// <div class="m-snav-1">
+//   <p class="m-snav-1__head">見出し</p>
+//   <ul class="m-snav-1__body">
+//     <li><a href="/" class="m-snav-1__item is-active">ハイライトリンク</a></li>
+//     <li><a href="/" class="m-snav-1__item">リンク</a></li>
+//     <li><a href="/" class="m-snav-1__item">リンク</a></li>
+//     <li>
+//       <p class="m-snav-1__nest-head">小見出し</p>
+//       <ul class="m-snav-1__nest-body">
+//         <li><a href="/" class="m-snav-1__nest-item">リンク</a></li>
+//         <li><a href="/" class="m-snav-1__nest-item">リンク</a></li>
+//       </ul>
+//     </li>
+//     <li><a href="/" class="m-snav-1__item">リンク</a></li>
+//     <li>
+//       <ul class="m-snav-1__nest-body">
+//         <li><a href="/" class="m-snav-1__nest-item is-active">リンク</a></li>
+//         <li><a href="/" class="m-snav-1__nest-item">リンク</a></li>
+//       </ul>
+//     </li>
+//   </ul>
+// </div>
+//
+// Styleguide: 4.1
+
+.m-snav-1 {
+	margin-bottom: 30px;
+	// common
+	ul {
+		padding: 0;
+		list-style: none;
+	}
+	a {
+		display: inline-block;
+		text-decoration: none;
+	}
+}
+.m-snav-1__head {
+	font-size: 110%;
+	font-weight: bold;
+	position: relative;
+	display: block;
+	margin: 0;
+	padding: 10px 20px;
+	color: #fff;
+	background-color: $g_main-color;
+	&:after {
+		position: absolute;
+		bottom: -2px;
+		left: 0;
+		width: 100%;
+		content: "";
+		border-bottom: 1px solid $g_main-color;
+	}
+}
+.m-snav-1__nest-head {
+	font-weight: bold;
+	display: block;
+	margin: 15px 0 0;
+	padding: 7px 10px;
+	background-color: tint($g_main-color, 85%);
+}
+
+// body
+.m-snav-1__body {
+	margin-top: 3px;
+	> li {
+		line-height: 1.6;
+		border-bottom: 1px dashed $g_gray-normal;
+	}
+}
+.m-snav-1__nest-body {
+	margin: 15px;
+	> li {
+		border-bottom: none;
+		+ li {
+			margin-top: 3px;
+		}
+	}
+}
+.m-snav-1__item {
+	color: #333;
+	font-size: 90%;
+	padding: 12px 0 12px 15px;
+	color: #333;
+	transition: all 0.3s;
+	&:before {
+		@include bg-font-awesome("f054", 0 7px 0 0);
+	}
+	&:hover {
+		text-decoration: underline;
+		transform: translateX(5px);
+	}
+	&.is-active {
+		font-weight: bold;
+		color: $g_accent-color;
+		border-left: 2px solid $g_accent-color;
+		&:hover {
+			transform: translateX(0);
+		}
+	}
+}
+.m-snav-1__nest-item {
+	color: #333;
+	font-size: 90%;
+	transition: all 0.3s;
+	&:before {
+		@include bg-font-awesome("f101", 0 7px 0 0);
+	}
+	&:hover {
+		text-decoration: underline;
+		transform: translateX(5px);
+	}
+	&.is-active {
+		font-weight: bold;
+		color: $g_accent-color;
+		&:hover {
+			transform: translateX(0);
+		}
+	}
+}
+
+
+
+// Submenu-2
+//
+// - @block   : m-snav-2
+// - @element : m-snav-2__head
+// - @element : m-snav-2__body
+// - @element : m-snav-2__nest-head
+// - @element : m-snav-2__nest-body
+// - @element : m-snav-2__item
+// - @element : m-snav-2__nest-item
+// - @modifier: m-snav-2__item.is-active
+// - @modifier: m-snav-2__nest-item.is-active
+// 
+// Markup:
+// <div class="m-snav-2">
+//   <p class="m-snav-2__head">見出し</p>
+//   <ul class="m-snav-2__body">
+//     <li><a href="/" class="m-snav-2__item is-active">ハイライトリンク</a></li>
+//     <li><a href="/" class="m-snav-2__item">リンク</a></li>
+//     <li><a href="/" class="m-snav-2__item">リンク</a></li>
+//     <li>
+//       <p class="m-snav-2__nest-head">小見出し</p>
+//       <ul class="m-snav-2__nest-body">
+//         <li><a href="/" class="m-snav-2__nest-item">リンク</a></li>
+//         <li><a href="/" class="m-snav-2__nest-item">リンク</a></li>
+//       </ul>
+//     </li>
+//     <li><a href="/" class="m-snav-2__item">リンク</a></li>
+//     <li>
+//       <ul class="m-snav-2__nest-body">
+//         <li><a href="/" class="m-snav-2__nest-item is-active">リンク</a></li>
+//         <li><a href="/" class="m-snav-2__nest-item">リンク</a></li>
+//       </ul>
+//     </li>
+//   </ul>
+// </div>
+//
+// Styleguide: 4.2
+
+.m-snav-2 {
+	margin-bottom: 30px;
+	box-sizing: border-box;
+	border: 2px solid $g_main-color;
+	box-shadow: 0 3px 0px 0px tint($g_main-color, 90%);
+	// common
+	ul {
+		padding: 0;
+		list-style: none;
+	}
+	a {
+		display: inline-block;
+		text-decoration: none;
+	}
+}
+.m-snav-2__head {
+	font-size: 110%;
+	font-weight: bold;
+	display: block;
+	margin: 0;
+	padding: 10px 20px;
+	color: #fff;
+	background-color: $g_main-color;
+}
+.m-snav-2__nest-head {
+	font-weight: bold;
+	display: block;
+	margin: 15px 15px 0;
+	padding: 7px 14px;
+	background-color: $g_gray-light;
+	border-left: 3px solid $g_main-color;
+}
+.m-snav-2__body {
+	margin-top: 0;
+	> li {
+		line-height: 1.6;
+		+ li {
+			border-top: 1px dashed $g_gray-normal;
+		}
+	}
+}
+.m-snav-2__nest-body {
+	margin: 15px 30px;
+	> li {
+		border-bottom: none;
+		+ li {
+			margin-top: 3px;
+		}
+	}
+}
+.m-snav-2__item {
+	font-size: 90%;
+	padding: 12px 0 12px 15px;
+	color: #333;
+	transition: all 0.3s;
+	&:before {
+		@include bg-font-awesome("f0da", 0 7px 0 0);
+	}
+	&:hover {
+		text-decoration: underline;
+		transform: translateX(5px);
+	}
+	&.is-active {
+		font-weight: bold;
+		color: $g_accent-color;
+		&:hover {
+			text-decoration: none;
+			transform: translateX(0);
+		}
+	}
+}
+.m-snav-2__nest-item {
+	color: #333;
+	font-size: 90%;
+	transition: all 0.3s;
+	&:before {
+		@include bg-font-awesome("f105", 0 7px 0 0);
+	}
+	&:hover {
+		text-decoration: underline;
+		transform: translateX(5px);
+	}
+	&.is-active {
+		font-weight: bold;
+		color: $g_accent-color;
+		&:hover {
+			transform: translateX(0);
+		}
+	}
+}
+
+
+// Submenu-3
+//
+// - @block   : m-snav-3
+// - @element : m-snav-3__head
+// - @element : m-snav-3__body
+// - @element : m-snav-3__nest-head
+// - @element : m-snav-3__nest-body
+// - @element : m-snav-3__item
+// - @element : m-snav-3__nest-item
+// - @modifier: m-snav-3__item.is-active
+// - @modifier: m-snav-3__nest-item.is-active
+// 
+// Markup:
+// <div class="m-snav-3">
+//   <p class="m-snav-3__head">見出し</p>
+//   <ul class="m-snav-3__body">
+//     <li><a href="/" class="m-snav-3__item is-active">ハイライトリンク</a></li>
+//     <li><a href="/" class="m-snav-3__item">リンク</a></li>
+//     <li><a href="/" class="m-snav-3__item">リンク</a></li>
+//     <li>
+//       <p class="m-snav-3__nest-head">小見出し</p>
+//       <ul class="m-snav-3__nest-body">
+//         <li><a href="/" class="m-snav-3__nest-item">リンク</a></li>
+//         <li><a href="/" class="m-snav-3__nest-item">リンク</a></li>
+//       </ul>
+//     </li>
+//     <li><a href="/" class="m-snav-3__item">リンク</a></li>
+//     <li>
+//       <ul class="m-snav-3__nest-body">
+//         <li><a href="/" class="m-snav-3__nest-item is-active">リンク</a></li>
+//         <li><a href="/" class="m-snav-3__nest-item">リンク</a></li>
+//       </ul>
+//     </li>
+//   </ul>
+// </div>
+//
+// Styleguide: 4.3
+
+.m-snav-3 {
+	margin-bottom: 30px;
+	border: 4px solid $g_gray-light;
+	box-shadow: inset 0 0 0px 1px $g_gray-normal;
+	// common
+	ul {
+		padding: 0;
+		list-style: none;
+	}
+	a {
+		display: inline-block;
+		text-decoration: none;
+	}
+}
+// head
+.m-snav-3__head {
+	font-size: 110%;
+	font-weight: bold;
+	display: block;
+	margin: 0;
+	padding: 10px 20px;
+	color: #333;
+	border: 1px solid $g_gray-normal;
+	position: relative;
+	box-shadow: inset 0 0 0 1px #fff;
+	@include simple-grad();
+	&:after {
+		position: absolute;
+		content: '';
+		border-top: 3px solid $g_main-color;
+		left: -1px;
+		top: -1px;
+		width: 30%;
+	}
+}
+.m-snav-3__nest-head {
+	font-weight: bold;
+	display: block;
+	margin: 15px 15px 0;
+	padding:0 0 7px;
+	border-bottom: 1px solid $g_gray-normal;
+}
+.m-snav-3__body {
+	margin-top: 0;
+	> li {
+		line-height: 1.6;
+		+ li {
+			border-top: 1px dashed $g_gray-normal;
+		}
+	}
+}
+.m-snav-3__nest-body {
+	margin: 15px 30px;
+	> li {
+		border-bottom: none;
+		+ li {
+			margin-top: 3px;
+		}
+	}
+}
+.m-snav-3__item {
+	font-size: 90%;
+	padding: 12px 0 12px 15px;
+	color: #333;
+	transition: all 0.3s;
+	&:before {
+		@include bg-font-awesome("f0da", 0 7px 0 0);
+	}
+	&:hover {
+		text-decoration: underline;
+		transform: translateX(5px);
+	}
+	&.is-active {
+		font-weight: bold;
+		color: $g_accent-color;
+		&:hover {
+			text-decoration: none;
+			transform: translateX(0);
+		}
+	}
+}
+.m-snav-3__nest-item {
+	color: #333;
+	font-size: 90%;
+	transition: all 0.3s;
+	&:before {
+		@include bg-font-awesome("f105", 0 7px 0 0);
+	}
+	&:hover {
+		text-decoration: underline;
+		transform: translateX(5px);
+	}
+	&.is-active {
+		font-weight: bold;
+		color: $g_accent-color;
+		&:hover {
+			transform: translateX(0);
+		}
+	}
+}
+
+

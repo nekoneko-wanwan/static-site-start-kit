@@ -9,7 +9,7 @@
 // ・ul, ol にclassをつける<br>
 // ・class名はプロジェクトによって柔軟に変更する
 //
-// Styleguide: 12
+// Styleguide: 11
 
 // List-1
 //
@@ -26,7 +26,7 @@
 //   <li>リスト</li>
 // </ul>
 //
-// Styleguide: 12.1
+// Styleguide: 11.1
 
 .m-list-icon {
 	list-style: none;
@@ -35,7 +35,7 @@
 	> li {
 		position: relative;
 		&:before {
-			@include bgFontAwesome('f105');
+			@include bg-font-awesome('f105');
 		}
 		+ li {
 			margin-top: 10px;
@@ -76,7 +76,7 @@
 //   <li>リスト</li>
 // </ul>
 //
-// Styleguide: 12.2
+// Styleguide: 11.2
 
 .m-list-2 {
 	list-style: none;
@@ -89,7 +89,7 @@
 			content: '・';
 		}
 		+ li {
-			border-top: 1px dashed $g_grayNormal;
+			border-top: 1px dashed $g_gray-normal;
 		}
 	}
 }
@@ -108,7 +108,7 @@
 //   <li>リスト</li>
 // </ul>
 //
-// Styleguide: 12.3
+// Styleguide: 11.3
 
 .m-list-3 {
 	list-style: none;
@@ -118,7 +118,7 @@
 		padding: 10px;
 		position: relative;
 		&:nth-child(even) {
-			background-color: $g_grayLight;
+			background-color: $g_gray-light;
 		}
 	}
 }

@@ -1,0 +1,176 @@
+@charset "utf-8";
+//-------------------------------------------
+// グリッド
+//-------------------------------------------
+
+// Grid
+//
+// ・グリッド型ベースのモジュール<br>
+// ・スタイルガイド上は分かりやすく色をつけている（実際にはつかないので注意）<br>
+// ・class名はプロジェクトによって柔軟に変更する
+//
+// Styleguide: 5
+
+
+// Grid Neat
+//
+// Neatを元にしたグリッドモジュール
+// 
+// ・ローカル変数によってカラム数を変更する<br>
+// ・高さが異なるとブラウザによっては崩れるので注意する<br>
+// ・自動でマージンが約1emが付与されるので、余白なしや細かい調整が必要なものは別モジュールを使う<br>
+// ・あまりModifierでレイアウトは変えないと思うので、とりあえずそのまま
+//
+// - @block   : m-grid-1
+// - @element : m-grid-1__inner
+//
+// Markup:
+// <div class="m-grid-1">
+//   <div class="m-grid-1__inner">
+//     <div style="background: #ccc;">テキストテキスト<br>テキストテキストテキスト</div>
+//   </div>
+//   <div class="m-grid-1__inner">
+//     <div style="background: #ccc;">テキストテキストテキストテキストテキスト</div>
+//   </div>
+//   <div class="m-grid-1__inner">
+//      <div style="background: #ccc;">テキストテキストテキストテキストテキスト</div>
+//   </div>
+//   <div class="m-grid-1__inner">
+//      <div style="background: #ccc;">テキストテキストテキスト<br>テキストテキスト</div>
+//   </div>
+//   <div class="m-grid-1__inner">
+//     <div style="background: #ccc;">テキストテキストテキストテキストテキスト</div>
+//   </div>
+//   <div class="m-grid-1__inner">
+//     <div style="background: #ccc;">テキストテキストテキストテキストテキスト</div>
+//   </div>
+// </div>
+// 
+// Styleguide: 5.1
+
+// http://neat.bourbon.io/examples/ を参考に作成する
+.m-grid-1 {
+	$col-pc: 2;
+	$col-sp: 4;
+
+	@include outer-container(100%);
+
+	&__inner {
+		margin-bottom: 2.35765%;
+		@include span-columns(12/$col-pc);
+		@include omega(#{$col-pc}n);
+		// media
+		@include media-query-sp {
+			@include omega-reset(#{$col-pc}n);
+			@include span-columns(12/$col-sp);
+			@include omega(#{$col-sp}n);
+		}
+	}
+}
+
+
+
+
+// Grid-mixin-1
+// 
+// 独自のmixinを元にしたモジュール
+//
+// ・高さが異なるとブラウザによっては崩れるので注意する<br>
+// ・渡す引数によってカラム数やデフォルトの余白、modifierのclass名を調整する<br>
+// ・詳細はmixin内にコメントがあるのでそれを参考に
+// 
+// - @block   : m-grid-2
+// - @element : m-grid-2__outer
+// - @element : m-grid-2__inner
+// - @modifier: m-grid-2.has-gutter_xxx
+//
+// .has-gutter_none - 余白無し
+// .has-gutter_small - 余白小
+// .has-gutter_middle - 余白中
+// .has-gutter_large - 余白大
+// 
+// Markup:
+// <div class="m-grid-2 {{[modifier_class]}}">
+//   <div class="m-grid-2__outer">
+//     <div class="m-grid-2__inner">
+//       <div style="background: #ccc;">テキストテキスト</div>
+//     </div>
+//     <div class="m-grid-2__inner">
+//       <div style="background: #ccc;">テキストテキスト</div>
+//     </div>
+//     <div class="m-grid-2__inner">
+//        <div style="background: #ccc;">テキストテキスト</div>
+//     </div>
+//     <div class="m-grid-2__inner">
+//        <div style="background: #ccc;">テキストテキスト</div>
+//     </div>
+//     <div class="m-grid-2__inner">
+//       <div style="background: #ccc;">テキストテキスト</div>
+//     </div>
+//     <div class="m-grid-2__inner">
+//       <div style="background: #ccc;">テキストテキスト</div>
+//     </div>
+//   </div>
+// </div>
+//
+// Styleguide: 5.2
+.m-grid-2 {
+	$col-pc: 3;
+	$col-sp: 1;
+	$gutter: 10px;
+	$modifiers: (
+		'.has-gutter_none': 0px,
+		'.has-gutter_small': 10px,
+		'.has-gutter_middle': 30px,
+		'.has-gutter_large': 50px
+	);
+	@include create-grid-module($col-pc, $col-sp, $gutter, $modifiers);
+}
+
+
+
+
+// Card flex
+// 
+// 独自のmixinを元にしたカード型モジュール
+//
+// ・flexを使用しているので、対応ブラウザに注意する<br>
+// ・渡す引数によってカラム数や余白を調整する<br>
+// ・詳細はmixin内にコメントがあるのでそれを参考に
+//
+// - @block   : m-card
+// - @element : m-card__inner
+// - @modifier: m-card__inner.is-2width
+// - @modifier: m-card__inner.is-3width
+//
+// .is-2width - カードの横幅を2倍に
+// .is-3width - カードの横幅を3倍に
+//
+// Markup:
+// <div class="m-card">
+//   <div class="m-card__inner {{[modifier_class]}}">
+//     <div style="background: #ccc;">テキスト<br>テキスト<br>テキスト</div>
+//   </div>
+//   <div class="m-card__inner">
+//     <div style="background: #ccc;">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</div>
+//   </div>
+//   <div class="m-card__inner">
+//     <div style="background: #ccc;">テキスト</div>
+//   </div>
+//   <div class="m-card__inner">
+//     <div style="background: #ccc;">テキスト<br>テキスト<br>テキスト</div>
+//   </div>
+// </div>
+//
+// Styleguide: 5.3
+.m-card {
+	@include create-card-module(
+		$col-width: 29%,
+		$margin: 2%,
+		$big2-div: '.is-2width',
+		$big3-div: '.is-3width'
+	);
+}
+
+
+

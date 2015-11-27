@@ -1,0 +1,107 @@
+@charset "utf-8";
+/////////////////////////////////////////////
+// cssを生成するだけのグローバルmixinを管理
+/////////////////////////////////////////////
+
+
+//-------------------------------------------
+// メディアクエリ
+// @use
+//     @include media-query-pc {}
+//-------------------------------------------
+@mixin media-query-pc {
+	// PC表示: 768+20=788px～
+	@media only screen and (min-width: $g_width-tablet + $g_width-scrollbar) {
+		@content;
+	}
+}
+@mixin media-query-tablet {
+	// タブレット表示: 480+20=500px ～ 768+20-1=787px
+	@media only screen and (min-width: $g_width-smartphone + $g_width-scrollbar) and (max-width: $g_width-tablet + $g_width-scrollbar - 1) {
+		@content;
+	}
+}
+@mixin media-query-sp {
+	// スマートフォン表示: 480+20-1=499px～
+	@media only screen and (max-width: $g_width-smartphone + $g_width-scrollbar - 1) {
+		@content;
+	}
+}
+
+
+
+
+//-------------------------------------------
+// font-awesomeアイコン
+// font-awesomeをbackgroundで使用する
+//
+// @param {str} // 使用する文字列からはエスケープ \ を除外する（後述）
+// @param {margin} // marginを渡す
+//
+// @use
+//    :before {@include bgFontAwesome("f013", 0 0 0 0.2em)};
+//
+// [注意事項]
+// - 文字列にエスケープが含まれているとsassのコンパイル時に文字化けしてしまう。
+// - 表示上は問題ないが（chromeでのみ確認）、cssファイル上で文字化ける。
+// - font-awesomeで定義されている変数にはエスケープが含まれているので変数名をそのまま使用はできない
+// - そのためにエスケープを動的に追加するfunctionをかませる、および引数はからエスケープを外すことで対応とした
+// - sassのバージョンによっては不要になるかも
+//
+//-------------------------------------------
+@mixin bg-font-awesome($content, $margin: 0 .3em 0 0) {
+	font-family: FontAwesome;
+	content: unicode($content);
+	display: inline-block;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	margin: $margin;
+}
+
+
+
+
+
+//-------------------------------------------
+// グラデーション
+// シンプルな縦のグラデーションを生成する
+// 初期値は白→グレー
+//
+// @param {color} $from 
+// @param {color} $to
+// @param {color} $base
+// @param {bool}  $isReverse
+//
+//-------------------------------------------
+// isReverse: trueでfrom<->toを入れ替える
+@mixin simple-grad($from: #fff, $to: shade($g_gray-light, 2%), $base: shade($g_gray-light, 5%), $isReverse: false) {
+	background-color: $base;
+	@if ($isReverse) {
+		background: -webkit-linear-gradient(#{$to} 0%,#{$from} 100%);
+		background: linear-gradient(#{$to} 0%,#{$from} 100%);
+	} @else {
+		background: -webkit-linear-gradient(#{$from} 0%,#{$to} 100%);
+		background: linear-gradient(#{$from} 0%,#{$to} 100%);
+	}
+}
+
+
+
+
+//-------------------------------------------
+// bourbon/neat用 
+// neatでメディアクエリを使う場合はomegaを打ち消す必要があるため、このmixinを使用する
+//
+// @param {num} $nth 既にomega()で設定している値を渡す
+//-------------------------------------------
+@mixin omega-reset($nth) {
+	&:nth-child(#{$nth}) { margin-right: flex-gutter(); }
+	&:nth-child(#{$nth}+1) { clear: none }
+}
+
+
+
+

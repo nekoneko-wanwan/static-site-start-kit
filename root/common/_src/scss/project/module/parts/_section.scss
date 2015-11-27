@@ -8,19 +8,27 @@
 // ・主にメインコンテンツ内でのセクションの余白を管理する<br>
 // ・スタイルガイド上は分かりやすく色をつけている（実際にはつかないので注意）
 //
-// Styleguide: 4
+// Styleguide: 3
 
 // Section
 //
-// - "m-section" に "is-sub" をつけることで余白を狭くする（子セクションに使用）
-// - "m-section__body" に "has-no-gutter" をつけることで内側余白を消す
+// デフォルトである程度の余白を設けているが、Modifierを渡すことで調整可能
 // 
+// - @block   : m-section
+// - @element : m-section__body
+// - @modifier: m-section.is-small
+// - @modifier: m-section.is-large
+// - @modifier: m-section__body.is-gutter_none
+// 
+// .is-small - 余白小
+// .is-large - 余白大
+//
 // Markup:
-// <section class="m-section" style="background-color: #ccc;">
+// <section class="m-section {{[modifier_class]}}" style="background-color: #ccc;">
 //   <h1>見出し</h1>
 //   <div class="m-section__body">
 //     <p>セクション本文</p>
-//     <section class="m-section is-sub" style="background-color: #f7f7f7;">
+//     <section class="m-section" style="background-color: #f7f7f7;">
 //       <h2>見出し</h2>
 //       <div class="m-section__body">
 //         <p>セクション本文</p>
@@ -28,30 +36,33 @@
 //     </section>
 //   </div>
 // </section>
-// <section class="m-section" style="background-color: #ccc;">
+// <section class="m-section {{[modifier_class]}}" style="background-color: #ccc;">
 //   <h1>見出し</h1>
 //   <div class="m-section__body">
 //     <p>セクション本文</p>
-//     <section class="m-section is-sub" style="background-color: #f7f7f7;">
+//     <section class="m-section" style="background-color: #f7f7f7;">
 //       <h2>見出し</h2>
 //       <div class="m-section__body">
 //         <p>セクション本文</p>
 //       </div>
 //     </section>
-//     <section class="m-section is-sub" style="background-color: #f7f7f7;">
+//     <section class="m-section" style="background-color: #f7f7f7;">
 //       <h2>見出し</h2>
-//       <div class="m-section__body has-no-gutter">
+//       <div class="m-section__body is-gutter_none">
 //         <p>セクション本文</p>
 //       </div>
 //     </section>
 //   </div>
 // </section>
 //
-// Styleguide: 4.1
+// Styleguide: 3.1
 .m-section {
 	margin-bottom: 60px;
-	&.is-sub {
+	&.is-small {
 		margin-bottom: 30px;
+	}
+	&.is-large {
+		margin-bottom: 100px;
 	}
 	&:last-child {
 		margin-bottom: 0;
@@ -59,7 +70,7 @@
 }
 .m-section__body {
 	padding: 0 20px 20px;
-	&.has-no-gutter {
+	&.is-gutter_none {
 		padding: 0;
 	}
 }

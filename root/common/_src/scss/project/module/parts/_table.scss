@@ -8,7 +8,7 @@
 // ・テーブル要素に使用するスタイル<br>
 // ・class名はプロジェクトによって柔軟に変更する
 //
-// Styleguide: 11
+// Styleguide: 10
 
 
 // table-1
@@ -42,19 +42,19 @@
 //   </table>
 // </div>
 //
-// Styleguide: 11.1
+// Styleguide: 10.1
 .m-table-1 {
 	table {
 		border-collapse: collapse;
 		width: 100%;
 	}
 	th, td {
-		border-bottom: 1px dashed $g_grayNormal;
+		border-bottom: 1px dashed $g_gray-normal;
 		padding: 12px 20px;
 		vertical-align: text-bottom;
 	}
 	th {
-		background-color: $g_grayLight;
+		background-color: $g_gray-light;
 		text-align: left;
 		padding-left: 15px;
 		padding-right: 15px;
@@ -62,10 +62,10 @@
 	}
 	tr:first-child {
 		th {
-			border-top: 3px solid $g_mainColor;
+			border-top: 3px solid $g_main-color;
 		}
 		td {
-			border-top: 1px solid $g_grayNormal;
+			border-top: 1px solid $g_gray-normal;
 		}
 	}
 	tr:last-child {
@@ -109,19 +109,19 @@
 //   </table>
 // </div>
 //
-// Styleguide: 11.2
+// Styleguide: 10.2
 .m-table-2 {
 	table {
 		border-collapse: collapse;
 		width: 100%;
 	}
 	th, td {
-		border-bottom: 1px dashed tint($g_mainColor, 60%);
+		border-bottom: 1px dashed tint($g_main-color, 60%);
 		padding: 12px 20px;
 		vertical-align: text-bottom;
 	}
 	th {
-		background-color: tint($g_mainColor, 85%);
+		background-color: tint($g_main-color, 85%);
 		text-align: left;
 		padding-left: 15px;
 		padding-right: 15px;
@@ -167,23 +167,23 @@
 //   </table>
 // </div>
 //
-// Styleguide: 11.3
+// Styleguide: 10.3
 .m-table-3 {
 	table {
 		border-collapse: collapse;
-		border: 1px solid $g_grayNormal;
+		border: 1px solid $g_gray-normal;
 		width: 100%;
-		box-shadow: 0 0 0 5px $g_grayLight;
+		box-shadow: 0 0 0 5px $g_gray-light;
 	}
 	th, td {
-		border: 1px dashed $g_grayNormal;
+		border: 1px dashed $g_gray-normal;
 		border-right: none;
 		border-left: none;
 		padding: 12px 20px;
 		vertical-align: text-bottom;
 	}
 	th {
-		background-color: $g_grayLight;
+		background-color: $g_gray-light;
 		text-align: left;
 		padding-left: 15px;
 		padding-right: 15px;
@@ -192,7 +192,6 @@
 	td {
 		position: relative;
 		&:after {
-			
 			@include triangle(12px, gray, left);
 		}
 	}

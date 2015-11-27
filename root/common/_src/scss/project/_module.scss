@@ -1,0 +1,22 @@
+@charset "utf-8";
+/* ******************************************
+サイトにおける汎用的なモジュールを設定
+※blockの接頭辞には、「m-」を付与
+****************************************** */
+
+
+@import 'module/_color-pattern';
+@import 'module/_icon';
+
+// 並び順は動作には影響ないが、スタイルガイド上の順番と合わせている
+@import 'module/parts/_section';
+@import 'module/parts/_submenu';
+@import 'module/parts/_grid';
+@import 'module/parts/_media';
+@import 'module/parts/_block';
+@import 'module/parts/_heading';
+@import 'module/parts/_button';
+@import 'module/parts/_table';
+@import 'module/parts/_list';
+@import 'module/parts/_link';
+@import 'module/parts/_image';
