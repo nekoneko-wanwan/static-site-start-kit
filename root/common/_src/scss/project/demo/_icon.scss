@@ -1,16 +1,16 @@
 @charset "utf-8";
 //-------------------------------------------
-// アイコンのサンプル
+// アイコン
 //-------------------------------------------
 
-// Icon Sample
+// Icon
 // 
-// ・font-awesomeを使ったサンプル<br>
+// ・font-awesomeを使ったデモ<br>
 // ・専用のmixinを使っているだけなので詳細はmixin内を参照<br>
 // ・使えるアイコンはhttp://fontawesome.io/cheatsheet/ を参考（ただし最新のものは使えない可能性あり）<br>
 // ・以下表示されるclass名はガイドのために用意したものなので実際には使用しない
 //
-// Styleguide: 2
+// Styleguide: demo3
 
 // Font-awesome
 //
@@ -22,16 +22,16 @@
 // - sassのバージョンによっては不要になるかも
 //
 // Markup:
-// <div class="sample-icon-before-style">アイコン</div>
-// <div class="sample-icon-after-style">アイコン</div>
+// <div class="demo-icon-before-style">アイコン</div>
+// <div class="demo-icon-after-style">アイコン</div>
 //
-// Styleguide: 2.1
-.sample-icon-before-style {
+// Styleguide: demo3.1
+.demo-icon-before-style {
 	&:before {
 		@include bg-font-awesome("f013");
 	}
 }
-.sample-icon-after-style {
+.demo-icon-after-style {
 	&:after {
 		@include bg-font-awesome("f170", 0 0 0 0.2em);
 	}

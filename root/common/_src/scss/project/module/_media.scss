@@ -8,7 +8,7 @@
 // ・画像などのメディアとテキストの複合パターン<br>
 // ・class名はプロジェクトによって柔軟に変更する
 //
-// Styleguide: 6
+// Styleguide: 4
 
 // Side Media
 //
@@ -38,7 +38,7 @@
 //   <p class="m-media-1__text">テキスト<br>テキストテキスト</p>
 // </div>
 //
-// Styleguide: 6.1
+// Styleguide: 4.1
 .m-media-1 {
 	@include create-side-media-module($margin: 10px, $isSneak: false) {
 		padding: 20px;

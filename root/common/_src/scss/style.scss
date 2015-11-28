@@ -11,22 +11,23 @@
 
 
 // vendor
-@import "vendor/_normalize";
-@import "vendor/font-awesome/__import";
-@import "vendor/bourbon/_bourbon";
-@import "vendor/bourbon-neat/_neat";
+@import "vendor/_normalize";            // 初期化css タグが出力
+@import "vendor/font-awesome/__import"; // font-awesomeの読み込み 一部タグが出力
+@import "vendor/bourbon/_bourbon";      // FW bourbonの読み込み(mixinのみ)
+@import "vendor/bourbon-neat/_neat";    // bourbon依存のgrid生成FW(mixinのみ)
 
 // preset
-@import "preset/_variables";
-@import "preset/_function";
-@import "preset/_mixin";
-@import "preset/_mixin-module";
-@import "preset/_selector";
+@import "preset/_variables";     // グローバル変数
+@import "preset/_function";      // グローバル関数
+@import "preset/_mixin";         // cssを読み込むmixin
+@import "preset/_mixin-module";  // モジュールを生成するためのmixin
+@import "preset/_selector";      // セレクタの初期値 タグが出力
 
 // project
-@import "project/_layout";
-@import "project/_module";
-@import "project/_pages";
-@import "project/_utility";
+@import "project/_layout";  // 共通でユニークなスタイル
+@import "project/_module";  // 汎用的なスタイル
+@import "project/_pages";   // ページ独自のスタイル
+@import "project/_utility"; // アドホックなスタイル
 
+@import "project/_demo";    // 開発時に役立つデモ用スタイル
 

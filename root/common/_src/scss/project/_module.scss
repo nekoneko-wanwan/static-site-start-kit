@@ -5,18 +5,15 @@
 ****************************************** */
 
 
-@import 'module/_color-pattern';
-@import 'module/_icon';
-
 // 並び順は動作には影響ないが、スタイルガイド上の順番と合わせている
-@import 'module/parts/_section';
-@import 'module/parts/_submenu';
-@import 'module/parts/_grid';
-@import 'module/parts/_media';
-@import 'module/parts/_block';
-@import 'module/parts/_heading';
-@import 'module/parts/_button';
-@import 'module/parts/_table';
-@import 'module/parts/_list';
-@import 'module/parts/_link';
-@import 'module/parts/_image';
+@import 'module/_section';
+@import 'module/_submenu';
+@import 'module/_grid';
+@import 'module/_media';
+@import 'module/_block';
+@import 'module/_heading';
+@import 'module/_button';
+@import 'module/_table';
+@import 'module/_list';
+@import 'module/_link';
+@import 'module/_image';

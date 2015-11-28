@@ -9,7 +9,7 @@
 // ・スタイルガイド上は分かりやすく色をつけている（実際にはつかないので注意）<br>
 // ・class名はプロジェクトによって柔軟に変更する
 //
-// Styleguide: 5
+// Styleguide: 3
 
 
 // Grid Neat
@@ -46,7 +46,7 @@
 //   </div>
 // </div>
 // 
-// Styleguide: 5.1
+// Styleguide: 3.1
 
 // http://neat.bourbon.io/examples/ を参考に作成する
 .m-grid-1 {
@@ -113,7 +113,7 @@
 //   </div>
 // </div>
 //
-// Styleguide: 5.2
+// Styleguide: 3.2
 .m-grid-2 {
 	$col-pc: 3;
 	$col-sp: 1;
@@ -162,7 +162,7 @@
 //   </div>
 // </div>
 //
-// Styleguide: 5.3
+// Styleguide: 3.3
 .m-card {
 	@include create-card-module(
 		$col-width: 29%,

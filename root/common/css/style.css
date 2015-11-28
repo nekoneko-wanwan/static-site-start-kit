@@ -331,86 +331,6 @@ footer
 サイトにおける汎用的なモジュールを設定
 ※blockの接頭辞には、「m-」を付与
 ****************************************** */
-.sample-color-style {
-	display: inline-block;
-	width: 50px;
-	height: 50px;
-}
-.sample-color-style.main {
-	background-color: #3498db;
-}
-.sample-color-style.sub {
-	background-color: #eaf9fb;
-}
-.sample-color-style.base {
-	background-color: #ff6685;
-}
-.sample-color-style.accent {
-	background-color: #ff9900;
-}
-.sample-color-style.link {
-	background-color: #0074be;
-}
-
-.sample-gray-color-style {
-	display: inline-block;
-	width: 50px;
-	height: 50px;
-}
-.sample-gray-color-style.light {
-	background-color: #f7f7f7;
-}
-.sample-gray-color-style.normal {
-	background-color: #cccccc;
-}
-.sample-gray-color-style.dark {
-	background-color: #aaaaaa;
-}
-
-.sample-stripe-pat {
-	display: inline-block;
-	width: 50px;
-	height: 50px;
-	background-color: #000000;
-	background-repeat: repeat;
-	background-position: 0 0;
-}
-.sample-stripe-pat.thin {
-	background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABxJREFUeNpi/P//PwMU/GeCMYCYkQnGAIkABBgApQoGAnr9sboAAAAASUVORK5CYII=');
-}
-.sample-stripe-pat.normal {
-	background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACtJREFUeNpi/P//PwMQgAkoYAQRTNgEYRIYgiDFTNgEYTowBNGNQrELIMAAd4sJCXtYYfQAAAAASUVORK5CYII=');
-}
-.sample-stripe-pat.bold {
-	background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACVJREFUeNpi/P//PwMa+M+ELgDEjEzoAiAGE7oATBBFAAQAAgwANPoIBshsvPIAAAAASUVORK5CYII=');
-}
-
-.sample-icon-before-style:before {
-	font-family: FontAwesome;
-	font-weight: normal;
-	font-style: normal;
-	line-height: 1;
-	display: inline-block;
-	margin: 0 0.3em 0 0;
-	content: '\f013';
-
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-
-.sample-icon-after-style:after {
-	font-family: FontAwesome;
-	font-weight: normal;
-	font-style: normal;
-	line-height: 1;
-	display: inline-block;
-	margin: 0 0 0 0.2em;
-	content: '\f170';
-
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-
 .m-section {
 	margin-bottom: 60px;
 }
@@ -1764,4 +1684,84 @@ footer
 
 .u-pr-xlarge {
 	padding-right: 50px !important;
+}
+
+.demo-color-style {
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+}
+.demo-color-style.main {
+	background-color: #3498db;
+}
+.demo-color-style.sub {
+	background-color: #eaf9fb;
+}
+.demo-color-style.base {
+	background-color: #ff6685;
+}
+.demo-color-style.accent {
+	background-color: #ff9900;
+}
+.demo-color-style.link {
+	background-color: #0074be;
+}
+
+.demo-gray-color-style {
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+}
+.demo-gray-color-style.light {
+	background-color: #f7f7f7;
+}
+.demo-gray-color-style.normal {
+	background-color: #cccccc;
+}
+.demo-gray-color-style.dark {
+	background-color: #aaaaaa;
+}
+
+.demo-stripe-pat {
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	background-color: #000000;
+	background-repeat: repeat;
+	background-position: 0 0;
+}
+.demo-stripe-pat.thin {
+	background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABxJREFUeNpi/P//PwMU/GeCMYCYkQnGAIkABBgApQoGAnr9sboAAAAASUVORK5CYII=');
+}
+.demo-stripe-pat.normal {
+	background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACtJREFUeNpi/P//PwMQgAkoYAQRTNgEYRIYgiDFTNgEYTowBNGNQrELIMAAd4sJCXtYYfQAAAAASUVORK5CYII=');
+}
+.demo-stripe-pat.bold {
+	background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACVJREFUeNpi/P//PwMa+M+ELgDEjEzoAiAGE7oATBBFAAQAAgwANPoIBshsvPIAAAAASUVORK5CYII=');
+}
+
+.demo-icon-before-style:before {
+	font-family: FontAwesome;
+	font-weight: normal;
+	font-style: normal;
+	line-height: 1;
+	display: inline-block;
+	margin: 0 0.3em 0 0;
+	content: '\f013';
+
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.demo-icon-after-style:after {
+	font-family: FontAwesome;
+	font-weight: normal;
+	font-style: normal;
+	line-height: 1;
+	display: inline-block;
+	margin: 0 0 0 0.2em;
+	content: '\f170';
+
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
