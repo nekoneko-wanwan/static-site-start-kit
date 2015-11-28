@@ -60,8 +60,8 @@
 		@include span-columns(12/$col-pc);
 		@include omega(#{$col-pc}n);
 		// media
-		@include media-query-sp {
-			@include omega-reset(#{$col-pc}n);
+		@include my_media-query-sp {
+			@include my_omega-reset(#{$col-pc}n);
 			@include span-columns(12/$col-sp);
 			@include omega(#{$col-sp}n);
 		}
@@ -124,7 +124,7 @@
 		'.has-gutter_middle': 30px,
 		'.has-gutter_large': 50px
 	);
-	@include create-grid-module($col-pc, $col-sp, $gutter, $modifiers);
+	@include my_create-grid-module($col-pc, $col-sp, $gutter, $modifiers);
 }
 
 
@@ -164,7 +164,7 @@
 //
 // Styleguide: 3.3
 .m-card {
-	@include create-card-module(
+	@include my_create-card-module(
 		$col-width: 29%,
 		$margin: 2%,
 		$big2-div: '.is-2width',

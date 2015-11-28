@@ -1,6 +1,7 @@
 @charset "utf-8";
 /////////////////////////////////////////////
 // モジュールを生成するために使うテンプレート的なmixinを管理
+// 接頭辞にはmy_をつける
 /////////////////////////////////////////////
 
 
@@ -41,12 +42,12 @@
 // 		'.has-gutter_middle': 30px,
 // 		'.has-gutter_large': 50px
 // 	);
-// 	@include create-grid($col-pc, $col-sp, $gutter, $modifiers);
+// 	@include my_create-grid($col-pc, $col-sp, $gutter, $modifiers);
 // }
 //
 // @paramはmixin内コメントを参照
 //-------------------------------------------
-@mixin create-grid-module(
+@mixin my_create-grid-module(
 	$col-pc: 2, // PCのカラム数
 	$col-sp: 1, // スマホのカラム数
 	$gutter: 10px, // 初期の余白
@@ -72,7 +73,7 @@
 		}
 
 		// media
-		@include media-query-sp {
+		@include my_media-query-sp {
 			width: percentage(1/$col-sp);
 			&:nth-child(#{$col-sp}n + 1) {
 				clear: left;
@@ -127,7 +128,7 @@
 //
 // @use
 // .card {
-//   @include create-card-module(
+//   @include my_create-card-module(
 //     $col-width: 29%,
 //     $margin: 2%,
 //     $big2-div: '.is-2width',
@@ -137,7 +138,7 @@
 //
 // @paramはmixin内コメントを参照
 //-------------------------------------------
-@mixin create-card-module(
+@mixin my_create-card-module(
 		// カラムの横幅（カラム数に影響）
 		$col-width: 29%,
 		// 余白
@@ -194,7 +195,7 @@
 //
 // @paramはmixin内コメントを参照
 //-------------------------------------------
-@mixin create-side-media-module(
+@mixin my_create-side-media-module(
 		$margin: 30px,
 		$isSneak: false // メディアの下に回り込ませるかどうか
 	){

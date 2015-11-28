@@ -40,7 +40,7 @@
 //
 // Styleguide: 4.1
 .m-media-1 {
-	@include create-side-media-module($margin: 10px, $isSneak: false) {
+	@include my_create-side-media-module($margin: 10px, $isSneak: false) {
 		padding: 20px;
 		+ #{&} {
 			border-top: 1px dashed $g_gray-normal;

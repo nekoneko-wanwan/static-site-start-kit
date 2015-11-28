@@ -28,12 +28,12 @@
 // Styleguide: demo3.1
 .demo-icon-before-style {
 	&:before {
-		@include bg-font-awesome("f013");
+		@include my_bg-font-awesome("f013");
 	}
 }
 .demo-icon-after-style {
 	&:after {
-		@include bg-font-awesome("f170", 0 0 0 0.2em);
+		@include my_bg-font-awesome("f170", 0 0 0 0.2em);
 	}
 }
 

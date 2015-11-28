@@ -1,27 +1,28 @@
 @charset "utf-8";
 /////////////////////////////////////////////
 // cssを生成するだけのグローバルmixinを管理
+// 接頭辞にはmy_をつける
 /////////////////////////////////////////////
 
 
 //-------------------------------------------
 // メディアクエリ
 // @use
-//     @include media-query-pc {}
+//     @include my_media-query-pc {}
 //-------------------------------------------
-@mixin media-query-pc {
+@mixin my_media-query-pc {
 	// PC表示: 768+20=788px～
 	@media only screen and (min-width: $g_width-tablet + $g_width-scrollbar) {
 		@content;
 	}
 }
-@mixin media-query-tablet {
+@mixin my_media-query-tablet {
 	// タブレット表示: 480+20=500px ～ 768+20-1=787px
 	@media only screen and (min-width: $g_width-smartphone + $g_width-scrollbar) and (max-width: $g_width-tablet + $g_width-scrollbar - 1) {
 		@content;
 	}
 }
-@mixin media-query-sp {
+@mixin my_media-query-sp {
 	// スマートフォン表示: 480+20-1=499px～
 	@media only screen and (max-width: $g_width-smartphone + $g_width-scrollbar - 1) {
 		@content;
@@ -39,7 +40,7 @@
 // @param {margin} // marginを渡す
 //
 // @use
-//    :before {@include bgFontAwesome("f013", 0 0 0 0.2em)};
+//    :before {@include my_bg-font-awesome("f013", 0 0 0 0.2em)};
 //
 // [注意事項]
 // - 文字列にエスケープが含まれているとsassのコンパイル時に文字化けしてしまう。
@@ -49,9 +50,9 @@
 // - sassのバージョンによっては不要になるかも
 //
 //-------------------------------------------
-@mixin bg-font-awesome($content, $margin: 0 .3em 0 0) {
+@mixin my_bg-font-awesome($content, $margin: 0 .3em 0 0) {
 	font-family: FontAwesome;
-	content: unicode($content);
+	content: my-unicode($content);
 	display: inline-block;
 	font-style: normal;
 	font-weight: normal;
@@ -77,7 +78,7 @@
 //
 //-------------------------------------------
 // isReverse: trueでfrom<->toを入れ替える
-@mixin simple-grad($from: #fff, $to: shade($g_gray-light, 2%), $base: shade($g_gray-light, 5%), $isReverse: false) {
+@mixin my_simple-grad($from: #fff, $to: shade($g_gray-light, 2%), $base: shade($g_gray-light, 5%), $isReverse: false) {
 	background-color: $base;
 	@if ($isReverse) {
 		background: -webkit-linear-gradient(#{$to} 0%,#{$from} 100%);
@@ -97,7 +98,7 @@
 //
 // @param {num} $nth 既にomega()で設定している値を渡す
 //-------------------------------------------
-@mixin omega-reset($nth) {
+@mixin my_omega-reset($nth) {
 	&:nth-child(#{$nth}) { margin-right: flex-gutter(); }
 	&:nth-child(#{$nth}+1) { clear: none }
 }

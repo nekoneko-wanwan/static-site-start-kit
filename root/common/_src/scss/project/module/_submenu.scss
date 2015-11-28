@@ -111,7 +111,7 @@
 	color: #333;
 	transition: all 0.3s;
 	&:before {
-		@include bg-font-awesome("f054", 0 7px 0 0);
+		@include my_bg-font-awesome("f054", 0 7px 0 0);
 	}
 	&:hover {
 		text-decoration: underline;
@@ -131,7 +131,7 @@
 	font-size: 90%;
 	transition: all 0.3s;
 	&:before {
-		@include bg-font-awesome("f101", 0 7px 0 0);
+		@include my_bg-font-awesome("f101", 0 7px 0 0);
 	}
 	&:hover {
 		text-decoration: underline;
@@ -242,7 +242,7 @@
 	color: #333;
 	transition: all 0.3s;
 	&:before {
-		@include bg-font-awesome("f0da", 0 7px 0 0);
+		@include my_bg-font-awesome("f0da", 0 7px 0 0);
 	}
 	&:hover {
 		text-decoration: underline;
@@ -262,7 +262,7 @@
 	font-size: 90%;
 	transition: all 0.3s;
 	&:before {
-		@include bg-font-awesome("f105", 0 7px 0 0);
+		@include my_bg-font-awesome("f105", 0 7px 0 0);
 	}
 	&:hover {
 		text-decoration: underline;
@@ -341,7 +341,7 @@
 	border: 1px solid $g_gray-normal;
 	position: relative;
 	box-shadow: inset 0 0 0 1px #fff;
-	@include simple-grad();
+	@include my_simple-grad();
 	&:after {
 		position: absolute;
 		content: '';
@@ -382,7 +382,7 @@
 	color: #333;
 	transition: all 0.3s;
 	&:before {
-		@include bg-font-awesome("f0da", 0 7px 0 0);
+		@include my_bg-font-awesome("f0da", 0 7px 0 0);
 	}
 	&:hover {
 		text-decoration: underline;
@@ -402,7 +402,7 @@
 	font-size: 90%;
 	transition: all 0.3s;
 	&:before {
-		@include bg-font-awesome("f105", 0 7px 0 0);
+		@include my_bg-font-awesome("f105", 0 7px 0 0);
 	}
 	&:hover {
 		text-decoration: underline;

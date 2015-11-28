@@ -1,6 +1,7 @@
 @charset "utf-8";
 /////////////////////////////////////////////
 // グローバル関数を管理
+// 接頭辞にはmy_をつける
 /////////////////////////////////////////////
 
 
@@ -11,7 +12,7 @@
 // @param {str} $str "string"
 // @return "\string"
 //-------------------------------------------
-@function unicode($str){
+@function my-unicode($str){
 	@return unquote("\"")+unquote(str-insert($str, "\\", 1))+unquote("\"");
 }
 

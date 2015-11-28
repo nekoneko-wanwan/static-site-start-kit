@@ -31,7 +31,7 @@
 .m-link-icon {
 	&:before {
 		font-size: 90%;
-		@include bg-font-awesome("f105");
+		@include my_bg-font-awesome("f105");
 	}
 	&.is-external {
 		&:before {
