@@ -18,7 +18,7 @@
 // - @element : m-section__body
 // - @modifier: m-section.is-small
 // - @modifier: m-section.is-large
-// - @modifier: m-section__body.is-gutter_none
+// - @modifier: m-section__body.is-gutter-none
 // 
 // .is-small - 余白小
 // .is-large - 余白大
@@ -48,7 +48,7 @@
 //     </section>
 //     <section class="m-section" style="background-color: #f7f7f7;">
 //       <h2>見出し</h2>
-//       <div class="m-section__body is-gutter_none">
+//       <div class="m-section__body is-gutter-none">
 //         <p>セクション本文</p>
 //       </div>
 //     </section>
@@ -70,7 +70,7 @@
 }
 .m-section__body {
 	padding: 0 20px 20px;
-	&.is-gutter_none {
+	&.is-gutter-none {
 		padding: 0;
 	}
 }

@@ -2,3 +2,4 @@ node_modules/
 .git
 sass-cache/
 root/_guide/
+root/common/css/

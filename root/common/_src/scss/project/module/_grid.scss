@@ -82,7 +82,7 @@
 // - @block   : m-grid-2
 // - @element : m-grid-2__outer
 // - @element : m-grid-2__inner
-// - @modifier: m-grid-2.has-gutter_xxx
+// - @modifier: m-grid-2.has-gutter-xxx
 //
 // .has-gutter_none - 余白無し
 // .has-gutter_small - 余白小
@@ -119,10 +119,10 @@
 	$col-sp: 1;
 	$gutter: 10px;
 	$modifiers: (
-		'.has-gutter_none': 0px,
-		'.has-gutter_small': 10px,
-		'.has-gutter_middle': 30px,
-		'.has-gutter_large': 50px
+		'.has-gutter-none': 0px,
+		'.has-gutter-small': 10px,
+		'.has-gutter-middle': 30px,
+		'.has-gutter-large': 50px
 	);
 	@include my_create-grid-module($col-pc, $col-sp, $gutter, $modifiers);
 }
@@ -140,11 +140,11 @@
 //
 // - @block   : m-card
 // - @element : m-card__inner
-// - @modifier: m-card__inner.is-2width
-// - @modifier: m-card__inner.is-3width
+// - @modifier: m-card__inner.is-width-2
+// - @modifier: m-card__inner.is-width-3
 //
-// .is-2width - カードの横幅を2倍に
-// .is-3width - カードの横幅を3倍に
+// .is-width-2 - カードの横幅を2倍に
+// .is-width-3 - カードの横幅を3倍に
 //
 // Markup:
 // <div class="m-card">
@@ -167,8 +167,8 @@
 	@include my_create-card-module(
 		$col-width: 29%,
 		$margin: 2%,
-		$big2-div: '.is-2width',
-		$big3-div: '.is-3width'
+		$big2-div: '.is-width-2',
+		$big3-div: '.is-width-3'
 	);
 }
 
