@@ -12,24 +12,31 @@
 
 // Section
 //
-// デフォルトである程度の余白を設けているが、Modifierを渡すことで調整可能
+// ・セクション間にはデフォルトである程度の余白を設けているが、Modifierを渡すことで調整可能<br>
+// ・余白の設定はModifierが多くなりがちなので、ある程度モジュールごとに決め打ちで複数作成しても良い
 // 
 // - @block   : m-section
+// - @element : m-section__head
 // - @element : m-section__body
 // - @modifier: m-section.is-small
 // - @modifier: m-section.is-large
-// - @modifier: m-section__body.is-gutter-none
+// - @modifier: m-section.has-gutter
 // 
 // .is-small - 余白小
 // .is-large - 余白大
+// .has-gutter - 内側の余白
 //
 // Markup:
 // <section class="m-section {{[modifier_class]}}" style="background-color: #ccc;">
-//   <h1>見出し</h1>
+//   <div class="m-section__head">
+//     <h1>見出し</h1>
+//   </div>
 //   <div class="m-section__body">
 //     <p>セクション本文</p>
 //     <section class="m-section" style="background-color: #f7f7f7;">
-//       <h2>見出し</h2>
+//       <div class="m-section__head">
+//         <h2>見出し</h2>
+//       </div>
 //       <div class="m-section__body">
 //         <p>セクション本文</p>
 //       </div>
@@ -37,18 +44,24 @@
 //   </div>
 // </section>
 // <section class="m-section {{[modifier_class]}}" style="background-color: #ccc;">
-//   <h1>見出し</h1>
+//   <div class="m-section__head">
+//     <h1>見出し</h1>
+//   </div>
 //   <div class="m-section__body">
 //     <p>セクション本文</p>
 //     <section class="m-section" style="background-color: #f7f7f7;">
-//       <h2>見出し</h2>
+//       <div class="m-section__head">
+//         <h2>見出し</h2>
+//       </div>
 //       <div class="m-section__body">
 //         <p>セクション本文</p>
 //       </div>
 //     </section>
 //     <section class="m-section" style="background-color: #f7f7f7;">
-//       <h2>見出し</h2>
-//       <div class="m-section__body is-gutter-none">
+//       <div class="m-section__head">
+//         <h2>見出し</h2>
+//       </div>
+//       <div class="m-section__body">
 //         <p>セクション本文</p>
 //       </div>
 //     </section>
@@ -57,6 +70,7 @@
 //
 // Styleguide: 1.1
 .m-section {
+	$that: &;
 	margin-bottom: 60px;
 	&.is-small {
 		margin-bottom: 30px;
@@ -67,11 +81,11 @@
 	&:last-child {
 		margin-bottom: 0;
 	}
-}
-.m-section__body {
-	padding: 0 20px 20px;
-	&.is-gutter-none {
-		padding: 0;
+	&.has-gutter {
+		#{$that}__head, #{$that}__body {
+			margin: 0 20px;
+		}
 	}
 }
+
 
