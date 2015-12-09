@@ -6,8 +6,8 @@
 // Table
 // 
 // ・テーブル要素に使用するスタイル<br>
-// ・テーブルの入れ子は想定していないので注意<br>
-// ・class名はプロジェクトによって柔軟に変更する
+// ・class名はプロジェクトによって柔軟に変更する<br>
+// 
 //
 // Styleguide: 8
 
@@ -15,64 +15,81 @@
 // table-1
 //
 // ・左にヘッダータイプ<br>
-// ・ワンポイントカラー
+// ・tableタグの入れ子対応用も想定している
 //
 // Markup:
-// <div class="m-table-1">
-//   <table>
-//     <tr>
-//       <th>見出し</th>
-//       <td>テキスト</td>
-//     </tr>
-//     <tr>
-//       <th>見出し</th>
-//       <td>テキスト</td>
-//     </tr>
-//     <tr>
-//       <th>見出し</th>
-//       <td>テキスト</td>
-//     </tr>
-//     <tr>
-//       <th>見出し</th>
-//       <td>テキスト</td>
-//     </tr>
-//     <tr>
-//       <th>見出し</th>
-//       <td>テキスト</td>
-//     </tr>
-//   </table>
-// </div>
+// <table class="m-table-1">
+//   <tr>
+//     <th>見出し</th>
+//     <td>テキスト</td>
+//   </tr>
+//   <tr>
+//     <th>見出し</th>
+//     <td>テキスト</td>
+//   </tr>
+//   <tr>
+//     <th>見出し</th>
+//     <td>テキスト</td>
+//   </tr>
+//   <tr>
+//     <th>見出し</th>
+//     <td>テキスト</td>
+//   </tr>
+//   <tr>
+//     <th>見出し</th>
+//     <td>テキスト</td>
+//   </tr>
+// </table>
 //
 // Styleguide: 8.1
 .m-table-1 {
-	table {
-		border-collapse: collapse;
-		width: 100%;
-	}
+	border-collapse: collapse;
+	width: 100%;
 	th, td {
-		border-bottom: 1px dashed $g_gray-normal;
+		border-bottom: 1px solid $g_gray-normal;
 		padding: 12px 20px;
 		vertical-align: text-bottom;
+		line-height: 1.5;
 	}
 	th {
 		background-color: $g_gray-light;
+		font-weight: bold;
 		text-align: left;
 		padding-left: 15px;
 		padding-right: 15px;
+		white-space: nowrap;
 		width: 20%;
+	}
+	td {
+		// table入れ子対策
+		&.m-table-1__nest {
+			table {
+				border-collapse: collapse;
+				width: 100%;
+				th, td, {
+					padding: 10px;
+					border: none;
+					border-bottom: 1px dashed $g_gray-normal;
+				}
+				th {
+					background-color: #fff;
+				}
+				tr:last-child {
+					th, td {
+						border-bottom: none;
+					}
+				}
+			}
+		}
 	}
 	tr:first-child {
 		th {
 			border-top: 3px solid $g_main-color;
+			padding-top: 14px;
 		}
 		td {
-			border-top: 1px solid $g_gray-normal;
-		}
-	}
-	tr:last-child {
-		th, td {
-			border-bottom: none;
-			border-bottom: none;
+			border-top: 3px solid $g_gray-normal;
+			padding-top: 14px;
 		}
 	}
 }
@@ -82,40 +99,36 @@
 // table-2
 //
 // ・左にヘッダータイプ<br>
-// ・シンプル
+// ・tableタグの入れ子対応用は想定していない
 //
 // Markup:
-// <div class="m-table-2">
-//   <table>
-//     <tr>
-//       <th>見出し</th>
-//       <td>テキスト</td>
-//     </tr>
-//     <tr>
-//       <th>見出し</th>
-//       <td>テキスト</td>
-//     </tr>
-//     <tr>
-//       <th>見出し</th>
-//       <td>テキスト</td>
-//     </tr>
-//     <tr>
-//       <th>見出し</th>
-//       <td>テキスト</td>
-//     </tr>
-//     <tr>
-//       <th>見出し</th>
-//       <td>テキスト</td>
-//     </tr>
-//   </table>
-// </div>
+// <table class="m-table-2">
+//   <tr>
+//     <th>見出し</th>
+//     <td>テキスト</td>
+//   </tr>
+//   <tr>
+//     <th>見出し</th>
+//     <td>テキスト</td>
+//   </tr>
+//   <tr>
+//     <th>見出し</th>
+//     <td>テキスト</td>
+//   </tr>
+//   <tr>
+//     <th>見出し</th>
+//     <td>テキスト</td>
+//   </tr>
+//   <tr>
+//     <th>見出し</th>
+//     <td>テキスト</td>
+//   </tr>
+// </table>
 //
 // Styleguide: 8.2
 .m-table-2 {
-	table {
-		border-collapse: collapse;
-		width: 100%;
-	}
+	border-collapse: collapse;
+	width: 100%;
 	th, td {
 		border-bottom: 1px dashed tint($g_main-color, 60%);
 		padding: 12px 20px;
@@ -141,41 +154,38 @@
 // table-3
 //
 // ・左にヘッダータイプ<br>
+// ・tableタグの入れ子対応用は想定していない
 //
 // Markup:
-// <div class="m-table-3">
-//   <table>
-//     <tr>
-//       <th>見出し</th>
-//       <td>テキスト</td>
-//     </tr>
-//     <tr>
-//       <th>見出し</th>
-//       <td>テキスト</td>
-//     </tr>
-//     <tr>
-//       <th>見出し</th>
-//       <td>テキスト</td>
-//     </tr>
-//     <tr>
-//       <th>見出し</th>
-//       <td>テキスト</td>
-//     </tr>
-//     <tr>
-//       <th>見出し</th>
-//       <td>テキスト</td>
-//     </tr>
-//   </table>
-// </div>
+// <table class="m-table-3">
+//   <tr>
+//     <th>見出し</th>
+//     <td>テキスト</td>
+//   </tr>
+//   <tr>
+//     <th>見出し</th>
+//     <td>テキスト</td>
+//   </tr>
+//   <tr>
+//     <th>見出し</th>
+//     <td>テキスト</td>
+//   </tr>
+//   <tr>
+//     <th>見出し</th>
+//     <td>テキスト</td>
+//   </tr>
+//   <tr>
+//     <th>見出し</th>
+//     <td>テキスト</td>
+//   </tr>
+// </table>
 //
 // Styleguide: 8.3
 .m-table-3 {
-	table {
-		border-collapse: collapse;
-		border: 1px solid $g_gray-normal;
-		width: 100%;
-		box-shadow: 0 0 0 5px $g_gray-light;
-	}
+	border-collapse: collapse;
+	border: 1px solid $g_gray-normal;
+	width: 100%;
+	box-shadow: 0 0 0 5px $g_gray-light;
 	th, td {
 		border: 1px dashed $g_gray-normal;
 		border-right: none;
@@ -197,11 +207,5 @@
 		}
 	}
 }
-
-
-
-
-
-
 
 
