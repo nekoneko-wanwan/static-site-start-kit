@@ -11,9 +11,72 @@
 //
 // Styleguide: 9
 
-// List-1
+// List-date
 //
-// ・色々なアイコンを設定
+// ・日付とテキストを表示させるリスト<br>
+//
+// Markup:
+// <div class="m-list-date">
+//   <ul>
+//     <li>
+//       <span class="m-list-date__date">2015年12月11日</span>
+//       <a href="#" class="m-list-date__title">お知らせのタイトルが入ります</a>
+//     </li>
+//     <li>
+//       <span class="m-list-date__date">2015年12月11日</span>
+//       <a href="#" class="m-list-date__title">お知らせのタイトルが入ります</a>
+//     </li>
+//     <li>
+//       <span class="m-list-date__date">2015年12月11日</span>
+//       <a href="#" class="m-list-date__title">お知らせのタイトルが入ります</a>
+//     </li>
+//     <li>
+//       <span class="m-list-date__date">2015年12月11日</span>
+//       <a href="#" class="m-list-date__title">お知らせのタイトルが入ります</a>
+//     </li>
+//     <li>
+//       <span class="m-list-date__date">2015年12月11日</span>
+//       <a href="#" class="m-list-date__title">お知らせのタイトルが入ります</a>
+//     </li>
+//   </ul>
+// </div>
+//
+// Styleguide: 9.1
+.m-list-date {
+	// common
+	ul {
+		margin: 0 10px;
+		padding: 0;
+		list-style-type: none;
+	}
+	li {
+		position: relative;
+		padding-right: 10px;
+		padding-bottom: 14px;
+		border-bottom: 1px dashed $g_gray-normal;
+	}
+	li + li {
+		padding-top: 14px;
+	}
+}
+.m-list-date__date {
+	color: #777;
+	font-weight: bold;
+	position: absolute;
+	left: 10px;
+}
+.m-list-date__title {
+	position: relative;
+	display: block;
+	margin-left: 12em;
+}
+
+
+
+
+// List-icon
+//
+// ・色々なアイコンを設定<br>
 // ・単体で完結させる
 //
 // .is-check - チェックマーク
@@ -26,8 +89,7 @@
 //   <li>リスト</li>
 // </ul>
 //
-// Styleguide: 9.1
-
+// Styleguide: 9.2
 .m-list-icon {
 	list-style: none;
 	margin: 0;
@@ -64,21 +126,20 @@
 
 
 
-// List-2
+// List-simple
 //
 // ・シンプルなリスト<br>
 // ・単体で完結させる
 //
 // Markup:
-// <ul class="m-list-2">
+// <ul class="m-list-simple">
 //   <li>リスト</li>
 //   <li>リスト</li>
 //   <li>リスト</li>
 // </ul>
 //
-// Styleguide: 9.2
-
-.m-list-2 {
+// Styleguide: 9.3
+.m-list-simple {
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -96,21 +157,20 @@
 
 
 
-// List-3
+// List-stripe
 //
 // ・シンプルなしましまリスト<br>
 // ・単体で完結させる
 //
 // Markup:
-// <ul class="m-list-3">
+// <ul class="m-list-stripe {{[modifier_class]}}">
 //   <li>リスト</li>
 //   <li>リスト</li>
 //   <li>リスト</li>
 // </ul>
 //
-// Styleguide: 9.3
-
-.m-list-3 {
+// Styleguide: 9.4
+.m-list-stripe {
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -119,6 +179,49 @@
 		position: relative;
 		&:nth-child(even) {
 			background-color: $g_gray-light;
+		}
+	}
+}
+
+
+
+// List-plain
+//
+// ・装飾の無い、余白だけのリスト<br>
+// ・modifierで余白を調整
+//
+// .has-small - 余白小さい
+// .has-middle - 余白中
+// .has-large - 余白大
+//
+// Markup:
+// <ul class="m-list-plain">
+//   <li>リスト</li>
+//   <li>リスト</li>
+//   <li>リスト</li>
+// </ul>
+//
+// Styleguide: 9.4
+.m-list-plain {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	li + li {
+		margin-top: 10px;
+	}
+	&.has-small {
+		li + li {
+			margin-top: 3px;
+		}
+	}
+	&.has-middle {
+		li + li {
+			margin-top: 20px;
+		}
+	}
+	&.has-large {
+		li + li {
+			margin-top: 30px;
 		}
 	}
 }
