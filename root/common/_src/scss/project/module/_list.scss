@@ -46,8 +46,6 @@
 	// common
 	ul {
 		margin: 0 10px;
-		padding: 0;
-		list-style-type: none;
 	}
 	li {
 		position: relative;
@@ -91,9 +89,6 @@
 //
 // Styleguide: 9.2
 .m-list-icon {
-	list-style: none;
-	margin: 0;
-	padding: 0;
 	> li {
 		position: relative;
 		&:before {
@@ -102,11 +97,6 @@
 		+ li {
 			margin-top: 10px;
 		}
-	}
-	ul {
-		list-style: none;
-		margin: 0;
-		padding: 0;
 	}
 	&.is-check {
 		> li {
@@ -140,9 +130,6 @@
 //
 // Styleguide: 9.3
 .m-list-simple {
-	list-style: none;
-	margin: 0;
-	padding: 0;
 	> li {
 		padding-bottom: 10px;
 		position: relative;
@@ -174,9 +161,6 @@
 // Styleguide: 9.4
 .m-list-stripe {
 	border: 1px solid $g_gray-normal;
-	list-style: none;
-	margin: 0;
-	padding: 0;
 	> li {
 		padding-bottom: 10px;
 		position: relative;
@@ -209,9 +193,6 @@
 //
 // Styleguide: 9.4
 .m-list-plain {
-	list-style: none;
-	margin: 0;
-	padding: 0;
 	li + li {
 		margin-top: 10px;
 	}
@@ -231,6 +212,9 @@
 		}
 	}
 }
+
+
+
 
 
 

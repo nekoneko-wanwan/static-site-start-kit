@@ -18,22 +18,27 @@ body {
 // block要素
 h1, h2, h3, h4, h5 {
 	font-weight: bold;
-	margin: 0 0 20px 0;
+	margin: 0;
 }
 h1 {
 	font-size: 130%;
+	margin-bottom: 30px;
 }
 h2 {
 	font-size: 120%;
+	margin-bottom: 30px;
 }
 h3 {
 	font-size: 110%;
+	margin-bottom: 20px;
 }
 h4 {
 	font-size: 100%;
+	margin-bottom: 20px;
 }
 h5 {
 	font-size: 100%;
+	margin-bottom: 20px;
 }
 p {
 	margin: 0;
@@ -46,7 +51,25 @@ table {
 		vertical-align: top;
 	}
 }
-
+ul, ol, dl, dt, dd {
+	padding: 0;
+	margin: 0;
+}
+dt {
+	font-weight: bold;
+}
+dd {
+	margin-top: 10px;
+	& + dt {
+		margin-top: 30px;
+	}
+}
+ul {
+	list-style: none;
+}
+ol {
+	padding-left: 2em;
+}
 
 // inline要素
 strong, b {
