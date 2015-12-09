@@ -14,23 +14,26 @@
 //
 // ・articleの中で使用することを想定（ただしモディフィアを渡すことで大外の余白を消すことも可能）<br>
 // ・article自体に内余白が付く場合は、調整<br>
-// ・セクションの上下間にはデフォルトである程度の余白を設けているが、Modifierを渡すことで調整可能<br>
-// ・.is-no-gutterを渡すことで左右の余白が削除される
+// ・セクションの上にはデフォルトである程度の余白を設けているが、Modifierを渡すことで調整可能<br>
+// ・.is-no-gutterを渡すことで左右の余白が削除される<br>
+// ・modifierが多くなる場合は別モジュールを作成する
 // 
 // - @block   : m-section
 // - @element : m-section__body
 // - @modifier: m-section.is-small
+// - @modifier: m-section.is-middle
 // - @modifier: m-section.is-large
 // - @modifier: m-section.is-no-gutter
 // - @modifier: m-section__body.is-no-gutter
 // 
 // .is-small - 余白小
+// .is-middle - 余白小
 // .is-large - 余白大
 //
 // Markup:
 // <article>
 //   <h1>大見出し</h1>
-//   <section class="m-section {{[modifier_class]}}" style="background-color: #ccc;">
+//   <section class="m-section" style="background-color: #ccc;">
 //     <h2>デフォルト</h2>
 //     <div class="m-section__body">
 //       <p>セクション本文</p>
@@ -82,17 +85,21 @@
 //
 // Styleguide: 1.1
 .m-section {
-	margin-bottom: 60px;
+	margin-top: 30px;
 	padding-left: 20px;
 	padding-right: 20px;
+	// 順番は変えないこと
+	& + & {
+		margin-top: 60px;
+	}
 	&.is-small {
-		margin-bottom: 30px;
+		margin-top: 10px;
+	}
+	&.is-middle {
+		margin-top: 30px;
 	}
 	&.is-large {
-		margin-bottom: 100px;
-	}
-	&:last-child {
-		margin-bottom: 0;
+		margin-top: 100px;
 	}
 	&.is-no-gutter {
 		padding-left: 0;
@@ -107,3 +114,57 @@
 		margin-right: 0;
 	}
 }
+
+
+
+// Section-min
+//
+// ・上下の余白のみを指定したシンプルなsection<br>
+// ・sectionのsectionなど階層の深いところでの仕様を想定<br>
+// ・セクションの上にはデフォルトである程度の余白を設けているが、Modifierを渡すことで調整可能（最後の要素には渡す必要はない）<br>
+// 
+// - @block   : m-section-min
+// - @modifier: m-section-min.is-small
+// - @modifier: m-section-min.is-middle
+// - @modifier: m-section-min.is-large
+//
+// .is-small - 余白小
+// .is-middle - 余白小
+// .is-large - 余白大
+//
+// Markup:
+//   <section class="m-section-min" style="background-color: #ccc;">
+//     <h3>見出し1</h3>
+//     <p>セクション本文1</p>
+//     <section class="m-section-min" style="background-color: #ccc;">
+//       <h3>見出し2</h3>
+//       <p>セクション本文2</p>
+//     </section>
+//   </section>
+//   <section class="m-section-min {{[modifier_class]}}" style="background-color: #ccc;">
+//     <h3>見出し1</h3>
+//     <p>セクション本文1</p>
+//     <section class="m-section-min" style="background-color: #ccc;">
+//       <h3>見出し2</h3>
+//       <p>セクション本文2</p>
+//     </section>
+//   </section>
+//
+// Styleguide: 1.2
+.m-section-min {
+	margin-top: 30px;
+	// 順番は変えないこと
+	& + & {
+		margin-top: 30px;
+	}
+	&.is-small {
+		margin-top: 10px;
+	}
+	&.is-middle {
+		margin-top: 30px;
+	}
+	&.is-large {
+		margin-top: 100px;
+	}
+}
+

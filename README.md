@@ -76,6 +76,7 @@ $ gulp guide
 - [csscombをオンライン上で生成する](http://csscomb.com/config)
 - [modernizrのカスタマイズ](https://modernizr.com/)
 - [ネーミングツール](https://codic.jp/)
+- [cssの優先度を確認する](http://specificity.keegan.st/)
 
 
 
