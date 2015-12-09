@@ -49,7 +49,7 @@
 //-------------------------------------------
 @mixin my_create-grid-module(
 	$col-pc: 2, // PCのカラム数
-	$col-sp: 1, // スマホのカラム数
+	$col-sp: null, // スマホのカラム数
 	$gutter: 10px, // 初期の余白
 	$modifiers: null // Modifiersのクラスと余白の連想配列
 ) {
@@ -73,24 +73,28 @@
 		}
 
 		// media
-		@include my_media-query-sp {
-			width: percentage(1/$col-sp);
-			&:nth-child(#{$col-sp}n + 1) {
-				clear: left;
+		@if ($col-sp != null) {
+			@include my_media-query-sp {
+				width: percentage(1/$col-sp);
+				&:nth-child(#{$col-sp}n + 1) {
+					clear: left;
+				}
 			}
 		}
 	}
 
 	// modifier
-	$that: &;
-	@each $class, $val in $modifiers {
-		&#{$class} {
-			#{$that}__outer {
-				margin-right: -$val;
-			}
-			#{$that}__inner {
-				padding-right: $val;
-				padding-bottom:  $val;
+	@if ($modifiers != null) {
+		$that: &;
+		@each $class, $val in $modifiers {
+			&#{$class} {
+				#{$that}__outer {
+					margin-right: -$val;
+				}
+				#{$that}__inner {
+					padding-right: $val;
+					padding-bottom:  $val;
+				}
 			}
 		}
 	}
