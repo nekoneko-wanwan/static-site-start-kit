@@ -12,26 +12,25 @@
 // Styleguide: 10
 
 
-// Link-1
+// Link-icon-before
 //
-// - 色々なアイコンを設定
+// - 色々なアイコンを左側に設定<br>
 // - 単体で完結させる
 //
 // .is-external - 外部リンク
 // .is-pdf - pdf
-// .is-home - ホーム
 // .is-image - 画像
 // .is-zoom - ズームアップ
 //
 // Markup:
-// <a href="#" class="m-link-icon {{[modifier_class]}}">リンク</a>
+// <a href="#" class="m-link-icon-before {{[modifier_class]}}">リンク</a>
 //
 // Styleguide: 10.1
 
-.m-link-icon {
+.m-link-icon-before {
 	&:before {
 		font-size: 90%;
-		@include my_bg-font-awesome("f105");
+		@include my_bg-font-awesome("f105", $margin: 0 7px 0 0);
 	}
 	&.is-external {
 		&:before {
@@ -41,11 +40,6 @@
 	&.is-pdf {
 		&:before {
 			content: "\f1c1";
-		}
-	}
-	&.is-home {
-		&:before {
-			content: "\f015";
 		}
 	}
 	&.is-image {
@@ -60,4 +54,46 @@
 	}
 }
 
+
+// Link-icon-after
+//
+// - 色々なアイコンを右側に設定<br>
+// - 単体で完結させる
+//
+// .is-external - 外部リンク
+// .is-pdf - pdf
+// .is-image - 画像
+// .is-zoom - ズームアップ
+//
+// Markup:
+// <a href="#" class="m-link-icon-after {{[modifier_class]}}">リンク</a>
+//
+// Styleguide: 10.2
+
+.m-link-icon-after {
+	&:after {
+		font-size: 90%;
+		@include my_bg-font-awesome("f105", $margin: 0 0 0 7px);
+	}
+	&.is-external {
+		&:after {
+			content: "\f08e";
+		}
+	}
+	&.is-pdf {
+		&:after {
+			content: "\f1c1";
+		}
+	}
+	&.is-image {
+		&:after {
+			content: "\f1c1";
+		}
+	}
+	&.is-zoom {
+		&:after {
+			content: "\f00e";
+		}
+	}
+}
 
