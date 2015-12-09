@@ -12,18 +12,15 @@
 
 // Section
 //
-// ・articleの中で使用することを想定（ただしモディフィアを渡すことで大外の余白を消すことも可能）<br>
-// ・article自体に内余白が付く場合は、調整<br>
-// ・セクションの上にはデフォルトである程度の余白を設けているが、Modifierを渡すことで調整可能<br>
-// ・.is-no-gutterを渡すことで左右の余白が削除される<br>
-// ・modifierが多くなる場合は別モジュールを作成する
+// ・セクションの上にはデフォルトである程度の余白を設けているが、Modifierを渡すことで調整が可能<br>
+// ・elementとして内側に余白を設ける（modifierを渡すことで余白は削除可能）<br>
+// ・見出しには余白は設けない（設ける場合は別途elementを用意するか、指定のところでコメントアウトしているpaddingを有効に）
 // 
 // - @block   : m-section
 // - @element : m-section__body
 // - @modifier: m-section.is-small
 // - @modifier: m-section.is-middle
 // - @modifier: m-section.is-large
-// - @modifier: m-section.is-no-gutter
 // - @modifier: m-section__body.is-no-gutter
 // 
 // .is-small - 余白小
@@ -32,30 +29,12 @@
 //
 // Markup:
 // <article>
-//   <h1>大見出し</h1>
+//   <h1>article 大見出し</h1>
 //   <section class="m-section" style="background-color: #ccc;">
 //     <h2>デフォルト</h2>
 //     <div class="m-section__body">
 //       <p>セクション本文</p>
 //       <section class="m-section" style="background-color: #f7f7f7;">
-//         <h3>見出し</h3>
-//         <div class="m-section__body">
-//           <p>セクション本文</p>
-//         </div>
-//       </section>
-//     </div>
-//   </section>
-//   <section class="m-section is-no-gutter {{[modifier_class]}}" style="background-color: #ccc;">
-//     <h2>blockにis-no-gutter を追加</h2>
-//     <div class="m-section__body">
-//       <p>セクション本文</p>
-//       <section class="m-section is-no-gutter" style="background-color: #f7f7f7;">
-//         <h3>見出し</h3>
-//         <div class="m-section__body">
-//           <p>セクション本文</p>
-//         </div>
-//       </section>
-//       <section class="m-section is-no-gutter" style="background-color: #f7f7f7;">
 //         <h3>見出し</h3>
 //         <div class="m-section__body">
 //           <p>セクション本文</p>
@@ -86,8 +65,8 @@
 // Styleguide: 1.1
 .m-section {
 	margin-top: 30px;
-	padding-left: 20px;
-	padding-right: 20px;
+	// padding-left: 20px;
+	// padding-right: 20px;
 	// 順番は変えないこと
 	& + & {
 		margin-top: 60px;
@@ -101,10 +80,10 @@
 	&.is-large {
 		margin-top: 100px;
 	}
-	&.is-no-gutter {
-		padding-left: 0;
-		padding-right: 0;
-	}
+	// &.is-no-gutter {
+	// 	padding-left: 0;
+	// 	padding-right: 0;
+	// }
 }
 .m-section__body {
 	margin-left: 20px;
@@ -119,9 +98,8 @@
 
 // Section-min
 //
-// ・上下の余白のみを指定したシンプルなsection<br>
-// ・sectionのsectionなど階層の深いところでの仕様を想定<br>
-// ・セクションの上にはデフォルトである程度の余白を設けているが、Modifierを渡すことで調整可能（最後の要素には渡す必要はない）<br>
+// ・セクションの上にはデフォルトである程度の余白を設けているが、Modifierを渡すことで調整が可能<br>
+// ・m-sectionとは違い、内側余白を設定するelementは用意していない
 // 
 // - @block   : m-section-min
 // - @modifier: m-section-min.is-small
