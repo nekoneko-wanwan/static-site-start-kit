@@ -21,11 +21,13 @@
 // - @modifier: m-section.is-small
 // - @modifier: m-section.is-middle
 // - @modifier: m-section.is-large
+// - @modifier: m-section.is-xlarge
 // - @modifier: m-section__body.is-no-gutter
 // 
 // .is-small - 余白小
 // .is-middle - 余白小
 // .is-large - 余白大
+// .is-xlarge - 余白特大
 //
 // Markup:
 // <article>
@@ -78,8 +80,12 @@
 		margin-top: 30px;
 	}
 	&.is-large {
+		margin-top: 60px;
+	}
+	&.is-xlarge {
 		margin-top: 100px;
 	}
+
 	// &.is-no-gutter {
 	// 	padding-left: 0;
 	// 	padding-right: 0;
@@ -105,10 +111,12 @@
 // - @modifier: m-section-min.is-small
 // - @modifier: m-section-min.is-middle
 // - @modifier: m-section-min.is-large
+// - @modifier: m-section-min.is-xlarge
 //
 // .is-small - 余白小
 // .is-middle - 余白小
 // .is-large - 余白大
+// .is-xlarge - 余白特大
 //
 // Markup:
 //   <section class="m-section-min" style="background-color: #ccc;">
@@ -142,6 +150,9 @@
 		margin-top: 30px;
 	}
 	&.is-large {
+		margin-top: 60px;
+	}
+	&.is-xlarge {
 		margin-top: 100px;
 	}
 }
