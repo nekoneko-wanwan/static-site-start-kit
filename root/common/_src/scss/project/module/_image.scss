@@ -7,24 +7,24 @@
 // 
 // ・画像に使用するスタイル<br>
 // ・imgタグのみだと表現に限界があるため、一つ要素で囲む<br>
+// ・is-hoverでマウスオーバー時のアクションを設定<br>
 // ・class名はプロジェクトによって柔軟に変更すること
 //
 // Styleguide: 11
 
-// Image-1
+// Image-glow
 //
 // - 画像の周りに透過縁取り
 //
-// :hover - マウスオーバーで縁取りを消す
+// .is-hover - マウスオーバーで縁取りを消す
 //
 // Markup:
-// <div class="m-image-1 {{[modifier_class]}}">
+// <div class="m-image-glow {{[modifier_class]}}">
 //   <img src="http://placehold.jp/150x150.png" alt="" />
 // </div>
 //
-// Styleguide: 11.image-1
-
-.m-image-1 {
+// Styleguide: 11.image-glow
+.m-image-glow {
 	position: relative;
 	display: inline-block;
 	&:before {
@@ -38,27 +38,26 @@
 		height: 100%;
 		box-shadow: inset 0 0 0px 7px rgba(255, 255, 255, .6);
 	}
-	&:hover:before {
+	&.is-hover:hover:before {
 		box-shadow: none;
 	}
 }
 
 
 
-// Image-2
+// Image-shadow
 //
 // - 画像にトンネル効果
 //
-// :hover - マウスオーバーでトンネルを消す
+// .is-hover - マウスオーバーでトンネルを消す
 //
 // Markup:
-// <div class="m-image-2 {{[modifier_class]}}">
+// <div class="m-image-shadow {{[modifier_class]}}">
 //   <img src="http://placehold.jp/150x150.png" alt="" />
 // </div>
 //
-// Styleguide: 11.image-2
-
-.m-image-2 {
+// Styleguide: 11.image-shadow
+.m-image-shadow {
 	position: relative;
 	display: inline-block;
 	&:before {
@@ -72,33 +71,32 @@
 		height: 100%;
 		box-shadow: inset 0 0 60px 0 rgba(100, 100, 100, 0.6);
 	}
-	&:hover:before {
+	&.is-hover:hover:before {
 		box-shadow: none;
 	}
 }
 
 
 
-// Image-3
+// Image-zoom
 //
 // - ズームアップ
 //
-// :hover - マウスオーバーで画像をズームアップ
+// .is-hover - マウスオーバーで画像をズームアップ
 //
 // Markup:
-// <div class="m-image-3 {{[modifier_class]}}">
+// <div class="m-image-zoom {{[modifier_class]}}">
 //   <img src="http://placehold.jp/150x150.png" alt="" />
 // </div>
 //
-// Styleguide: 11.image-3
-
-.m-image-3 {
+// Styleguide: 11.image-zoom
+.m-image-zoom {
 	display: inline-block;
 	overflow: hidden;
 	> img {
 		transition: all .3s;
 	}
-	&:hover {
+	&.is-hover:hover {
 		> img {
 			transform: scale(1.3);
 		}
@@ -107,20 +105,19 @@
 
 
 
-// Image-4
+// Image-stripe
 //
 // - ストライプボーダー
 //
-// :hover - マウスオーバーでストライプを濃く
+// .is-hover - マウスオーバーでストライプを濃く
 //
 // Markup:
-// <div class="m-image-4 {{[modifier_class]}}">
+// <div class="m-image-stripe {{[modifier_class]}}">
 //   <img src="http://placehold.jp/150x150.png" alt="" />
 // </div>
 //
-// Styleguide: 11.image-4
-
-.m-image-4 {
+// Styleguide: 11.image-stripe
+.m-image-stripe {
 	background: $g_pat-url-normal 0 0 repeat shade($g_gray-thin, 5%);
 	display: inline-block;
 	transition: all .3s;
@@ -129,10 +126,37 @@
 		box-sizing: border-box;
 		border: 2px solid #fff;
 	}
-	&:hover {
+	&.is-hover:hover {
 		background-color: shade($g_gray-thin, 20%);
 	}
 }
 
+
+
+// Image-simple
+//
+// - 白フチどりした写真のようなシンプルなスタイル
+//
+// .is-hover - マウスオーバーで回転
+//
+// Markup:
+// <div class="m-image-simple {{[modifier_class]}}">
+//   <img src="http://placehold.jp/150x150.png" alt="" />
+// </div>
+//
+// Styleguide: 11.image-simple
+.m-image-simple {
+	border: 1px solid $g_gray-light;
+	box-shadow: 0 0 3px 0 $g_gray-normal;
+	display: inline-block;
+	transition: all .3s;
+	> img {
+		box-sizing: border-box;
+		border: 7px solid #fff;
+	}
+	&.is-hover:hover {
+		transform: rotate(5deg);
+	}
+}
 
 
