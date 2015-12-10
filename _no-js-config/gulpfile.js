@@ -6,19 +6,12 @@ var $ = require('gulp-load-plugins')();
 var browserSync = require('browser-sync').create();
 var ssi         = require('browsersync-ssi');
 
-/* jsの結合を行う場合に必要 */
-var browserify  = require('browserify');
-var buffer      = require('vinyl-buffer');
-var source      = require('vinyl-source-stream');
-var glob        = require('glob');
-
 
 
 /********************************
  * path定義
  * - ROOT : ドキュメントルートのパス
  * - CSS  : コンパイルするscssと出力するディレクトリ
- * - JS   : コンパイルするjsと出力するディレクトリ
  * - WATCH: ライブリロード用の監視ファイル
  * - GUIDE: スタイルガイドを出力するディレクトリ
  ********************************/
@@ -30,8 +23,6 @@ var CSS = {
   DOC_ROOT: '/common/css/',
 };
 var JS = {
-  SRC     : ROOT + 'common/_src/js/**/*.js',
-  SRC_DIR : ROOT + 'common/_src/js/',
   DST_DIR : ROOT + 'common/js/',
   DOC_ROOT: '/common/js/'
 };
@@ -111,27 +102,9 @@ gulp.task('guide', $.shell.task([
 ));
 
 
-gulp.task('js', function(){
-  var srcFiles = glob.sync(JS.SRC);
-  return browserify({
-    entries: srcFiles
-  })
-  // エラーが出ても止めない
-  .bundle().on('error', function(err) {
-      console.log('ERROR! \n' + err.message);
-      this.emit('end');
-  })
-  .pipe(source('app.js'))  // 出力ファイル名
-  .pipe(buffer())  // uglifyする時には必須
-  // .pipe($.uglify())  // 圧縮（使用しない変数関数は出力しない。多分）
-  .pipe(gulp.dest(JS.DST_DIR));
-});
-
-
 gulp.task('watch', function() {
   var timer;
   gulp.watch(CSS.SRC, ['sass']);
-  // gulp.watch(JS.SRC,  ['js']);
 
   gulp.watch(WATCH).on('change',  function() {
     /* 連続イベントの間引き処理 */
@@ -143,17 +116,11 @@ gulp.task('watch', function() {
 });
 
 
-// 一旦jsのコンパイルは無効にしている
-// 有効にするには、wachタスクのコメントを有効化し、defaultタスクに'js'を追加する
 gulp.task('default', ['server', 'watch', 'sass']);
 
 
 /* remove */
 gulp.task('del_css', function() {
   return gulp.src([CSS.DST_DIR + '*.css'], { read: false })
-    .pipe($.rimraf({ force: true }));
-});
-gulp.task('del_js', function() {
-  return gulp.src([JS.DST_DIR + 'app.js'], { read: false })
     .pipe($.rimraf({ force: true }));
 });
