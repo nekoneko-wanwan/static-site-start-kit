@@ -162,13 +162,10 @@
 .m-list-stripe {
 	border: 1px solid $g_gray-normal;
 	> li {
-		padding-bottom: 10px;
+		padding: 10px;
 		position: relative;
 		&:nth-child(even) {
 			background-color: $g_gray-thin;
-		}
-		+ li {
-			padding-top: 10px;
 		}
 	}
 }
