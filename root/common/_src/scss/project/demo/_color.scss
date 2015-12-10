@@ -43,6 +43,7 @@
 // Project Gray Color
 //
 // Markup:
+// <div class="demo-gray-color-style thin"></div>
 // <div class="demo-gray-color-style light"></div>
 // <div class="demo-gray-color-style normal"></div>
 // <div class="demo-gray-color-style dark"></div>
@@ -52,9 +53,11 @@
 	display: inline-block;
 	width: 50px;
 	height: 50px;
+	&.thin {background-color: $g_gray-thin;}
 	&.light {background-color: $g_gray-light;}
 	&.normal {background-color: $g_gray-normal;}
 	&.dark {background-color: $g_gray-dark;}
 }
+
 
 

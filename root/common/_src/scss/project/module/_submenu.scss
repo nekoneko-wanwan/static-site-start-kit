@@ -205,7 +205,7 @@
 	display: block;
 	margin: 15px 15px 0;
 	padding: 7px 14px;
-	background-color: $g_gray-light;
+	background-color: $g_gray-thin;
 	border-left: 3px solid $g_main-color;
 }
 .m-snav-2__body {
@@ -308,7 +308,7 @@
 
 .m-snav-3 {
 	margin-bottom: 30px;
-	border: 4px solid $g_gray-light;
+	border: 4px solid $g_gray-thin;
 	box-shadow: inset 0 0 0px 1px $g_gray-normal;
 	a {
 		display: inline-block;

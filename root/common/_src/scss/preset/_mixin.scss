@@ -78,7 +78,7 @@
 //
 //-------------------------------------------
 // isReverse: trueでfrom<->toを入れ替える
-@mixin my_simple-grad($from: #fff, $to: shade($g_gray-light, 2%), $base: shade($g_gray-light, 5%), $isReverse: false) {
+@mixin my_simple-grad($from: #fff, $to: shade($g_gray-thin, 2%), $base: shade($g_gray-thin, 5%), $isReverse: false) {
 	background-color: $base;
 	@if ($isReverse) {
 		background: -webkit-linear-gradient(#{$to} 0%,#{$from} 100%);

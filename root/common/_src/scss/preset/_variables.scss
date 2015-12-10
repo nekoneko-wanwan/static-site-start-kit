@@ -44,7 +44,13 @@ $g_base-color  : #ff6685 !default;
 $g_accent-color: #ff9900 !default;
 $g_link-color: #0074be !default;
 
-$g_gray-light : #f7f7f7 !default;
+$g_main-color-light: null !default;
+$g_main-color-thin: null !default;
+$g_sub-color-light: null !default;
+$g_sub-color-thin : null !default;
+
+$g_gray-thin  : #f7f7f7 !default;
+$g_gray-light : #eee !default;
 $g_gray-normal: #ccc !default;
 $g_gray-dark  : #aaa !default;
 

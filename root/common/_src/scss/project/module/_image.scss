@@ -121,7 +121,7 @@
 // Styleguide: 11.4
 
 .m-image-4 {
-	background: $g_pat-url-normal 0 0 repeat shade($g_gray-light, 5%);
+	background: $g_pat-url-normal 0 0 repeat shade($g_gray-thin, 5%);
 	display: inline-block;
 	transition: all .3s;
 	padding: 8px;
@@ -130,7 +130,7 @@
 		border: 2px solid #fff;
 	}
 	&:hover {
-		background-color: shade($g_gray-light, 20%);
+		background-color: shade($g_gray-thin, 20%);
 	}
 }
 

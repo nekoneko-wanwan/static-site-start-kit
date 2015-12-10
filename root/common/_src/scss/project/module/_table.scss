@@ -52,7 +52,7 @@
 		line-height: 1.5;
 	}
 	th {
-		background-color: $g_gray-light;
+		background-color: $g_gray-thin;
 		font-weight: bold;
 		text-align: left;
 		padding-left: 15px;
@@ -185,7 +185,7 @@
 	border-collapse: collapse;
 	border: 1px solid $g_gray-normal;
 	width: 100%;
-	box-shadow: 0 0 0 5px $g_gray-light;
+	box-shadow: 0 0 0 5px $g_gray-thin;
 	th, td {
 		border: 1px dashed $g_gray-normal;
 		border-right: none;
@@ -194,7 +194,7 @@
 		vertical-align: text-bottom;
 	}
 	th {
-		background-color: $g_gray-light;
+		background-color: $g_gray-thin;
 		text-align: left;
 		padding-left: 15px;
 		padding-right: 15px;
