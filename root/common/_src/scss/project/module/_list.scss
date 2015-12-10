@@ -41,7 +41,7 @@
 //   </ul>
 // </div>
 //
-// Styleguide: 9.1
+// Styleguide: 9.list-date
 .m-list-date {
 	// common
 	ul {
@@ -87,7 +87,7 @@
 //   <li>リスト</li>
 // </ul>
 //
-// Styleguide: 9.2
+// Styleguide: 9.list-icon
 .m-list-icon {
 	> li {
 		position: relative;
@@ -128,7 +128,7 @@
 //   <li>リスト</li>
 // </ul>
 //
-// Styleguide: 9.3
+// Styleguide: 9.list-simple
 .m-list-simple {
 	> li {
 		padding-bottom: 10px;
@@ -158,7 +158,7 @@
 //   <li>リスト</li>
 // </ul>
 //
-// Styleguide: 9.4
+// Styleguide: 9.list-stripe
 .m-list-stripe {
 	border: 1px solid $g_gray-normal;
 	> li {
@@ -191,7 +191,7 @@
 //   <li>リスト</li>
 // </ul>
 //
-// Styleguide: 9.4
+// Styleguide: 9.list-plain
 .m-list-plain {
 	li + li {
 		margin-top: 10px;

@@ -14,42 +14,42 @@
 
 // Grid Neat
 //
-// Neatを元にしたグリッドモジュール
+// Neatを元にしたグリッドモジュールのサンプル
 // 
 // ・ローカル変数によってカラム数を変更する<br>
 // ・高さが異なるとブラウザによっては崩れるので注意する<br>
 // ・自動でマージンが約1emが付与されるので、余白なしや細かい調整が必要なものは別モジュールを使う<br>
 // ・あまりModifierでレイアウトは変えないと思うので、とりあえずそのまま
 //
-// - @block   : m-grid-1
-// - @element : m-grid-1__inner
+// - @block   : m-sample-grid-neat
+// - @element : m-sample-grid-neat__inner
 //
 // Markup:
-// <div class="m-grid-1">
-//   <div class="m-grid-1__inner">
+// <div class="m-sample-grid-neat">
+//   <div class="m-sample-grid-neat__inner">
 //     <div style="background: #ccc;">テキストテキスト<br>テキストテキストテキスト</div>
 //   </div>
-//   <div class="m-grid-1__inner">
+//   <div class="m-sample-grid-neat__inner">
 //     <div style="background: #ccc;">テキストテキストテキストテキストテキスト</div>
 //   </div>
-//   <div class="m-grid-1__inner">
+//   <div class="m-sample-grid-neat__inner">
 //      <div style="background: #ccc;">テキストテキストテキストテキストテキスト</div>
 //   </div>
-//   <div class="m-grid-1__inner">
+//   <div class="m-sample-grid-neat__inner">
 //      <div style="background: #ccc;">テキストテキストテキスト<br>テキストテキスト</div>
 //   </div>
-//   <div class="m-grid-1__inner">
+//   <div class="m-sample-grid-neat__inner">
 //     <div style="background: #ccc;">テキストテキストテキストテキストテキスト</div>
 //   </div>
-//   <div class="m-grid-1__inner">
+//   <div class="m-sample-grid-neat__inner">
 //     <div style="background: #ccc;">テキストテキストテキストテキストテキスト</div>
 //   </div>
 // </div>
 // 
-// Styleguide: 3.1
+// Styleguide: 3.sample-grid-neat
 
 // http://neat.bourbon.io/examples/ を参考に作成する
-.m-grid-1 {
+.m-sample-grid-neat {
 	$col-pc: 2;
 	$col-sp: 4;
 
@@ -71,50 +71,50 @@
 
 
 
-// Grid-mixin-1
+// Grid-org
 // 
-// 独自のmixinを元にしたモジュール
+// 独自のmixinを元にしたモジュールのサンプル
 //
 // ・高さが異なるとブラウザによっては崩れるので注意する<br>
 // ・渡す引数によってカラム数やデフォルトの余白、modifierのclass名を調整する<br>
 // ・詳細はmixin内にコメントがあるのでそれを参考に
 // 
-// - @block   : m-grid-2
-// - @element : m-grid-2__outer
-// - @element : m-grid-2__inner
-// - @modifier: m-grid-2.has-gutter-xxx
+// - @block   : m-sample-grid-org
+// - @element : m-sample-grid-org__outer
+// - @element : m-sample-grid-org__inner
+// - @modifier: m-sample-grid-org.has-gutter-xxx
 //
-// .has-gutter_none - 余白無し
-// .has-gutter_small - 余白小
-// .has-gutter_middle - 余白中
-// .has-gutter_large - 余白大
+// .has-gutter-none - 余白無し
+// .has-gutter-small - 余白小
+// .has-gutter-middle - 余白中
+// .has-gutter-large - 余白大
 // 
 // Markup:
-// <div class="m-grid-2 {{[modifier_class]}}">
-//   <div class="m-grid-2__outer">
-//     <div class="m-grid-2__inner">
+// <div class="m-sample-grid-org {{[modifier_class]}}">
+//   <div class="m-sample-grid-org__outer">
+//     <div class="m-sample-grid-org__inner">
 //       <div style="background: #ccc;">テキストテキスト</div>
 //     </div>
-//     <div class="m-grid-2__inner">
+//     <div class="m-sample-grid-org__inner">
 //       <div style="background: #ccc;">テキストテキスト</div>
 //     </div>
-//     <div class="m-grid-2__inner">
+//     <div class="m-sample-grid-org__inner">
 //        <div style="background: #ccc;">テキストテキスト</div>
 //     </div>
-//     <div class="m-grid-2__inner">
+//     <div class="m-sample-grid-org__inner">
 //        <div style="background: #ccc;">テキストテキスト</div>
 //     </div>
-//     <div class="m-grid-2__inner">
+//     <div class="m-sample-grid-org__inner">
 //       <div style="background: #ccc;">テキストテキスト</div>
 //     </div>
-//     <div class="m-grid-2__inner">
+//     <div class="m-sample-grid-org__inner">
 //       <div style="background: #ccc;">テキストテキスト</div>
 //     </div>
 //   </div>
 // </div>
 //
-// Styleguide: 3.2
-.m-grid-2 {
+// Styleguide: 3.sample-grid-org
+.m-sample-grid-org {
 	$col-pc: 3;
 	$col-sp: 1;
 	$gutter: 10px;
@@ -132,38 +132,38 @@
 
 // Card flex
 // 
-// 独自のmixinを元にしたカード型モジュール
+// 独自のmixinを元にしたカード型モジュールのサンプル
 //
 // ・flexを使用しているので、対応ブラウザに注意する<br>
 // ・渡す引数によってカラム数や余白を調整する<br>
 // ・詳細はmixin内にコメントがあるのでそれを参考に
 //
-// - @block   : m-card
-// - @element : m-card__inner
-// - @modifier: m-card__inner.is-width-2
-// - @modifier: m-card__inner.is-width-3
+// - @block   : m-sample-grid-card
+// - @element : m-sample-grid-card__inner
+// - @modifier: m-sample-grid-card__inner.is-width-2
+// - @modifier: m-sample-grid-card__inner.is-width-3
 //
 // .is-width-2 - カードの横幅を2倍に
 // .is-width-3 - カードの横幅を3倍に
 //
 // Markup:
-// <div class="m-card">
-//   <div class="m-card__inner {{[modifier_class]}}">
+// <div class="m-sample-grid-card">
+//   <div class="m-sample-grid-card__inner {{[modifier_class]}}">
 //     <div style="background: #ccc;">テキスト<br>テキスト<br>テキスト</div>
 //   </div>
-//   <div class="m-card__inner">
+//   <div class="m-sample-grid-card__inner">
 //     <div style="background: #ccc;">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</div>
 //   </div>
-//   <div class="m-card__inner">
+//   <div class="m-sample-grid-card__inner">
 //     <div style="background: #ccc;">テキスト</div>
 //   </div>
-//   <div class="m-card__inner">
+//   <div class="m-sample-grid-card__inner">
 //     <div style="background: #ccc;">テキスト<br>テキスト<br>テキスト</div>
 //   </div>
 // </div>
 //
-// Styleguide: 3.3
-.m-card {
+// Styleguide: 3.sample-grid-card
+.m-sample-grid-card {
 	@include my_create-card-module(
 		$col-width: 29%,
 		$margin: 2%,
