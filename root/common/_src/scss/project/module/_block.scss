@@ -15,27 +15,70 @@
 
 // Block-1
 //
-// 枠線にストライプを用いた明るいブロック
+// ・左右に装飾用のあしらいを追加したブロック<br>
+// ・スタイルガイドのサンプルだとalpha0.5のbackgroundが上に乗っているため実際よりも薄く見えることに注意
 //
 // - @block   : m-block-1
-// - @element : m-block-1__inner
-// - @modifier: m-block-1.is-normal
-// - @modifier: m-block-1.is-bold
-// - @modifier: m-block-1.is-gray
-// 
-// .is-normal - 線の太さ
-// .is-bold - 線の太さ
-// .is-gray - 色を消す
-// 
+//
 // Markup:
-// <div class="m-block-1 {{[modifier_class]}}">
-//   <div class="m-block-1__inner">
-//     <p>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト</p>
-//   </div>
+// <div class="m-block-1">
+//   <p>説明説明</p>
 // </div>
 //
 // Styleguide: 5.1
 .m-block-1 {
+	border: 1px solid $g_gray-normal;
+	background-color: rgba(255,255,255, 0.8);
+	font-size: 110%;
+	padding: 30px;
+	position: relative;
+	margin: 40px 10px;
+	&::before, &::after {
+		content: '';
+		display: block;
+		position: absolute;
+		height: 20px;
+		width: 20px;
+		z-index: -1;
+	}
+	&::before {
+		background-color: $g_main-color;
+		left: -10px;
+		top: -10px;
+	}
+	&::after {
+		background-color: $g_sub-color;
+		right: -10px;
+		bottom: -10px;
+	}
+}
+
+
+// Block-2
+//
+// 枠線にストライプを用いた明るいブロック
+//
+// - @block   : m-block-2
+// - @element : m-block-2__inner
+// - @modifier: m-block-2.is-normal
+// - @modifier: m-block-2.is-bold
+// - @modifier: m-block-2.is-gray
+// - @modifier: m-block-2.is-sub
+// 
+// .is-normal - 線の太さ
+// .is-bold - 線の太さ
+// .is-gray - 色を消す
+// .is-sub - サブ色を使う
+// 
+// Markup:
+// <div class="m-block-2 {{[modifier_class]}}">
+//   <div class="m-block-2__inner">
+//     <p>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト</p>
+//   </div>
+// </div>
+//
+// Styleguide: 5.2
+.m-block-2 {
 	background: $g_pat-url-thin 0 0 repeat $g_main-color;
 	padding: 5px;
 	&.is-normal {
@@ -47,50 +90,27 @@
 	&.is-gray {
 		background-color: $g_gray-normal;
 	}
+	&.is-sub {
+		background-color: $g_sub-color;
+	}
 }
-.m-block-1__inner {
+.m-block-2__inner {
 	background-color: #fff;
 	padding: 20px;
 }
 
 
 
-// Block-2
+// Block-3
 //
 // 薄い背景と枠を合わせたクールなブロック
 //
-// - @block   : m-block-2
-// - @modifier: m-block-2.is-gray
-//
-// .is-gray - 色を消す
-//
-// Markup:
-// <div class="m-block-2 {{[modifier_class]}}">
-//   <p>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト</p>
-// </div>
-//
-// Styleguide: 5.2
-
-.m-block-2 {
-	border: 5px solid tint($g_main-color, 90%);
-	box-shadow: inset 0 0 0 1px $g_main-color;
-	padding: 20px;
-	&.is-gray {
-		border-color: $g_gray-thin;
-		box-shadow: inset 0 0 0 1px $g_gray-normal;
-	}
-}
-
-
-
-// Block-3
-//
-// 二重枠をあしらったブロック
-//
 // - @block   : m-block-3
 // - @modifier: m-block-3.is-gray
+// - @modifier: m-block-3.is-sub
 //
 // .is-gray - 色を消す
+// .is-sub - サブ色を使う
 //
 // Markup:
 // <div class="m-block-3 {{[modifier_class]}}">
@@ -98,12 +118,17 @@
 // </div>
 //
 // Styleguide: 5.3
-
 .m-block-3 {
-	border: 3px double $g_main-color;
+	border: 5px solid $g_main-color-thin;
+	box-shadow: inset 0 0 0 1px $g_main-color;
 	padding: 20px;
 	&.is-gray {
-		border-color: $g_gray-normal;
+		border-color: $g_gray-thin;
+		box-shadow: inset 0 0 0 1px $g_gray-normal;
+	}
+	&.is-sub {
+		border-color: $g_sub-color-thin;
+		box-shadow: inset 0 0 0 1px $g_sub-color;
 	}
 }
 
@@ -111,12 +136,14 @@
 
 // Block-4
 //
-// 外側に影をつけたブロック
+// 二重枠をあしらったブロック
 //
 // - @block   : m-block-4
 // - @modifier: m-block-4.is-gray
+// - @modifier: m-block-4.is-sub
 //
 // .is-gray - 色を消す
+// .is-sub - サブ色を使う
 //
 // Markup:
 // <div class="m-block-4 {{[modifier_class]}}">
@@ -125,13 +152,134 @@
 //
 // Styleguide: 5.4
 .m-block-4 {
-	border: 1px solid $g_gray-normal;
+	border: 3px double $g_main-color;
 	padding: 20px;
-	box-shadow: 0 0px 3px 0 $g_gray-normal, inset 0 0 0 3px $g_gray-thin;
 	&.is-gray {
 		border-color: $g_gray-normal;
 	}
+	&.is-sub {
+		border-color: $g_sub-color;
+	}
 }
 
+
+
+// Block-5
+//
+// 外側に影をつけたブロック
+//
+// - @block   : m-block-5
+//
+// Markup:
+// <div class="m-block-5 {{[modifier_class]}}">
+//   <p>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト</p>
+// </div>
+//
+// Styleguide: 5.5
+.m-block-5 {
+	border: 1px solid $g_gray-normal;
+	padding: 20px;
+	box-shadow: 0 0px 3px 0 $g_gray-normal, inset 0 0 0 3px $g_gray-thin;
+}
+
+
+
+// Block-group-1
+//
+// ・見出しと本文を組み合わせたブロック<br>
+// ・主にsectionやdlなどで使用する<br>
+// ・外側の余白はdlやsectionの方で制御
+//
+// - @block   : m-block-group-1
+// - @element : m-block-group-1__head
+// - @element : m-block-group-1__body
+// - @modifier: m-block-group-1.has-gray
+//
+// .has-gray - 色を消す
+//
+// Markup:
+// <dl class="m-block-group-1 {{[modifier_class]}}">
+//   <dt class="m-block-group-1__head">見出し</dt>
+//   <dd class="m-block-group-1__body">本文</dd>
+// </dl>
+//
+// Styleguide: 5.6
+.m-block-group-1 {
+	$that: &;
+	&.has-gray {
+		#{$that}__head {
+			background-color: $g_gray-normal;
+			color: #333;
+		}
+		#{$that}__body {
+			border-color: $g_gray-normal;
+		}
+	}
+}
+.m-block-group-1__head {
+	background-color: $g_main-color;
+	color: #fff;
+	font-weight: bold;
+	padding: 7px 15px;
+	margin-bottom: 0;
+}
+.m-block-group-1__body {
+	margin: 0;
+	border: 2px solid $g_main-color;
+	padding: 20px;
+}
+
+
+
+// Block-group-2
+//
+// ・見出しと本文を組み合わせたブロック<br>
+// ・主にsectionやdlなどで使用する<br>
+// ・外側の余白はdlやsectionの方で制御
+//
+// - @block   : m-block-group-2
+// - @element : m-block-group-2__head
+// - @element : m-block-group-2__body
+// - @modifier: m-block-group-2.has-gray
+//
+// .has-gray - 色を消す
+//
+// Markup:
+// <dl class="m-block-group-2 {{[modifier_class]}}">
+//   <dt class="m-block-group-2__head">見出し</dt>
+//   <dd class="m-block-group-2__body">本文</dd>
+// </dl>
+//
+// Styleguide: 5.7
+.m-block-group-2 {
+	border: 2px solid $g_main-color;
+	padding: 20px;
+	$that: &;
+	&.has-gray {
+		border-color: $g_gray-normal;
+		#{$that}__head {
+			background-color: $g_gray-thin;
+			border-color: $g_gray-normal;
+			color: #333;
+		}
+		#{$that}__body {
+			border-color: $g_gray-normal;
+		}
+	}
+}
+.m-block-group-2__head {
+	background-color: $g_main-color-thin;
+	border: 1px dashed $g_main-color;
+	border-bottom: none;
+	color: $g_main-color;
+	font-weight: bold;
+	padding: 7px 15px;
+	margin-bottom: 0;
+}
+.m-block-group-2__body {
+	margin: 0;
+	border: 1px dashed $g_main-color;
+	padding: 20px;
+}
 
 
