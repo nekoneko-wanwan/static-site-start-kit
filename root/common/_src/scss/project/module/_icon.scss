@@ -1,0 +1,111 @@
+@charset "utf-8";
+//-------------------------------------------
+// アイコン
+//-------------------------------------------
+
+// Icon
+// 
+// ・基本的には<strong>font-awesome</strong>を使ったもの<br>
+// ・<strong>アイコン以外の装飾がある場合は、別途モジュール内に組み込むこと</strong><br>
+// ・専用のmixinを使っているだけなので詳細はmixin内を参照<br>
+// ・使えるアイコンはhttp://fontawesome.io/cheatsheet/ を参考（ただし最新のものは使えない可能性あり）
+//
+// Styleguide: 10
+
+// Font-awesome コンパイルのメモ
+//
+// - ・文字列にエスケープが含まれているとsassのコンパイル時に文字化けする
+// - ・（ブラウザ上は問題ないが（chromeでのみ確認）、cssファイル上で文字化け）
+// - ・font-awesomeで定義されている変数にはエスケープが含まれているので変数名をそのまま使用はできない
+// - ・そのためにエスケープを動的に追加するfunctionをかませる、および引数からはエスケープを外すことで対応とした
+// - ・sassのバージョンによっては不要になるかも
+//
+// Markup:
+//
+// Styleguide: 10.01
+
+
+
+// Icon-before
+//
+// - 色々なアイコンを左側に設定<br>
+// - 単体で完結させる
+//
+// .is-external - 外部リンク
+// .is-pdf - pdf
+// .is-image - 画像
+// .is-zoom - ズームアップ
+//
+// Markup:
+// <a href="#" class="m-icon-before {{[modifier_class]}}">リンク</a>
+//
+// Styleguide: 10.icon-before
+.m-icon-before {
+	&:before {
+		font-size: 90%;
+		@include my_bg-font-awesome("f105", $margin: 0 7px 0 0);
+	}
+	&.is-external {
+		&:before {
+			content: "\f08e";
+		}
+	}
+	&.is-pdf {
+		&:before {
+			content: "\f1c1";
+		}
+	}
+	&.is-image {
+		&:before {
+			content: "\f1c1";
+		}
+	}
+	&.is-zoom {
+		&:before {
+			content: "\f00e";
+		}
+	}
+}
+
+
+// Icon-after
+//
+// - 色々なアイコンを右側に設定<br>
+// - 単体で完結させる
+//
+// .is-external - 外部リンク
+// .is-pdf - pdf
+// .is-image - 画像
+// .is-zoom - ズームアップ
+//
+// Markup:
+// <a href="#" class="m-icon-after {{[modifier_class]}}">リンク</a>
+//
+// Styleguide: 10.icon-after
+.m-icon-after {
+	&:after {
+		font-size: 90%;
+		@include my_bg-font-awesome("f105", $margin: 0 0 0 7px);
+	}
+	&.is-external {
+		&:after {
+			content: "\f08e";
+		}
+	}
+	&.is-pdf {
+		&:after {
+			content: "\f1c1";
+		}
+	}
+	&.is-image {
+		&:after {
+			content: "\f1c1";
+		}
+	}
+	&.is-zoom {
+		&:after {
+			content: "\f00e";
+		}
+	}
+}
+
