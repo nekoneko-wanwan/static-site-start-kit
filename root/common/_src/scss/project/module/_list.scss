@@ -71,122 +71,27 @@
 
 
 
-
-// List-icon
-//
-// ・色々なアイコンを設定<br>
-// ・単体で完結させる
-//
-// .is-check - チェックマーク
-// .is-arrow - 大きな矢印
-//
-// Markup:
-// <ul class="m-list-icon {{[modifier_class]}}">
-//   <li>リスト</li>
-//   <li>リスト</li>
-//   <li>リスト</li>
-// </ul>
-//
-// Styleguide: 9.list-icon
-.m-list-icon {
-	> li {
-		position: relative;
-		&:before {
-			@include my_bg-font-awesome('f105');
-		}
-		+ li {
-			margin-top: 10px;
-		}
-	}
-	&.is-check {
-		> li {
-			&:before {
-				content: '\f00c';
-			}
-		}
-	}
-	&.is-arrow {
-		> li {
-			&:before {
-				content: '\f061';
-			}
-		}
-	}
-}
-
-
-
-// List-simple
-//
-// ・シンプルなリスト<br>
-// ・単体で完結させる
-//
-// Markup:
-// <ul class="m-list-simple">
-//   <li>リスト</li>
-//   <li>リスト</li>
-//   <li>リスト</li>
-// </ul>
-//
-// Styleguide: 9.list-simple
-.m-list-simple {
-	> li {
-		padding-bottom: 10px;
-		position: relative;
-		&:before {
-			content: '・';
-			margin-right: 0.2em;
-		}
-		+ li {
-			padding-top: 10px;
-			border-top: 1px dashed $g_gray-normal;
-		}
-	}
-}
-
-
-
-// List-stripe
-//
-// ・シンプルなしましまリスト<br>
-// ・単体で完結させる
-//
-// Markup:
-// <ul class="m-list-stripe {{[modifier_class]}}">
-//   <li>リスト</li>
-//   <li>リスト</li>
-//   <li>リスト</li>
-// </ul>
-//
-// Styleguide: 9.list-stripe
-.m-list-stripe {
-	border: 1px solid $g_gray-normal;
-	> li {
-		padding: 10px;
-		position: relative;
-		&:nth-child(even) {
-			background-color: $g_gray-thin;
-		}
-	}
-}
-
-
-
 // List-plain
 //
 // ・装飾の無い、余白だけのリスト<br>
-// ・modifierで余白を調整
+// ・modifierで余白を調整<br>
 //
+// .is-disc - discをつける
 // .has-small - 余白小さい
 // .has-middle - 余白中
 // .has-large - 余白大
 //
 // Markup:
-// <ul class="m-list-plain">
+// <ul class="m-list-plain {{[modifier_class]}}">
 //   <li>リスト</li>
 //   <li>リスト</li>
 //   <li>リスト</li>
 // </ul>
+// <ol class="m-list-plain {{[modifier_class]}}">
+//   <li>リスト</li>
+//   <li>リスト</li>
+//   <li>リスト</li>
+// </ol>
 //
 // Styleguide: 9.list-plain
 .m-list-plain {
@@ -208,10 +113,73 @@
 			margin-top: 30px;
 		}
 	}
+	&.is-disc {
+		padding-left: 2em;
+		list-style-type: disc;
+	}
 }
 
 
 
 
+// List-simple
+//
+// ・下線と簡単な装飾をつけるだけのシンプルなリスト<br>
+// ・list-style-typeは削除される
+//
+// Markup:
+// <ul class="m-list-simple {{[modifier_class]}}">
+//   <li>リスト</li>
+//   <li>リスト</li>
+//   <li>リスト</li>
+// </ul>
+//
+// Styleguide: 9.list-simple
+.m-list-simple {
+	> li {
+		padding: 10px 15px 10px 25px;
+		position: relative;
+		list-style-type: none;
+		&::before {
+			content: '';
+			background-color: #777;
+			display: block;
+			position: absolute;
+			left: 10px;
+			top: 18px;
+			height: 5px;
+			width: 5px;
+		}
+		+ li {
+			padding-top: 10px;
+			border-top: 1px dashed $g_gray-normal;
+		}
+	}
+}
+
+
+
+// List-stripe
+//
+// ・シンプルなしましまリスト<br>
+// ・list-style-typeは削除するので注意
+//
+// Markup:
+// <ul class="m-list-stripe {{[modifier_class]}}">
+//   <li>リスト</li>
+//   <li>リスト</li>
+//   <li>リスト</li>
+// </ul>
+//
+// Styleguide: 9.list-stripe
+.m-list-stripe {
+	> li {
+		padding: 10px;
+		position: relative;
+		&:nth-child(even) {
+			background-color: $g_gray-thin;
+		}
+	}
+}
 
 
