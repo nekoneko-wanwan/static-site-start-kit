@@ -160,3 +160,33 @@
 }
 
 
+
+// Image-caption
+//
+// - 画像の上にキャプションを重ねる<br>
+// - 他のimage-moduleと組み合わせて使う
+//
+// Markup:
+// <div class="m-image-cap m-image-simple">
+//   <img src="http://placehold.jp/150x150.png" alt="" />
+//   <span class="m-image-cap__body">キャプション</span>
+// </div>
+//
+// Styleguide: 11.image-cap
+.m-image-cap {
+	position: relative;
+}
+.m-image-cap__body {
+	box-sizing: border-box;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	background-color: rgba(255,255,255,0.7);
+	color: #777;
+	display: block;
+	font-size: 90%;
+	text-align: center;
+	padding: 10px 0;
+	line-height: 1.5;
+	width: 100%;
+}
