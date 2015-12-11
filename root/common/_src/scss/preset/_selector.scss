@@ -45,6 +45,7 @@ p, ul, ol, dl, dt, dd {
 	margin: 0;
 }
 // よく出現するパターンなので初期値を設定しておく
+// h はsectionと同時に使うことが多いハズなので指定しない(sectionにモジュールを設定する想定)
 p,ul,ol,dl, {
 	+ p  {margin-top: 1.5em;}
 	+ ul {margin-top: 1.5em;}
@@ -63,7 +64,7 @@ dt {
 dd {
 	margin-top: 0.5em;
 	& + dt {
-		margin-top: 2em;
+		margin-top: 1.5em;
 	}
 }
 table {
