@@ -10,3 +10,31 @@
 //
 // Styleguide: 12
 
+
+// text-attention
+//
+//
+// Markup:
+// <span class="m-text-attention">※必須</span>
+//
+// Styleguide: 12.attention
+.m-text-attention {
+	font-weight: bold;
+	color: $g_accent-color;
+}
+
+
+// text-note
+//
+//
+// Markup:
+// <span class="m-text-note">※必須</span>
+//
+// Styleguide: 12.note
+.m-text-note {
+	font-weight: normal;
+	font-style: oblique;
+	color: #777;
+}
+
+
