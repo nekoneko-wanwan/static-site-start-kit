@@ -10,5 +10,38 @@
 //
 // Styleguide: 7
 
+// btn-basic
+//
+// - @block   : m-btn-basic
+// - @modifier: is-primary
+//
+// .is-primary - カラー1
+//
+// Markup:
+// <span><input type="submit" value="送信" class="m-btn-basic {{[modifier_class]}}"></span>
+//
+// Styleguide: 7.basic
+.m-btn-basic {
+	background-color: $g_gray-light;
+	border: 1px solid $g_gray-dark;
+	box-shadow: 0 3px 0 0 $g_gray-light;
+	border-radius: 6px;
+	padding: 15px 60px;
+	font-size: 120%;
+	transition: all .3s;
+	&:hover {
+		background-color: $g_gray-thin;
+	}
+	&.is-primary {
+		background: $g_accent-color;
+		border-color: $g_accent-color;
+		color: #fff;
+		&:hover {
+			background-color: darken($g_accent-color, 10%);
+		}
+	}
+}
+
+
 
 
