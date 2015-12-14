@@ -95,20 +95,27 @@ a {
 
 
 // 置換要素
+img {
+	vertical-align: top;
+}
+
+// フォーム関連
+// 複雑なデザインを使用しない、ほとんど出てこないものはここで対応してしまう
+// モジュールを作成する場合は、別途_form.scssを作成し、ここでの初期設定は控えめにする
 label {
 	cursor: pointer;
+	vertical-align: text-top;
 	+ label {
 		margin-left: 1em;
 	}
 }
-img {
-	vertical-align: top;
-}
 input {
 	&[type=text],&[type=password] {
-		border: 1px solid #ccc;
+		border: 1px solid $g_gray-dark;
 		margin: 0;
 		padding: 5px 0;
+		min-width: 300px;
+		width: 50%;
 	}
 	&[type=submit],&[type=button],&[type=reset] {
 		cursor: pointer;
@@ -124,6 +131,17 @@ input {
 		label & {
 			cursor: pointer;
 			vertical-align: text-top;
+			margin: 3px 5px 0px 5px;
 		}
 	}
+}
+select {
+	border: 1px solid $g_gray-dark;
+}
+option:nth-child(even) {
+	background-color: $g_gray-thin;
+}
+textarea {
+	border: 1px solid $g_gray-dark;
+	width: 90%;
 }
