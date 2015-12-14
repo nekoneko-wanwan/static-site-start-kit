@@ -262,3 +262,35 @@
 
 
 
+// Heading-7
+//
+// - @block   : m-heading-7
+//
+// Markup:
+// <h1 class="m-heading-7 {{[modifier_class]}}">見出しです</h1>
+// <h2 class="m-heading-7 {{[modifier_class]}}">見出しです</h2>
+// <h3 class="m-heading-7 {{[modifier_class]}}">見出しです</h3>
+// <h4 class="m-heading-7 {{[modifier_class]}}">見出しです</h4>
+//
+// Styleguide: 6.heading-7
+.m-heading-7 {
+	border-bottom: 1px solid $g_main-color;
+	font-weight: bold;
+	padding: 0.3em 1.3em;
+	position: relative;
+	&:after {
+		content: "";
+		background-color: $g_main-color;
+		position: absolute;
+		margin-top: -1px;
+		top: 50%;
+		left: 0;
+		height: 2px;
+		width: 10px;
+	}
+}
+
+
+
+
+
