@@ -42,7 +42,7 @@
 // 		'.has-gutter_middle': 30px,
 // 		'.has-gutter_large': 50px
 // 	);
-// 	@include my_create-grid($col-pc, $col-sp, $gutter, $modifiers);
+// 	@include my_create-grid-module($col-pc, $col-sp, $gutter, $modifiers);
 // }
 //
 // @paramはmixin内コメントを参照
