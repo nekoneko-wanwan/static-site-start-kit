@@ -140,7 +140,7 @@
 		padding: 10px 15px 10px 25px;
 		position: relative;
 		list-style-type: none;
-		&::before {
+		&:before {
 			content: '';
 			background-color: #777;
 			display: block;
