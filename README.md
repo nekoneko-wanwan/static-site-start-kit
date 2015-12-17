@@ -82,6 +82,7 @@ $ gulp guide
 - [ネーミングツール](https://codic.jp/)
 - [cssの優先度を確認する](http://specificity.keegan.st/)
 
+> csscombで`sort-order-fallback`にabcを指定すると、font-awesomeのsrcプロパティが反転してフォントが読み込まれなくなるため注意
 
 
 
