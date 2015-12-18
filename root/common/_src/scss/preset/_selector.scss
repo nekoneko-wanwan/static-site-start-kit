@@ -82,6 +82,16 @@ a {
 	color: $g_link-color;
 	&:link {
 		text-decoration: underline;
+
+		// ie用のhack
+		// ieだとbefore,after要素でoverrideができないため、擬似要素にiconを設定しているとiconにもunderlineが引かれてしまう
+		// 別セレクタで再度上書きしてやる必要がある
+		&:before, &:after {
+			text-decoration: underline;
+		}
+		&:before, &:after {
+			text-decoration: none;
+		}
 	}
 	&:visited {
 	}
