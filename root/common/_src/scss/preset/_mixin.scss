@@ -105,4 +105,16 @@
 
 
 
+//-------------------------------------------
+// ie8用clearfix
+// bourbonのclearfixはie8には効かないので、mixinを再定義する
+//-------------------------------------------
+@mixin clearfix {
+  &:after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+}
+
 
