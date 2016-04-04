@@ -56,11 +56,13 @@ p,ul,ol,dl, {
 	+ ol {margin-top: 1.5em;}
 	+ dl {margin-top: 1.5em;}
 }
-ul {
-	list-style: none;
-}
+ul,
 ol {
-	padding-left: 2em;
+	li {
+		padding-left: 1em;
+		text-indent: -1em;
+		list-style-position: inside;
+	}
 }
 dt {
 	font-weight: bold;
