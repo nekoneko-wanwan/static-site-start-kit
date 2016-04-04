@@ -13,7 +13,7 @@
     "eof-newline": true,
     "leading-zero": true,
     "quotes": "single",
-    "sort-order-fallback": "",  // Do not "abc". (font-awesome src property order, collapse...)
+    "sort-order-fallback": "",
     "space-before-colon": "",
     "space-after-colon": " ",
     "space-before-combinator": " ",
