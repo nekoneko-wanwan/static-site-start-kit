@@ -5,6 +5,7 @@
 /////////////////////////////////////////////
 
 
+
 //-------------------------------------------
 // メディアクエリ
 // @use
@@ -102,6 +103,19 @@
 	&:nth-child(#{$nth}) { margin-right: flex-gutter(); }
 	&:nth-child(#{$nth}+1) { clear: none }
 }
+
+
+
+
+//-------------------------------------------
+// remのロールバック
+// @use: @include rem(16px)
+//-------------------------------------------
+@mixin rem($size-px: $g_base-font-size-px) {
+  font-size: $size-px;
+  font-size: ($size-px / $g_base-font-size-px) * 1rem;
+}
+
 
 
 

@@ -5,10 +5,14 @@
 
 
 // 全体に関する指定
+html {
+	// IEの文字サイズ拡大を使えるようにするため%指定で行う
+	font-size: $g_base-font-size-percent;
+}
 body {
+	@include rem();
 	color: #333;
 	font-family: $g_font-family;
-	font-size: 82%;
 	line-height: 1.8;
 	word-wrap:break-word;
 	min-width: $g_width-pc;

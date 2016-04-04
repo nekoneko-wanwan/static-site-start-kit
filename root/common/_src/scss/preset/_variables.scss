@@ -30,6 +30,8 @@ $g_size-list: (
 //-------------------------------------------
 // フォント
 //-------------------------------------------
+$g_base-font-size-px: 14px;
+$g_base-font-size-percent: ($g_base-font-size-px / 16px * 100) + 0%; // 16pxは全ブラウザの文字サイズ初期値=100%
 $g_font-family: 'メイリオ',Meiryo,'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro',Verdana,'ＭＳ Ｐゴシック','MS PGothic',sans-serif !default;
 
 
