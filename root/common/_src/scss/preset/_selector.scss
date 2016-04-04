@@ -25,23 +25,23 @@ h1, h2, h3, h4, h5 {
 	margin: 0;
 }
 h1 {
-	font-size: 130%;
+	@include rem(20px);
 	margin-bottom: 30px;
 }
 h2 {
-	font-size: 120%;
+	@include rem(18px);
 	margin-bottom: 30px;
 }
 h3 {
-	font-size: 110%;
+	@include rem(16px);
 	margin-bottom: 20px;
 }
 h4 {
-	font-size: 100%;
+	@include rem(14px);
 	margin-bottom: 20px;
 }
 h5 {
-	font-size: 100%;
+	@include rem(14px);
 	margin-bottom: 20px;
 }
 p, ul, ol, dl, dt, dd {
