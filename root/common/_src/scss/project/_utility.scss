@@ -20,8 +20,17 @@
 /* -------------------------------------------
 余白の指定
 ------------------------------------------- */
-// _variables.scss
-@each $class, $val in $g_size-list {
+// 大きさ（主にutilityの余白で使用）
+$utility-size-list: (
+	'none'  : 0px,
+	'xsmall': 10px,
+	'small' : 20px,
+	'middle': 30px,
+	'large' : 40px,
+	'xlarge': 50px
+);
+
+@each $class, $val in $utility-size-list {
 	// margin
 	.u-mt-#{$class} {
 		margin-top: $val !important;
