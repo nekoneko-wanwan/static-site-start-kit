@@ -111,7 +111,7 @@
 // remのロールバック
 // @use: @include rem(16px)
 //-------------------------------------------
-@mixin rem($size-px: $g_base-font-size-px) {
+@mixin my_rem($size-px: $g_base-font-size-px) {
   font-size: $size-px;
   font-size: ($size-px / $g_base-font-size-px) * 1rem;
 }

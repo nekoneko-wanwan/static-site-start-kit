@@ -10,7 +10,7 @@ html {
 	font-size: $g_base-font-size-percent;
 }
 body {
-	@include rem();
+	@include my_rem();
 	color: #333;
 	font-family: $g_font-family;
 	line-height: 1.8;
@@ -25,23 +25,23 @@ h1, h2, h3, h4, h5 {
 	margin: 0;
 }
 h1 {
-	@include rem(20px);
+	@include my_rem(20px);
 	margin-bottom: 30px;
 }
 h2 {
-	@include rem(18px);
+	@include my_rem(18px);
 	margin-bottom: 30px;
 }
 h3 {
-	@include rem(16px);
+	@include my_rem(16px);
 	margin-bottom: 20px;
 }
 h4 {
-	@include rem(14px);
+	@include my_rem(14px);
 	margin-bottom: 20px;
 }
 h5 {
-	@include rem(14px);
+	@include my_rem(14px);
 	margin-bottom: 20px;
 }
 p, ul, ol, dl, dt, dd {
