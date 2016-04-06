@@ -1,0 +1,15 @@
+@charset "utf-8";
+/* ******************************************
+js有効時に設定する初期スタイル
+- <html>のclassが 'js' || 'no-js' 時に実行
+- classの書き換えはmodernizrで自動処理
+****************************************** */
+
+html.js {
+  .js-slide-target {
+    display: none;
+  }
+}
+
+html.no-js {
+}

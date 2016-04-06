@@ -23,6 +23,7 @@
 @import "preset/_selector";      // セレクタの初期値 タグが出力
 
 // project
+@import "project/_js";      // html.jsによって切り替わるスタイル(modernizr)
 @import "project/_layout";  // 共通でユニークなスタイル
 @import "project/_module";  // 汎用的なスタイル
 @import "project/_pages";   // ページ独自のスタイル
