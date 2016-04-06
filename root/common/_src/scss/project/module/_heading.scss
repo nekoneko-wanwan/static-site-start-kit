@@ -3,294 +3,214 @@
 // 見出し
 //-------------------------------------------
 
+// 以下は本当はpreset/variablesの中で指定すること
+$g_color-blue:        #29abe2 !default;
+$g_color-blue-light:  #d6eff9 !default;
+$g_color-blue-light2: #c2dfeb !default;
+$g_color-blue-dark:   #1988b7 !default;
+$g_color-blue-dark2:  #0f5572 !default;
+$g_color-blue-dark3:  #082e3e !default;
+$g_color-blue2:       #0071BC !default;
+
 // Heading
 // 
-// ・見出しとして使うスタイル<br>
-// ・基本的に単体で簡潔させる<br>
-// ・class名はプロジェクトによって柔軟に変更する
+// ・見出しスタイル
 //
 // Styleguide: 6
 
-
-// Heading-1
+// Heading-main-list
+//
+// ・メインとして使えそうな見出しをリストアップ
 // 
-// - @block   : m-heading-1
-// - @modifier: m-heading-1.is-reverse
+// - @block: m-head-main-1
+// - @block: m-head-main-2
+// - @block: m-head-main-3
 //
-// .is-reverse - 太いborderの位置を上下反転させる
-// 
 // Markup:
-// <h1 class="m-heading-1 {{[modifier_class]}}">見出しです</h1>
-// <h2 class="m-heading-1 {{[modifier_class]}}">見出しです</h2>
-// <h3 class="m-heading-1 {{[modifier_class]}}">見出しです</h3>
-// <h4 class="m-heading-1 {{[modifier_class]}}">見出しです</h4>
+//   <h1 class="m-head-main-1">メイン見出し</h1>
+//   <h1 class="m-head-main-2">メイン見出し</h1>
+//   <h1 class="m-head-main-3">メイン見出し</h1>
 //
-// Styleguide: 6.heading-1
-.m-heading-1 {
-	$border-width: 3px;
-	$border-color:  $g_main-color;
-	border-top: $border-width solid $border-color;
-	border: 1px solid $g_gray-normal;
-	padding: 0.5em 1em;
+// Styleguide: 6.head-main-list
+.m-head-main-1 {
 	position: relative;
-	z-index: 1;
-	box-shadow: inset 0 0 0 1px #fff;
-	@include my_simple-grad();
-	&:before, &:after {
-		position: absolute;
-		content: '';
-		display: block;
-		left: -1px;
-		padding-right: 2px;
-		box-sizing: content-box;
-		width: 100%;
-		z-index: 1;
-	}
+	padding: .25em 0 .5em .75em;
+	border-left: 6px solid $g_color-blue;
 	&:before {
-		border-top: $border-width solid $border-color;
-		top: -$border-width;
-	}
-	&:after {
-		border-top: $border-width solid $g_gray-thin;
-		bottom: -$border-width - 1;
-	}
-	&.is-reverse {
-		border-top: 1px solid $g_gray-normal;
-		border-bottom: $border-width solid $border-color;
-		&:after {
-			border-top: $border-width solid $border-color;
-			bottom: -$border-width;
-		}
-		&:before {
-			display: none;
-		}
-	}
-}
-
-
-
-// Heading-2
-//
-// - @block   : m-heading-2
-// - @modifier: m-heading-2.is-reverse
-//
-// .is-reverse - 太いborderの位置を上下反転させる
-//
-// Markup:
-// <h1 class="m-heading-2 {{[modifier_class]}}">見出しです</h1>
-// <h2 class="m-heading-2 {{[modifier_class]}}">見出しです</h2>
-// <h3 class="m-heading-2 {{[modifier_class]}}">見出しです</h3>
-// <h4 class="m-heading-2 {{[modifier_class]}}">見出しです</h4>
-//
-// Styleguide: 6.heading-2
-.m-heading-2 {
-	$border-width: 2px;
-	$border-color:  $g_main-color;
-	border-top: $border-width solid $border-color;
-	padding: 0.5em 1.3em;
-	position: relative;
-	z-index: 1;
-	&:before, &:after {
-		content: '';
-		display: block;
-		height: 8px;
-		width: 8px;
 		position: absolute;
+		left: -6px;
+		bottom: 0;
+		content: '';
+		width: 6px;
+		height: 50%;
+		background-color: $g_color-blue-dark;
 	}
-	&:before {
-		left: 0.2em;
-		top: 1em;
-		background-color: tint($border-color, 50%);
-		z-index: 2;
-	}
-	&:after {
-		left: 0px;
-		top: 0.8em;
-		background-color: $border-color;
-		z-index: 3;
-	}
-	&.is-reverse {
-		border-bottom: $border-width solid $border-color;
-		border-top: none;
-	}
-}
-
-
-
-// Heading-3
-//
-// - @block   : m-heading-3
-// - @modifier: m-heading-3.is-reverse
-//
-// .is-reverse - 太いborderの位置を上下反転させる
-//
-// Markup:
-// <h1 class="m-heading-3 {{[modifier_class]}}">見出しです</h1>
-// <h2 class="m-heading-3 {{[modifier_class]}}">見出しです</h2>
-// <h3 class="m-heading-3 {{[modifier_class]}}">見出しです</h3>
-// <h4 class="m-heading-3 {{[modifier_class]}}">見出しです</h4>
-//
-// Styleguide: 6.heading-3
-.m-heading-3 {
-	$border-width: 2px;
-	$border-color:  $g_main-color;
-	position: relative;
-	border-top: $border-width solid $g_gray-normal;
-	padding: 0.5em;
 	&:after {
 		position: absolute;
-		content: '';
-		display: block;
-		border-top: $border-width solid $border-color;
 		left: 0;
-		top: -$border-width;
-		width: 25%;
-	}
-	&.is-reverse {
-		border-bottom: $border-width solid $g_gray-normal;
-		border-top: none;
-		&:after {
-			top: auto;
-			bottom: -$border-width;
-		}
-	}
-}
-
-
-
-// Heading-4
-//
-// Markup:
-// <h1 class="m-heading-4">見出しです</h1>
-// <h2 class="m-heading-4">見出しです</h2>
-// <h3 class="m-heading-4">見出しです</h3>
-// <h4 class="m-heading-4">見出しです</h4>
-//
-// Styleguide: 6.heading-4
-.m-heading-4 {
-	@include linear-gradient(to bottom, #ffffff, $g_gray-thin);
-	border: 1px solid $g_gray-normal;
-	padding: 0.5em 1em;
-	position: relative;
-	z-index: 1;
-	&:before {
-		@include position(absolute, 50% null null -1px);
-		background: $g_main-color;
+		bottom: 0;
 		content: '';
-		display: block;
-		margin-top: -3px;
-		height: 6px;
-		width: 10px;
-		z-index: 10;
+		width: 100%;
+		height: 0;
+		border-bottom: 1px solid $g_color-blue-dark;
 	}
 }
 
-
-// Heading-5
-//
-// - @block   : m-heading-5
-// - @modifier: m-heading-5.is-reverse
-//
-// .is-reverse - 三角を右上に
-//
-// Markup:
-// <h1 class="m-heading-5 {{[modifier_class]}}">見出しです</h1>
-// <h2 class="m-heading-5 {{[modifier_class]}}">見出しです</h2>
-// <h3 class="m-heading-5 {{[modifier_class]}}">見出しです</h3>
-// <h4 class="m-heading-5 {{[modifier_class]}}">見出しです</h4>
-//
-// Styleguide: 6.heading-5
-.m-heading-5 {
-	background-color: $g_main-color;
+.m-head-main-2 {
 	color: #fff;
-	overflow: hidden;
-	padding: 0.5em 1.3em;
 	position: relative;
-	z-index: 1;
-	&:before {
-		@include triangle(10px 10px, #fff shade($g_main-color, 40%), up-left);
-		@include position(absolute, 0 null null 0);
-		content: '';
-		z-index: 10;
-	}
-	&.is-reverse {
-		&:before {
-			@include triangle(10px 10px, #fff shade($g_main-color, 40%), up-right);
-			@include position(absolute, 0 -10px auto auto);
-		}
-	}
-}
-
-
-// Heading-6
-//
-// - @block   : m-heading-6
-// - @modifier: m-heading-6.is-reverse
-//
-// .is-reverse - ストライプの位置を上下反転させる
-//
-// Markup:
-// <h1 class="m-heading-6 {{[modifier_class]}}">見出しです</h1>
-// <h2 class="m-heading-6 {{[modifier_class]}}">見出しです</h2>
-// <h3 class="m-heading-6 {{[modifier_class]}}">見出しです</h3>
-// <h4 class="m-heading-6 {{[modifier_class]}}">見出しです</h4>
-//
-// Styleguide: 6.heading-6
-.m-heading-6 {
-	$border-width: 4px;
-	$border-color:  $g_gray-normal;
-	background: $g_gray-thin;
-	padding: 0.5em 1em;
-	border-radius: 6px;
-	position: relative;
-	&:before {
-		position: absolute;
-		content: '';
-		background: $g_pat-url-thin 0 0 repeat $border-color;
-		left: 0;
-		bottom: -$border-width;
-		height: $border-width;
-		width: 100%;
-	}
-	&.is-reverse {
-		&:before {
-			bottom: auto;
-			top: -$border-width;
-		}
-	}
-}
-
-
-
-// Heading-7
-//
-// - @block   : m-heading-7
-//
-// Markup:
-// <h1 class="m-heading-7 {{[modifier_class]}}">見出しです</h1>
-// <h2 class="m-heading-7 {{[modifier_class]}}">見出しです</h2>
-// <h3 class="m-heading-7 {{[modifier_class]}}">見出しです</h3>
-// <h4 class="m-heading-7 {{[modifier_class]}}">見出しです</h4>
-//
-// Styleguide: 6.heading-7
-.m-heading-7 {
-	border-bottom: 1px solid $g_main-color;
-	font-weight: bold;
-	padding: 0.3em 1.3em;
-	position: relative;
+	padding: .5em 1em;
+	background-color: $g_color-blue;
 	&:after {
-		content: "";
-		background-color: $g_main-color;
 		position: absolute;
-		margin-top: -1px;
-		top: 50%;
+		top: 0;
+		right: 0;
+		content: '';
+		width: 0;
+		border-width: 0 20px 20px 0;
+		border-style: solid;
+		border-color: #fff #fff $g_color-blue-dark $g_color-blue-dark;
+		box-shadow: -1px 1px 2px rgba(0, 0, 0, .1);
+	}
+}
+
+.m-head-main-3 {
+		position: relative;
+		padding-bottom: .5em;
+	&:before,&:after {
+		position: absolute;
+		bottom: -4px;
 		left: 0;
-		height: 2px;
-		width: 10px;
+		content: '';
+		height: 4px;
+	}
+	&:before {
+		z-index: 2;
+		width: 30%;
+		background-color: $g_color-blue;
+	}
+	&:after {
+		width: 100%;
+		background-color: $g_color-blue-light;
+		background: -webkit-repeating-linear-gradient(45deg, #fff, #fff 2px, $g_color-blue-light2 2px, $g_color-blue-light2 4px);
+		background: repeating-linear-gradient(45deg, #fff, #fff 2px, $g_color-blue-light2 2px, $g_color-blue-light2 4px);
 	}
 }
 
 
+// Heading-sub-list
+//
+// ・サブとして使えそうな見出しをリストアップ<br>
+// ・使うものにはmodifierとして別カラーを設定する
+// 
+// - @block: m-head-sub-1
+// - @block: m-head-sub-2
+// - @block: m-head-sub-3
+// - @block: m-head-sub-4
+// - @block: m-head-sub-5
+// - @block: m-head-sub-6
+//
+// Markup:
+//   <h2 class="m-head-sub-1">サブ見出し</h2>
+//   <h2 class="m-head-sub-2">サブ見出し</h2>
+//   <h2 class="m-head-sub-3">サブ見出し</h2>
+//   <h2 class="m-head-sub-4">サブ見出し</h2>
+//   <h2 class="m-head-sub-5"><span>サブ見出し</span></h2>
+//   <h2 class="m-head-sub-6">サブ見出し</h2>
+//
+// Styleguide: 6.head-sub-list
+.m-head-sub-1 {
+  padding: .5em .75em;
+	background-color: $g_color-blue-light;
+	border-top: 2px solid $g_color-blue;
+	border-bottom: 2px solid $g_color-blue;
+}
 
+.m-head-sub-2 {
+  padding: .5em .75em;
+	background-color: $g_color-blue-light;
+	border-left: 6px solid $g_color-blue;
+}
 
+.m-head-sub-3 {
+  position: relative;
+	padding: .5em .75em;
+	background-color: $g_color-blue-light;
+	border-radius: 6px;
+	&:after {
+    position: absolute;
+  	top: 100%;
+  	left: 30px;
+  	content: '';
+  	width: 0;
+  	height: 0;
+  	border: 10px solid transparent;
+  	border-top: 15px solid $g_color-blue-light;
+	}
+}
+
+.m-head-sub-4 {
+  position: relative;
+	padding: .5em .75em;
+	background-color: #fff;
+	border: 1px solid $g_color-blue;
+	border-radius: 6px;
+	&:before,&:after {
+    position: absolute;
+  	top: 100%;
+  	left: 30px;
+  	content: '';
+  	height: 0;
+  	width: 0;
+  	border: 10px solid transparent;
+	}
+	&:before {
+		border-top: 15px solid $g_color-blue;
+	}
+	&:after {
+    margin-top: -2px;
+  	border-top: 15px solid #fff;
+	}
+}
+
+.m-head-sub-5 {
+  overflow: hidden;
+	text-align: center;
+  > span {
+    position: relative;
+  	display: inline-block;
+  	margin: 0 2.5em;
+  	padding: 0 1em;
+  	text-align: left;
+    &:before,&:after {
+      position: absolute;
+    	top: 50%;
+    	content: '';
+    	width: 400%;
+    	height: 1px;
+    	background-color: #ccc;
+    }
+    &:before {
+      right: 100%;
+    }
+    &:after {
+      left: 100%;
+    }
+  }
+}
+
+.m-head-sub-6 {
+  position: relative;
+	padding: 0 .4em .1em;
+  &:after {
+    position: absolute;
+  	bottom: 0;
+  	left: 0;
+  	z-index: -1;
+  	content: '';
+  	width: 100%;
+  	height: 10px;
+  	background-color: #b6f0fc;
+  }
+}
 
