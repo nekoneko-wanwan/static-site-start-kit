@@ -5,76 +5,10 @@
 ****************************************** */
 
 
-/* -------------------------------------------
-共通
-------------------------------------------- */
+// レイアウトのみで使用する変数
 
-
-
-
-/* -------------------------------------------
-header
-------------------------------------------- */
-
-
-
-
-
-/* -------------------------------------------
-contents
-------------------------------------------- */
-.l-contents {
-	@include clearfix;
-	overflow: hidden;
-	margin: 30px auto 0;
-	width: $g_width-pc;
-	&.has-left-main {
-		.l-contents__main {
-			float: left;
-		}
-		.l-contents__sub {
-			float: right;
-		}
-	}
-	&.has-one-column {
-		.l-contents__main {
-			float: none;
-			width: 100%;
-		}
-	}
-}
-.l-contents__main {
-	float: right;
-	width: $g_width-pc-main;
-}
-.l-contents__sub {
-	float: left;
-	width: $g_width-pc-sub;
-}
-
-
-
-
-/* -------------------------------------------
-topicPath
-------------------------------------------- */
-
-
-
-
-
-/* -------------------------------------------
-banner
-------------------------------------------- */
-
-
-
-
-
-/* -------------------------------------------
-footer
-------------------------------------------- */
-
-
-
-
+// import
+@import "layout/_header"; // header, gnav, etc
+@import "layout/_contents"; // contents, etc
+@import "layout/_footer"; // footer, page-top, etc
+@import "layout/_other"; // topic-path, banner, etc
