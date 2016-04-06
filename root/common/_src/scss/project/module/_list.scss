@@ -5,15 +5,13 @@
 
 // List
 // 
-// ・リスト要素に使用するスタイル<br>
-// ・ul, ol にclassをつける<br>
-// ・class名はプロジェクトによって柔軟に変更する
+// ・リスト要素に使用<br>
 //
 // Styleguide: 9
 
 // List-date
 //
-// ・日付とテキストを表示させるリスト<br>
+// ・日付とテキストの表示
 //
 // Markup:
 // <div class="m-list-date">
@@ -48,6 +46,7 @@
 		margin: 0 10px;
 	}
 	li {
+		@include my_resetList;
 		position: relative;
 		padding-right: 10px;
 		padding-bottom: 14px;
@@ -73,10 +72,9 @@
 
 // List-plain
 //
-// ・装飾の無い、余白だけのリスト<br>
+// ・余白だけのリスト<br>
 // ・modifierで余白を調整<br>
 //
-// .is-disc - discをつける
 // .has-small - 余白小さい
 // .has-middle - 余白中
 // .has-large - 余白大
@@ -124,8 +122,8 @@
 
 // List-simple
 //
-// ・下線と簡単な装飾をつけるだけのシンプルなリスト<br>
-// ・list-style-typeは削除される
+// ・下線と簡単な装飾をつけるだけ<br>
+// ・list-style-typeは削除
 //
 // Markup:
 // <ul class="m-list-simple {{[modifier_class]}}">
@@ -137,6 +135,7 @@
 // Styleguide: 9.list-simple
 .m-list-simple {
 	> li {
+		@include my_resetList;
 		padding: 10px 15px 10px 25px;
 		position: relative;
 		list-style-type: none;
@@ -162,7 +161,7 @@
 // List-stripe
 //
 // ・シンプルなしましまリスト<br>
-// ・list-style-typeは削除するので注意
+// ・list-style-typeは削除
 //
 // Markup:
 // <ul class="m-list-stripe {{[modifier_class]}}">
@@ -174,6 +173,7 @@
 // Styleguide: 9.list-stripe
 .m-list-stripe {
 	> li {
+		@include my_resetList;
 		padding: 10px;
 		position: relative;
 		&:nth-child(even) {
