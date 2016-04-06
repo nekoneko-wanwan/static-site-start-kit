@@ -5,26 +5,27 @@
 
 // Section
 //
-// ・主にメインコンテンツ内でのセクションの余白を管理する<br>
-// ・スタイルガイド上は分かりやすく色をつけている（実際にはつかないので注意）
+// ・セクションの余白を管理<br>
+// ・スタイルガイド上は分かりやすく彩色（実際にはつかないので注意）
 //
 // Styleguide: 1
 
 // Section
 //
-// ・主にsectionタグに対して使用する想定（直後に見出しが来る想定という意味）<br>
-// ・セクションの上にはデフォルトである程度の余白を設けているが、Modifierを渡すことで調整が可能<br>
-// ・elementとして内側に余白を設ける（modifierを渡すことで余白は削除可能）<br>
-// ・見出しには余白は設けない（設ける場合は別途elementを用意するか、指定のところでコメントアウトしているpaddingを有効に）
+// ・主にsectionタグに対して使用
+// ・上にある程度の余白を設定。Modifierを渡すことで調整が可能<br>
+// ・elementを渡せば内側に余白を設定<br>
+// ・見出しには左右の余白は設けない（設ける場合は別途elementを用意するか、指定のところでコメントアウトしているpaddingを有効に）
 // 
-// - @block   : m-section
-// - @element : m-section__body
-// - @modifier: m-section.is-small
-// - @modifier: m-section.is-middle
-// - @modifier: m-section.is-large
-// - @modifier: m-section.is-xlarge
-// - @modifier: m-section__body.is-no-gutter
+// - @block: m-sec-main
+// - @modifier: m-sec-main.is-none
+// - @modifier: m-sec-main.is-small
+// - @modifier: m-sec-main.is-middle
+// - @modifier: m-sec-main.is-large
+// - @modifier: m-sec-main.is-xlarge
+// - @element: m-sec-main__body
 // 
+// .is-none - 余白無し
 // .is-small - 余白小
 // .is-middle - 余白小
 // .is-large - 余白大
@@ -32,32 +33,32 @@
 //
 // Markup:
 // <article>
-//   <h1>article 大見出し</h1>
-//   <section class="m-section" style="background-color: #ccc;">
-//     <h2>デフォルト</h2>
-//     <div class="m-section__body">
+//   <h1 style="margin: 0;">article 大見出し</h1>
+//   <section class="m-sec-main" style="background-color: #ccc;">
+//     <h2 style="margin: 0;">デフォルト</h2>
+//     <div class="m-sec-main__body">
 //       <p>セクション本文</p>
-//       <section class="m-section" style="background-color: #f7f7f7;">
-//         <h3>見出し</h3>
-//         <div class="m-section__body">
+//       <section class="m-sec-main" style="background-color: #f7f7f7;">
+//         <h3 style="margin: 0;">内側セクション</h3>
+//         <div class="m-sec-main__body">
 //           <p>セクション本文</p>
 //         </div>
 //       </section>
 //     </div>
 //   </section>
-//   <section class="m-section {{[modifier_class]}}" style="background-color: #ccc;">
-//     <h2>elementにis-no-gutter を追加</h2>
-//     <div class="m-section__body is-no-gutter">
+//   <section class="m-sec-main {{[modifier_class]}}" style="background-color: #ccc;">
+//     <h2 style="margin: 0;">elementにis-no-gutter を追加</h2>
+//     <div class="m-sec-main__body is-no-gutter">
 //       <p>セクション本文</p>
-//       <section class="m-section" style="background-color: #f7f7f7;">
-//         <h3>見出し</h3>
-//         <div class="m-section__body is-no-gutter">
+//       <section class="m-sec-main" style="background-color: #f7f7f7;">
+//         <h3 style="margin: 0;">内側セクション</h3>
+//         <div class="m-sec-main__body is-no-gutter">
 //           <p>セクション本文</p>
 //         </div>
 //       </section>
-//       <section class="m-section" style="background-color: #f7f7f7;">
-//         <h3>見出し</h3>
-//         <div class="m-section__body is-no-gutter">
+//       <section class="m-sec-main" style="background-color: #f7f7f7;">
+//         <h3 style="margin: 0;">内側セクション</h3>
+//         <div class="m-sec-main__body is-no-gutter">
 //           <p>セクション本文</p>
 //         </div>
 //       </section>
@@ -66,7 +67,7 @@
 // </article>
 //
 // Styleguide: 1.section
-.m-section {
+.m-sec-main {
 	margin-top: 30px;
 	// padding-left: 20px;
 	// padding-right: 20px;
@@ -74,6 +75,9 @@
 	& + & {
 		margin-top: 60px;
 	}
+	&.is-none {
+		margin-top: 0;
+	}
 	&.is-small {
 		margin-top: 10px;
 	}
@@ -86,18 +90,9 @@
 	&.is-xlarge {
 		margin-top: 100px;
 	}
-
-	// &.is-no-gutter {
-	// 	padding-left: 0;
-	// 	padding-right: 0;
-	// }
-}
-.m-section__body {
-	margin-left: 20px;
-	margin-right: 20px;
-	&.is-no-gutter {
-		margin-left: 0;
-		margin-right: 0;
+	&__body {
+		margin-left: 20px;
+		margin-right: 20px;
 	}
 }
 
@@ -105,57 +100,43 @@
 
 // Section-min
 //
-// ・<strong>sectionタグ以外で使用しても構わない</strong><br>
-// ・セクションの上にはデフォルトである程度の余白を設けているが、Modifierを渡すことで調整が可能<br>
-// ・m-sectionとは違い、内側余白を設定するelementは用意していない
+// ・m-sec-mainよりデフォルトでの余白を小さくしたもの<br>
+// ・m-sec-main.is-middleのショートカット<br>
+// ・modifierは基本設定しない
 // 
-// - @block   : m-section-min
-// - @modifier: m-section-min.is-small
-// - @modifier: m-section-min.is-middle
-// - @modifier: m-section-min.is-large
-// - @modifier: m-section-min.is-xlarge
-//
-// .is-small - 余白小
-// .is-middle - 余白小
-// .is-large - 余白大
-// .is-xlarge - 余白特大
+// - @block: m-sec-min
+// - @element: m-sec-main__body
 //
 // Markup:
-//   <section class="m-section-min" style="background-color: #ccc;">
-//     <h3>見出し1</h3>
-//     <p>セクション本文1</p>
-//     <section class="m-section-min" style="background-color: #ccc;">
-//       <h3>見出し2</h3>
-//       <p>セクション本文2</p>
-//     </section>
+//   <h1 style="margin: 0;">article 大見出し</h1>
+//   <section class="m-sec-min" style="background-color: #ccc;">
+//     <h2 style="margin:0;">見出し1</h2>
+//     <div class="m-sec-min__body">
+//       <p>セクション本文1</p>
+//       <section class="m-sec-min" style="background-color: #ccc;">
+//         <h3 style="margin:0;">見出し2</h3>
+//         <p>セクション本文2</p>
+//       </section>
+//     </div>
 //   </section>
-//   <section class="m-section-min {{[modifier_class]}}" style="background-color: #ccc;">
-//     <h3>見出し1</h3>
-//     <p>セクション本文1</p>
-//     <section class="m-section-min" style="background-color: #ccc;">
-//       <h3>見出し2</h3>
-//       <p>セクション本文2</p>
-//     </section>
+//   <section class="m-sec-min {{[modifier_class]}}" style="background-color: #ccc;">
+//     <h2 style="margin:0;">見出し1</h2>
+//     <div class="m-sec-min__body">
+//       <p>セクション本文1</p>
+//       <section class="m-sec-min" style="background-color: #ccc;">
+//         <h3 style="margin:0;">見出し2</h3>
+//         <p>セクション本文2</p>
+//       </section>
+//     </div>
 //   </section>
 //
 // Styleguide: 1.section-min
-.m-section-min {
+.m-sec-min {
 	margin-top: 30px;
 	// 順番は変えないこと
-	& + & {
-		margin-top: 30px;
-	}
-	&.is-small {
-		margin-top: 10px;
-	}
-	&.is-middle {
-		margin-top: 30px;
-	}
-	&.is-large {
-		margin-top: 60px;
-	}
-	&.is-xlarge {
-		margin-top: 100px;
+	&__body {
+		margin-left: 20px;
+		margin-right: 20px;
 	}
 }
 
