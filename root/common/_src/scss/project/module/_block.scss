@@ -190,21 +190,21 @@
 // ・主にsectionやdlなどで使用する<br>
 // ・外側の余白はdlやsectionの方で制御
 //
-// - @block   : m-block-group-1
-// - @element : m-block-group-1__head
-// - @element : m-block-group-1__body
-// - @modifier: m-block-group-1.has-gray
+// - @block   : m-gblock-1
+// - @element : m-gblock-1__head
+// - @element : m-gblock-1__body
+// - @modifier: m-gblock-1.has-gray
 //
 // .has-gray - 色を消す
 //
 // Markup:
-// <dl class="m-block-group-1 {{[modifier_class]}}">
-//   <dt class="m-block-group-1__head">見出し</dt>
-//   <dd class="m-block-group-1__body">本文</dd>
+// g<dl class="m-gblock-1 {{[modifier_class]}}">
+// g  <dt class="m-gblock-1__head">見出し</dt>
+// g  <dd class="m-gblock-1__body">本文</dd>
 // </dl>
 //
 // Styleguide: 5.block-group-1
-.m-block-group-1 {
+.m-gblock-1 {
 	$that: &;
 	&.has-gray {
 		#{$that}__head {
@@ -217,21 +217,28 @@
 			border-color: $g_gray-normal;
 		}
 	}
-}
-.m-block-group-1__head {
-	background-color: $g_main-color;
-	color: #fff;
-	font-weight: bold;
-	padding: 10px 20px;
-	margin-bottom: 0;
-}
-.m-block-group-1__body {
-	background-color: #fff;
-	margin: 0;
-	border: 2px solid $g_main-color;
-	padding: 20px;
-	& + & {
-		margin-top: -2px;
+	&__head {
+		background-color: $g_main-color;
+		color: #fff;
+		font-weight: bold;
+		padding: 10px 20px;
+		line-height: 1.5;
+		margin-bottom: 0;
+		@include my_is-sp() {
+			padding: 10px;
+		}
+	}
+	&__body {
+		background-color: #fff;
+		margin: 0;
+		border: 2px solid $g_main-color;
+		padding: 20px;
+		& + & {
+			margin-top: -2px;
+		}
+		@include my_is-sp() {
+			padding: 10px;
+		}
 	}
 }
 
@@ -243,21 +250,21 @@
 // ・主にsectionやdlなどで使用する<br>
 // ・外側の余白はdlやsectionの方で制御
 //
-// - @block   : m-block-group-2
-// - @element : m-block-group-2__head
-// - @element : m-block-group-2__body
-// - @modifier: m-block-group-2.has-gray
+// - @block   : m-gblock-2
+// - @element : m-gblock-2__head
+// - @element : m-gblock-2__body
+// - @modifier: m-gblock-2.has-gray
 //
 // .has-gray - 色を消す
 //
 // Markup:
-// <dl class="m-block-group-2 {{[modifier_class]}}">
-//   <dt class="m-block-group-2__head">見出し</dt>
-//   <dd class="m-block-group-2__body">本文</dd>
+// g<dl class="m-gblock-2 {{[modifier_class]}}">
+// g  <dt class="m-gblock-2__head">見出し</dt>
+// g  <dd class="m-gblock-2__body">本文</dd>
 // </dl>
 //
 // Styleguide: 5.block-group-2
-.m-block-group-2 {
+.m-gblock-2 {
 	border: 2px solid $g_main-color;
 	padding: 1.5em;
 	$that: &;
@@ -272,24 +279,74 @@
 			border-color: $g_gray-normal;
 		}
 	}
-}
-.m-block-group-2__head {
-	background-color: $g_main-color-thin;
-	border: 1px dashed $g_main-color;
-	border-bottom: none;
-	color: $g_main-color;
-	font-weight: bold;
-	padding: 0.75em 1.5em;
-	margin-bottom: 0;
-}
-.m-block-group-2__body {
-	margin: 0;
-	border: 1px dashed $g_main-color;
-	padding: 1.5em;
-	& + & {
-		margin-top: -1px;
+	&__head {
+		background-color: $g_main-color-thin;
+		border: 1px dashed $g_main-color;
+		border-bottom: none;
+		color: $g_main-color;
+		font-weight: bold;
+		padding: 0.75em 1.5em;
+		margin-bottom: 0;	
+	}
+	&__body {
+		margin: 0;
+		border: 1px dashed $g_main-color;
+		padding: 1.5em;
+		& + & {
+			margin-top: -1px;
+		}
 	}
 }
 
 
-
+// Block-group-toggle
+//
+// ・クリックで要素がToggleするブロックグループ<br />
+// ・スライドの動作はjsで調整せいする
+// 
+// - @block   : m-gblock-toggle
+// - @element : m-gblock-toggle__head
+// - @element : m-gblock-toggle__body
+// 
+// Markup:
+// <dl class="m-gblock-toggle {{[modifier_class]}}">
+//   <dt class="m-gblock-toggle__head">見出し</dt>
+//   <dd class="m-gblock-toggle__body">中身</dd>
+//   <dt class="m-gblock-toggle__head">見出し</dt>
+//   <dd class="m-gblock-toggle__body">中身</dd>
+// </dl>
+//
+// Styleguide: 5.block-group-toggle
+.m-gblock-toggle {
+	&__head {
+		background-color: $g_main-color;
+		color: $g_color-link;
+		cursor: pointer;
+		padding: 0.7em 1em;
+		transition: all .3s ease 0s;
+		line-height: 1.5;
+		&:hover {
+			background-color: $g_main-color-thin;
+		}
+		&:before {
+			@include my_bg-font-awesome("f0ab", $margin: 0 0.7em 0 0);
+		}
+		&.is-opened {
+			background-color: $g_main-color;
+			color: #fff;
+			&:before {
+				@include my_bg-font-awesome("f0aa", $margin: 0 0.7em 0 0);
+			}
+		}
+	}
+	&__body {
+		margin-top: 0;
+		border: 2px solid $g_main-color;
+		padding: 10px 20px;
+		@include my_is-sp() {
+			padding-left: 10px;
+			padding-right: 10px;
+			@include my_rem(14px);
+		}
+	}
+}
