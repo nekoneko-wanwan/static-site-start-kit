@@ -19,8 +19,9 @@
 //
 // Styleguide: 12.attention
 .m-text-attention {
+	font-size: 120%;;
 	font-weight: bold;
-	color: $g_accent-color;
+	color: $g_color-accent;
 }
 
 
@@ -37,4 +38,28 @@
 	color: #777;
 }
 
+
+// text-bigger
+//
+// - 必要に応じてmodifierでサイズを増減させる
+//
+// Markup:
+// <span class="m-text-bigger">大き</span>くする
+//
+// Styleguide: 12.bigger
+.m-text-bigger {
+	font-size: 120%;;
+}
+
+// text-smaller
+//
+// - 必要に応じてmodifierでサイズを増減させる
+//
+// Markup:
+// <span class="m-text-smaller">大き</span>くする
+//
+// Styleguide: 12.smaller
+.m-text-smaller {
+	font-size: 120%;;
+}
 
