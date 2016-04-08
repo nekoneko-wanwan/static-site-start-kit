@@ -10,38 +10,116 @@
 //
 // Styleguide: 7
 
-// btn-basic
+
+// Base-btn
 //
-// - @block   : m-btn-basic
-// - @modifier: is-primary
+// ・modifierのmodifierでカラーリング<br>
+// ・inputでもaタグでも使用できるように<br>
 //
-// .is-primary - カラー1
+// - @block: m-btn
+//
+// .is-hoge
 //
 // Markup:
-// <span><input type="submit" value="送信" class="m-btn-basic {{[modifier_class]}}"></span>
+// <a href="#" class="m-btn {{[modifier_class]}}">ボタン</a>
+// <input type="submit" value="ボタン" class="m-btn {{[modifier_class]}}">
+// <button type="submit" class="m-btn {{[modifier_class]}}">ボタン</button>
 //
-// Styleguide: 7.basic
-.m-btn-basic {
-	background-color: $g_gray-light;
-	border: 1px solid $g_gray-dark;
-	box-shadow: 0 3px 0 0 $g_gray-light;
-	border-radius: 6px;
-	padding: 15px 60px;
-	font-size: 120%;
-	transition: all .3s;
-	&:hover {
-		background-color: $g_gray-thin;
-	}
-	&.is-primary {
-		background: $g_accent-color;
-		border-color: $g_accent-color;
-		color: #fff;
-		&:hover {
-			background-color: darken($g_accent-color, 10%);
-		}
-	}
+// Styleguide: 7.btn
+.m-btn {
+  $shadowSize: 5px;
+  background-color: #f7f7f7;
+  color: #333;
+  font-weight: bold;
+  border-radius: 6px;
+  border: 2px solid #ccc;
+  display: block;
+  margin: 0 0 $shadowSize; // box-shadow分空ける
+  box-shadow: 0 $shadowSize 0 0 #aaa;
+  font-weight: bold;
+  padding: 0.5em 1.5em;
+  text-align: center;
+  text-decoration: none;
+  transition: all .2s ease 0s;
+  box-sizing: border-box;
+  &.is-hoge {
+  }
+  // 上書きさせないため記述はこの位置で
+  &:hover {
+    opacity: 0.8;
+  }
+  &:active {
+    box-shadow: none;
+    transform: translateY($shadowSize);
+  }
+  // 親のblock
+  $that: &;
+  &-wrap {
+    // 横並び
+    &.is-side {
+      margin: -0.5em 0 0;
+      max-width: 100%;
+      #{$that} {
+        display: inline-block;
+        margin-top: 0.5em;
+      }
+      #{$that} + #{$that} {
+        margin-left: 0.5em;
+      }
+    }
+    // 位置揃え
+    &.is-center {
+      text-align: center;
+    }
+    &.is-left {
+      text-align: left;
+    }
+    &.is-right {
+      text-align: right;
+    }
+    // 余白サイズ
+    &.is-small {
+      #{$that} {
+        padding: 0.2em 1em;
+      }
+    }
+    &.is-middle {
+      #{$that} {
+        padding-left: 2em;
+        padding-right: 2em;
+      }
+    }
+    &.is-large {
+      #{$that} {
+        padding-left: 4em;
+        padding-right: 4em;
+      }
+    }
+  }
 }
 
 
+// btn-wrap
+//
+// ・btnモジュールの親に指定することで細かい調整を行う
+//
+// - @block: m-btn-wrap
+// - @modifier: m-btn-wrap.is-side
+//
+// .is-side - 横並び
+// .is-center - 中央寄せ
+// .is-left - 左寄せ
+// .is-right - 右寄せ
+// .is-small - ボタン内の余白を小さく
+// .is-middle - ボタン内の余白を中くらいに
+// .is-large - ボタン内の余白を大きく
+//
+// Markup:
+// <div class="m-btn-wrap is-side {{[modifier_class]}}">
+//   <a href="#" class="m-btn">ボタン</a>
+//   <a href="#" class="m-btn">ボタン</a>
+// </div>
+//
+// Styleguide: 7.btn-wrap
 
-
+// スタイルの指定は上で行っている
