@@ -34,78 +34,46 @@
 // .is-external - 外部リンク
 // .is-pdf - pdf
 // .is-image - 画像
-// .is-zoom - ズームアップ
+// .is-search - 虫眼鏡
 //
 // Markup:
-// <a href="#" class="m-icon-before {{[modifier_class]}}">リンク</a>
+// <a href="#" class="m-icon-before {{[modifier_class]}}">リンク</a><br>
+// <a href="#" class="m-icon-after {{[modifier_class]}}">リンク</a>
 //
 // Styleguide: 10.icon-before
+@mixin icon-data($before-after: 'before') {
+	&.is-external {
+		&:#{$before-after} {
+			content: "\f08e";
+		}
+	}
+	&.is-pdf {
+		&:#{$before-after} {
+			content: "\f1c1";
+		}
+	}
+	&.is-image {
+		&:#{$before-after} {
+			content: "\f1c1";
+		}
+	}
+	&.is-search {
+		&:#{$before-after} {
+			content: "\f002";
+		}
+	}
+}
 .m-icon-before {
 	&:before {
 		font-size: 90%;
 		@include my_bg-font-awesome("f105", $margin: 0 7px 0 0);
 	}
-	&.is-external {
-		&:before {
-			content: "\f08e";
-		}
-	}
-	&.is-pdf {
-		&:before {
-			content: "\f1c1";
-		}
-	}
-	&.is-image {
-		&:before {
-			content: "\f1c1";
-		}
-	}
-	&.is-zoom {
-		&:before {
-			content: "\f00e";
-		}
-	}
+	@include icon-data('before');
 }
-
-
-// Icon-after
-//
-// - 色々なアイコンを右側に設定<br>
-// - 単体で完結させる
-//
-// .is-external - 外部リンク
-// .is-pdf - pdf
-// .is-image - 画像
-// .is-zoom - ズームアップ
-//
-// Markup:
-// <a href="#" class="m-icon-after {{[modifier_class]}}">リンク</a>
-//
-// Styleguide: 10.icon-after
 .m-icon-after {
 	&:after {
 		font-size: 90%;
 		@include my_bg-font-awesome("f105", $margin: 0 0 0 7px);
 	}
-	&.is-external {
-		&:after {
-			content: "\f08e";
-		}
-	}
-	&.is-pdf {
-		&:after {
-			content: "\f1c1";
-		}
-	}
-	&.is-image {
-		&:after {
-			content: "\f1c1";
-		}
-	}
-	&.is-zoom {
-		&:after {
-			content: "\f00e";
-		}
-	}
+	@include icon-data('after');
 }
-
