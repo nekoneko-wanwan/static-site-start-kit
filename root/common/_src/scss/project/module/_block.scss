@@ -6,219 +6,118 @@
 // Block
 // 
 // ・ブロックとして目立たせたい要素の装飾のスタイル<br>
-// ・画像を組み込む場合は、_media.scssや_image.scssの方を検討する<br>
-// ・modifierは必要に応じて調整する<br>
-// ・class名はプロジェクトによって柔軟に変更する
+// ・画像を組み込む場合は、_media.scssや_image.scssの方を検討する
 //
 // Styleguide: 5
 
 
-// Block-1
-//
-// ・左右に装飾用のあしらいを追加したブロック<br>
-// ・スタイルガイドのサンプルだとalpha0.5のbackgroundが上に乗っているため実際よりも薄く見えることに注意
-//
-// - @block   : m-block-1
-//
-// Markup:
-// <div class="m-block-1">
-//   <p>説明説明</p>
-// </div>
-//
-// Styleguide: 5.block-1
-.m-block-1 {
-	border: 1px solid $g_gray-normal;
+// あまり特徴の無い汎用的なblock
+.m-block-type-1 {
+	border: 1px solid #ccc;
 	background-color: rgba(255,255,255, 0.8);
 	font-size: 110%;
 	padding: 30px;
 	position: relative;
 	margin: 40px 10px;
+	z-index: 0;
 	&:before, &:after {
 		content: '';
 		display: block;
 		position: absolute;
 		height: 20px;
 		width: 20px;
-		z-index: -1;
+		z-index: 1;
 	}
 	&:before {
-		background-color: $g_main-color;
+		background-color: $g_color-blue;
 		left: -10px;
 		top: -10px;
 	}
 	&:after {
-		background-color: $g_sub-color;
+		background-color: $g_color-blue;
 		right: -10px;
 		bottom: -10px;
 	}
-}
-
-
-// Block-2
-//
-// 枠線にストライプを用いた明るいブロック
-//
-// - @block   : m-block-2
-// - @element : m-block-2__inner
-// - @modifier: m-block-2.is-normal
-// - @modifier: m-block-2.is-bold
-// - @modifier: m-block-2.is-gray
-// - @modifier: m-block-2.is-sub
-// 
-// .is-normal - 線の太さ
-// .is-bold - 線の太さ
-// .is-gray - 色を消す
-// .is-sub - サブ色を使う
-// 
-// Markup:
-// <div class="m-block-2 {{[modifier_class]}}">
-//   <div class="m-block-2__inner">
-//     <p>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト</p>
-//   </div>
-// </div>
-//
-// Styleguide: 5.block-2
-.m-block-2 {
-	background: $g_pat-url-thin 0 0 repeat $g_main-color;
-	padding: 5px;
-	&.is-normal {
-		background-image: $g_pat-url-normal;
-	}
-	&.is-bold {
-		background-image: $g_pat-url-bold;
-	}
-	&.is-gray {
-		background-color: $g_gray-normal;
-	}
-	&.is-sub {
-		background-color: $g_sub-color;
+	@include my_is-sp() {
+		margin: 20px 0;
+		font-size: 100%;
+		padding: 10px;
+		&:before, &:after {
+			display: none;
+		}
 	}
 }
-.m-block-2__inner {
-	background-color: #fff;
-	padding: 20px;
-}
-
-
-
-// Block-3
-//
-// 薄い背景と枠を合わせたクールなブロック
-//
-// - @block   : m-block-3
-// - @modifier: m-block-3.is-gray
-// - @modifier: m-block-3.is-sub
-//
-// .is-gray - 色を消す
-// .is-sub - サブ色を使う
-//
-// Markup:
-// <div class="m-block-3 {{[modifier_class]}}">
-//   <p>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト</p>
-// </div>
-//
-// Styleguide: 5.block-3
-.m-block-3 {
-	border: 5px solid $g_main-color-thin;
-	box-shadow: inset 0 0 0 1px $g_main-color;
+.m-block-type-2 {
+	border: 5px solid $g_color-blue-light;
+	box-shadow: inset 0 0 0 1px $g_color-blue;
 	padding: 20px;
 	&.is-gray {
-		border-color: $g_gray-thin;
-		box-shadow: inset 0 0 0 1px $g_gray-normal;
+		border-color: #f7f7f7;
+		box-shadow: inset 0 0 0 1px #ccc;
 	}
-	&.is-sub {
-		border-color: $g_sub-color-thin;
-		box-shadow: inset 0 0 0 1px $g_sub-color;
+	@include my_is-sp() {
+		padding: 10px;
 	}
 }
-
-
-
-// Block-4
-//
-// 二重枠をあしらったブロック
-//
-// - @block   : m-block-4
-// - @modifier: m-block-4.is-gray
-// - @modifier: m-block-4.is-sub
-//
-// .is-gray - 色を消す
-// .is-sub - サブ色を使う
-//
-// Markup:
-// <div class="m-block-4 {{[modifier_class]}}">
-//   <p>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト</p>
-// </div>
-//
-// Styleguide: 5.block-4
-.m-block-4 {
-	border: 3px double $g_main-color;
+.m-block-type-3 {
+	border: 3px double $g_color-blue;
 	padding: 20px;
 	&.is-gray {
-		border-color: $g_gray-normal;
-	}
-	&.is-sub {
-		border-color: $g_sub-color;
+		border-color: #ccc;
 	}
 }
-
-
-
-// Block-5
-//
-// 外側に影をつけたブロック
-//
-// - @block   : m-block-5
-//
-// Markup:
-// <div class="m-block-5 {{[modifier_class]}}">
-//   <p>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト<br>テキストテキストテキスト</p>
-// </div>
-//
-// Styleguide: 5.block-5
-.m-block-5 {
-	border: 1px solid $g_gray-normal;
+.m-block-type-4 {
+	border: 1px solid #ccc;
 	padding: 20px;
-	box-shadow: 0 0px 3px 0 $g_gray-normal, inset 0 0 0 3px $g_gray-thin;
+	box-shadow: 0 0px 3px 0 #ccc, inset 0 0 0 3px #f7f7f7;
+}
+
+
+// 脚注に使用する薄いブロック
+.m-block-footnote {
+	background-color: #f7f7f7;
+	color: #888;
+	font-size: 90%;
+	padding: 10px;
 }
 
 
 
-// Block-group-1
+// Block-group-type-1
 //
 // ・見出しと本文を組み合わせたブロック<br>
 // ・主にsectionやdlなどで使用する<br>
 // ・外側の余白はdlやsectionの方で制御
 //
-// - @block   : m-gblock-1
-// - @element : m-gblock-1__head
-// - @element : m-gblock-1__body
-// - @modifier: m-gblock-1.has-gray
+// - @block   : m-block-group-type-1
+// - @element : m-block-group-type-1__head
+// - @element : m-block-group-type-1__body
+// - @modifier: m-block-group-type-1.has-gray
 //
 // .has-gray - 色を消す
 //
 // Markup:
-// g<dl class="m-gblock-1 {{[modifier_class]}}">
-// g  <dt class="m-gblock-1__head">見出し</dt>
-// g  <dd class="m-gblock-1__body">本文</dd>
+// g<dl class="m-block-group-type-1 {{[modifier_class]}}">
+// g  <dt class="m-block-group-type-1__head">見出し</dt>
+// g  <dd class="m-block-group-type-1__body">本文</dd>
 // </dl>
 //
-// Styleguide: 5.block-group-1
-.m-gblock-1 {
+// Styleguide: 5.block-group-type-1
+.m-block-group-type-1 {
 	$that: &;
 	&.has-gray {
 		#{$that}__head {
-			background-color: $g_gray-light;
-			border: 2px solid $g_gray-normal;
+			background-color: #f7f7f7;
+			border: 2px solid #ccc;
 			border-bottom: none;
 			color: #333;
 		}
 		#{$that}__body {
-			border-color: $g_gray-normal;
+			border-color: #ccc;
 		}
 	}
 	&__head {
-		background-color: $g_main-color;
+		background-color: $g_color-blue;
 		color: #fff;
 		font-weight: bold;
 		padding: 10px 20px;
@@ -231,7 +130,7 @@
 	&__body {
 		background-color: #fff;
 		margin: 0;
-		border: 2px solid $g_main-color;
+		border: 2px solid $g_color-blue;
 		padding: 20px;
 		& + & {
 			margin-top: -2px;
@@ -244,53 +143,53 @@
 
 
 
-// Block-group-2
+// Block-group-type-2
 //
 // ・見出しと本文を組み合わせたブロック<br>
 // ・主にsectionやdlなどで使用する<br>
 // ・外側の余白はdlやsectionの方で制御
 //
-// - @block   : m-gblock-2
-// - @element : m-gblock-2__head
-// - @element : m-gblock-2__body
-// - @modifier: m-gblock-2.has-gray
+// - @block   : m-block-group-type-2
+// - @element : m-block-group-type-2__head
+// - @element : m-block-group-type-2__body
+// - @modifier: m-block-group-type-2.has-gray
 //
 // .has-gray - 色を消す
 //
 // Markup:
-// g<dl class="m-gblock-2 {{[modifier_class]}}">
-// g  <dt class="m-gblock-2__head">見出し</dt>
-// g  <dd class="m-gblock-2__body">本文</dd>
+// g<dl class="m-block-group-type-2 {{[modifier_class]}}">
+// g  <dt class="m-block-group-type-2__head">見出し</dt>
+// g  <dd class="m-block-group-type-2__body">本文</dd>
 // </dl>
 //
-// Styleguide: 5.block-group-2
-.m-gblock-2 {
-	border: 2px solid $g_main-color;
+// Styleguide: 5.block-group-type-2
+.m-block-group-type-2 {
+	border: 2px solid $g_color-blue;
 	padding: 1.5em;
 	$that: &;
 	&.has-gray {
-		border-color: $g_gray-normal;
+		border-color: #ccc;
 		#{$that}__head {
-			background-color: $g_gray-thin;
-			border-color: $g_gray-normal;
+			background-color: #f7f7f7;
+			border-color: #ccc;
 			color: #333;
 		}
 		#{$that}__body {
-			border-color: $g_gray-normal;
+			border-color: #ccc;
 		}
 	}
 	&__head {
-		background-color: $g_main-color-thin;
-		border: 1px dashed $g_main-color;
+		background-color: $g_color-blue-light;
+		border: 1px dashed $g_color-blue;
 		border-bottom: none;
-		color: $g_main-color;
+		color: $g_color-blue;
 		font-weight: bold;
 		padding: 0.75em 1.5em;
 		margin-bottom: 0;	
 	}
 	&__body {
 		margin: 0;
-		border: 1px dashed $g_main-color;
+		border: 1px dashed $g_color-blue;
 		padding: 1.5em;
 		& + & {
 			margin-top: -1px;
@@ -304,35 +203,35 @@
 // ・クリックで要素がToggleするブロックグループ<br />
 // ・スライドの動作はjsで調整せいする
 // 
-// - @block   : m-gblock-toggle
-// - @element : m-gblock-toggle__head
-// - @element : m-gblock-toggle__body
+// - @block   : m-block-group-toggle
+// - @element : m-block-group-toggle__head
+// - @element : m-block-group-toggle__body
 // 
 // Markup:
-// <dl class="m-gblock-toggle {{[modifier_class]}}">
-//   <dt class="m-gblock-toggle__head">見出し</dt>
-//   <dd class="m-gblock-toggle__body">中身</dd>
-//   <dt class="m-gblock-toggle__head">見出し</dt>
-//   <dd class="m-gblock-toggle__body">中身</dd>
+// <dl class="m-block-group-toggle {{[modifier_class]}}">
+//   <dt class="m-block-group-toggle__head">見出し</dt>
+//   <dd class="m-block-group-toggle__body">中身</dd>
+//   <dt class="m-block-group-toggle__head">見出し</dt>
+//   <dd class="m-block-group-toggle__body">中身</dd>
 // </dl>
 //
 // Styleguide: 5.block-group-toggle
-.m-gblock-toggle {
+.m-block-group-toggle {
 	&__head {
-		background-color: $g_main-color;
+		background-color: $g_color-blue-light;
 		color: $g_color-link;
 		cursor: pointer;
 		padding: 0.7em 1em;
 		transition: all .3s ease 0s;
 		line-height: 1.5;
 		&:hover {
-			background-color: $g_main-color-thin;
+			background-color: $g_color-blue-light;
 		}
 		&:before {
 			@include my_bg-font-awesome("f0ab", $margin: 0 0.7em 0 0);
 		}
 		&.is-opened {
-			background-color: $g_main-color;
+			background-color: $g_color-blue;
 			color: #fff;
 			&:before {
 				@include my_bg-font-awesome("f0aa", $margin: 0 0.7em 0 0);
@@ -341,7 +240,7 @@
 	}
 	&__body {
 		margin-top: 0;
-		border: 2px solid $g_main-color;
+		border: 2px solid $g_color-blue;
 		padding: 10px 20px;
 		@include my_is-sp() {
 			padding-left: 10px;

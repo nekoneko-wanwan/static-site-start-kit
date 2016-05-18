@@ -3,14 +3,6 @@
 // 見出し
 //-------------------------------------------
 
-// 以下は本当はpreset/variablesの中で指定すること
-$g_color-blue:        #29abe2 !default;
-$g_color-blue-light:  #d6eff9 !default;
-$g_color-blue-light2: #c2dfeb !default;
-$g_color-blue-dark:   #1988b7 !default;
-$g_color-blue-dark2:  #0f5572 !default;
-$g_color-blue-dark3:  #082e3e !default;
-$g_color-blue2:       #0071BC !default;
 
 // Heading
 // 
@@ -18,65 +10,10 @@ $g_color-blue2:       #0071BC !default;
 //
 // Styleguide: 6
 
-// Heading-main-list
-//
-// ・メインとして使えそうな見出しをリストアップ
-// 
-// - @block: m-head-main-1
-// - @block: m-head-main-2
-// - @block: m-head-main-3
-//
-// Markup:
-//   <h1 class="m-head-main-1">メイン見出し</h1>
-//   <h1 class="m-head-main-2">メイン見出し</h1>
-//   <h1 class="m-head-main-3">メイン見出し</h1>
-//
-// Styleguide: 6.head-main-list
-.m-head-main-1 {
-	position: relative;
-	padding: .25em 0 .5em .75em;
-	border-left: 6px solid $g_color-blue;
-	&:before {
-		position: absolute;
-		left: -6px;
-		bottom: 0;
-		content: '';
-		width: 6px;
-		height: 50%;
-		background-color: $g_color-blue-dark;
-	}
-	&:after {
-		position: absolute;
-		left: 0;
-		bottom: 0;
-		content: '';
-		width: 100%;
-		height: 0;
-		border-bottom: 1px solid $g_color-blue-dark;
-	}
-}
-
-.m-head-main-2 {
-	color: #fff;
-	position: relative;
-	padding: .5em 1em;
-	background-color: $g_color-blue;
-	&:after {
-		position: absolute;
-		top: 0;
-		right: 0;
-		content: '';
-		width: 0;
-		border-width: 0 20px 20px 0;
-		border-style: solid;
-		border-color: #fff #fff $g_color-blue-dark $g_color-blue-dark;
-		box-shadow: -1px 1px 2px rgba(0, 0, 0, .1);
-	}
-}
-
-.m-head-main-3 {
+// メインとして使う見出し
+.m-head-main {
 		position: relative;
-		padding-bottom: .5em;
+		padding-bottom: .2em;
 	&:before,&:after {
 		position: absolute;
 		bottom: -4px;
@@ -92,47 +29,35 @@ $g_color-blue2:       #0071BC !default;
 	&:after {
 		width: 100%;
 		background-color: $g_color-blue-light;
-		background: -webkit-repeating-linear-gradient(45deg, #fff, #fff 2px, $g_color-blue-light2 2px, $g_color-blue-light2 4px);
-		background: repeating-linear-gradient(45deg, #fff, #fff 2px, $g_color-blue-light2 2px, $g_color-blue-light2 4px);
+		background: -webkit-repeating-linear-gradient(45deg, #fff, #fff 2px, $g_color-blue-light 2px, $g_color-blue-light 4px);
+		background: repeating-linear-gradient(45deg, #fff, #fff 2px, $g_color-blue-light 2px, $g_color-blue-light 4px);
 	}
 }
 
-
-// Heading-sub-list
-//
-// ・サブとして使えそうな見出しをリストアップ<br>
-// ・使うものにはmodifierとして別カラーを設定する
-// 
-// - @block: m-head-sub-1
-// - @block: m-head-sub-2
-// - @block: m-head-sub-3
-// - @block: m-head-sub-4
-// - @block: m-head-sub-5
-// - @block: m-head-sub-6
-//
-// Markup:
-//   <h2 class="m-head-sub-1">サブ見出し</h2>
-//   <h2 class="m-head-sub-2">サブ見出し</h2>
-//   <h2 class="m-head-sub-3">サブ見出し</h2>
-//   <h2 class="m-head-sub-4">サブ見出し</h2>
-//   <h2 class="m-head-sub-5"><span>サブ見出し</span></h2>
-//   <h2 class="m-head-sub-6">サブ見出し</h2>
-//
-// Styleguide: 6.head-sub-list
-.m-head-sub-1 {
-  padding: .5em .75em;
-	background-color: $g_color-blue-light;
-	border-top: 2px solid $g_color-blue;
-	border-bottom: 2px solid $g_color-blue;
-}
-
-.m-head-sub-2 {
+// よくある特徴のない小見出し
+.m-head-type-1 {
   padding: .5em .75em;
 	background-color: $g_color-blue-light;
 	border-left: 6px solid $g_color-blue;
+	&.is-nallow {
+		margin-bottom: 20px;
+	}
+	&.is-gray {
+		background-color: #f7f7f7;
+		border-color: #aaa;
+	}
+}
+.m-head-type-2 {
+	padding: .5em 0;
+	border-bottom: 2px solid $g_color-blue;
+}
+.m-head-type-3 {
+	padding: 0.3em 1em;
+	border-left: 3px solid $g_color-blue;
 }
 
-.m-head-sub-3 {
+// 下にしっぽのついた吹き出しスタイル
+.m-head-fukidashi {
   position: relative;
 	padding: .5em .75em;
 	background-color: $g_color-blue-light;
@@ -149,31 +74,31 @@ $g_color-blue2:       #0071BC !default;
 	}
 }
 
-.m-head-sub-4 {
-  position: relative;
-	padding: .5em .75em;
-	background-color: #fff;
-	border: 1px solid $g_color-blue;
-	border-radius: 6px;
-	&:before,&:after {
-    position: absolute;
-  	top: 100%;
-  	left: 30px;
-  	content: '';
-  	height: 0;
-  	width: 0;
-  	border: 10px solid transparent;
-	}
-	&:before {
-		border-top: 15px solid $g_color-blue;
-	}
+// 右上に角折りがついたスタイル
+.m-head-dogear {
+	color: #fff;
+	position: relative;
+	padding: .5em 1em;
+	background-color: $g_color-blue;
 	&:after {
-    margin-top: -2px;
-  	border-top: 15px solid #fff;
+		position: absolute;
+		top: 0;
+		right: 0;
+		content: '';
+		width: 0;
+		border-width: 0 20px 20px 0;
+		border-style: solid;
+		border-color: #fff #fff $g_color-blue-dark $g_color-blue-dark;
+		box-shadow: -1px 1px 2px rgba(0, 0, 0, .1);
+	}
+	&.is-nallow {
+		margin-bottom: 20px;
 	}
 }
 
-.m-head-sub-5 {
+// 中央に区切り線のついたスタイル
+// 内側にspanを設置
+.m-head-hr {
   overflow: hidden;
 	text-align: center;
   > span {
@@ -199,18 +124,21 @@ $g_color-blue2:       #0071BC !default;
   }
 }
 
-.m-head-sub-6 {
+// 下にマーカーを引いたスタイル
+.m-head-marker {
   position: relative;
-	padding: 0 .4em .1em;
+	padding: 0 .4em .1em 0;
+	&.is-nallow {
+		margin-bottom: 20px;
+	}
   &:after {
     position: absolute;
-  	bottom: 0;
+  	bottom: 2px;
   	left: 0;
   	z-index: -1;
   	content: '';
   	width: 100%;
   	height: 10px;
-  	background-color: #b6f0fc;
+  	background-color: #FFECB3;
   }
 }
-

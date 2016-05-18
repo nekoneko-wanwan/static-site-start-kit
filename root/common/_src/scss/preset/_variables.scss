@@ -8,45 +8,49 @@
 //-------------------------------------------
 // サイズ
 //-------------------------------------------
-$g_width-pc: 960px !default;
-$g_width-pc-main: 730px !default;  // 2カラムのメイン側
+$g_width-pc: 985px !default;
+$g_width-pc-main: 725px !default;  // 2カラムのメイン側
 $g_width-pc-sub: 220px !default;   // 2カラムのサブ側
-$g_width-tablet: 768px !default;
-$g_width-smartphone: 480px !default;
-$g_width-scrollbar: 20px !default;
+$g_breakpoint: 767px !default;
+$g_breakpoint-min: 350px !default;  // 最小サイズの調整用
 
 
 
 //-------------------------------------------
 // フォント
 //-------------------------------------------
-$g_base-font-size-px: 14px;
+$g_base-font-size-px: 15px;
 $g_base-font-size-percent: ($g_base-font-size-px / 16px * 100) + 0%; // 16pxは全ブラウザの文字サイズ初期値=100%
 $g_font-family: 'メイリオ',Meiryo,'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro',Verdana,'ＭＳ Ｐゴシック','MS PGothic',sans-serif !default;
 
-
+// original webfont
+$g_origin-font-path: "../fonts/font-origin/";
+$g_origin-font-name: "origin-webfont";
 
 
 //-------------------------------------------
 // 色
 //-------------------------------------------
-$g_main-color  : #3498db !default;
-$g_sub-color   : #eaf9fb !default;
-$g_base-color  : #ff6685 !default;
-$g_accent-color: #ff9900 !default;
-$g_link-color: #0074be !default;
+// 青系
+$g_color-blue:        #29abe2 !default;
+$g_color-blue-light:  #d6eff9 !default;
+$g_color-blue-dark:   #1988b7 !default;
+$g_color-green:       #1abc9c !default;
+$g_color-green-dark:  #138a72 !default;
+$g_color-purple:      #9b59b6 !default;
+$g_color-purple-dark: #8e44ad !default;
 
-$g_main-color-light: null !default;
-$g_main-color-thin: null !default;
-$g_sub-color-light: null !default;
-$g_sub-color-thin : null !default;
+// オレンジ系
+$g_color-orange: #ff931e;
+$g_color-orange-light: #ffa645;
+$g_color-orange-dark: #bb6100;
 
-$g_gray-thin  : #f7f7f7 !default;
-$g_gray-light : #eee !default;
-$g_gray-normal: #ccc !default;
-$g_gray-dark  : #aaa !default;
+// リンク
+$g_color-link: #0071BC !default;
 
-
+// その他
+$g_color-accent: #fb3220; // 赤
+$g_color-error:  #fb3220; // 赤
 
 
 //-------------------------------------------
@@ -54,9 +58,5 @@ $g_gray-dark  : #aaa !default;
 //-------------------------------------------
 
 // パターンbase64
-$g_pat-url-thin: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABxJREFUeNpi/P//PwMU/GeCMYCYkQnGAIkABBgApQoGAnr9sboAAAAASUVORK5CYII=') !default;
-$g_pat-url-normal: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACtJREFUeNpi/P//PwMQgAkoYAQRTNgEYRIYgiDFTNgEYTowBNGNQrELIMAAd4sJCXtYYfQAAAAASUVORK5CYII=') !default;
-$g_pat-url-bold: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACVJREFUeNpi/P//PwMa+M+ELgDEjEzoAiAGE7oATBBFAAQAAgwANPoIBshsvPIAAAAASUVORK5CYII=') !default;
-
 
 

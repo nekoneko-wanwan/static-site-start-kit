@@ -35,6 +35,21 @@
 // .is-pdf - pdf
 // .is-image - 画像
 // .is-search - 虫眼鏡
+// .is-question - はてな
+// .is-comment - 吹き出し
+// .is-mail - メール
+// .is-car - 車
+// .is-user - 人
+// .is-users - 人々
+// .is-check - チェック済み
+// .is-check-s - シンプルなチェック
+// .is-info - インフォメーションマーク
+// .is-home - 家
+// .is-phone - 電話
+// .is-mphone - 携帯電話
+// .is-fax - fax
+// .is-map - 地図
+// .is-back - 戻る矢印
 //
 // Markup:
 // <a href="#" class="m-icon-before {{[modifier_class]}}">リンク</a><br>
@@ -62,18 +77,127 @@
 			content: "\f002";
 		}
 	}
+	&.is-question {
+		&:#{$before-after} {
+			content: "\f059";
+		}
+	}
+	&.is-comment {
+		&:#{$before-after} {
+			content: "\f086";
+		}
+	}
+	&.is-mail {
+		&:#{$before-after} {
+			content: "\f0e0";
+		}
+	}
+	&.is-car {
+		&:#{$before-after} {
+			content: "\f1b9";
+			margin-right: 12px;
+		}
+	}
+	&.is-user {
+		&:#{$before-after} {
+			content: "\f007";
+		}
+	}
+	&.is-users {
+		&:#{$before-after} {
+			content: "\f0c0";
+		}
+	}
+	&.is-check {
+		&:#{$before-after} {
+			content: "\f046";
+		}
+	}
+	&.is-check-s {
+		&:#{$before-after} {
+			content: "\f00c";
+		}
+	}
+	&.is-info {
+		&:#{$before-after} {
+			content: "\f05a";
+		}
+	}
+	&.is-home {
+		&:#{$before-after} {
+			content: "\f015";
+		}
+	}
+	&.is-phone {
+		&:#{$before-after} {
+			content: "\f095";
+		}
+	}
+	&.is-mphone {
+		&:#{$before-after} {
+			content: "\f10b";
+		}
+	}
+	&.is-fax {
+		&:#{$before-after} {
+			content: "\f1ac";
+		}
+	}
+	&.is-twitter {
+		&:#{$before-after} {
+			color: #55ACEE;
+			content: "\f099";
+		}
+	}
+	&.is-fb {
+		&:#{$before-after} {
+			color: #3B5998;
+			content: "\f230";
+		}
+	}
+	&.is-map {
+		&:#{$before-after} {
+			content: "\f041";
+		}
+	}
+	&.is-back {
+		&:#{$before-after} {
+			content: "\f060";
+		}
+	}
 }
 .m-icon-before {
 	&:before {
-		font-size: 90%;
 		@include my_bg-font-awesome("f105", $margin: 0 7px 0 0);
 	}
 	@include icon-data('before');
 }
 .m-icon-after {
 	&:after {
-		font-size: 90%;
 		@include my_bg-font-awesome("f105", $margin: 0 0 0 7px);
 	}
 	@include icon-data('after');
 }
+
+
+// icomoonを使用したオリジナルwebfont
+@mixin org-icon-data($before-after: 'before') {
+	&.is-search {
+		&:#{$before-after} {
+			content: "\e900";
+		}
+	}
+}
+.m-org-icon-before {
+	&:before {
+		@include my_bg-font-origin("e900", $margin: 0 10px 0 0);
+	}
+	@include org-icon-data('before');
+}
+.m-org-icon-after {
+	&:after {
+		@include my_bg-font-origin("e900", $margin: 0 0 0 10px);
+	}
+	@include org-icon-data('after');
+}
+

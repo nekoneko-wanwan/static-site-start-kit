@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+// オリジナルwebフォントの定義
+@font-face {
+  font-family: 'origin';
+  src: url($g_origin-font-path + $g_origin-font-name + '.eot?');
+  src: url($g_origin-font-path + $g_origin-font-name + '.eot?#iefix') format('embedded-opentype'),
+       url($g_origin-font-path + $g_origin-font-name + '.ttf?') format('truetype'),
+       url($g_origin-font-path + $g_origin-font-name + '.woff?') format('woff'),
+       url($g_origin-font-path + $g_origin-font-name + '.svg?#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

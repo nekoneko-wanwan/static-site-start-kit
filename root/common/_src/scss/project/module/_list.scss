@@ -9,66 +9,6 @@
 //
 // Styleguide: 9
 
-// List-date
-//
-// ・日付とテキストの表示
-//
-// Markup:
-// <div class="m-list-date">
-//   <ul>
-//     <li>
-//       <span class="m-list-date__date">2015年12月11日</span>
-//       <a href="#" class="m-list-date__title">お知らせのタイトルが入ります</a>
-//     </li>
-//     <li>
-//       <span class="m-list-date__date">2015年12月11日</span>
-//       <a href="#" class="m-list-date__title">お知らせのタイトルが入ります</a>
-//     </li>
-//     <li>
-//       <span class="m-list-date__date">2015年12月11日</span>
-//       <a href="#" class="m-list-date__title">お知らせのタイトルが入ります</a>
-//     </li>
-//     <li>
-//       <span class="m-list-date__date">2015年12月11日</span>
-//       <a href="#" class="m-list-date__title">お知らせのタイトルが入ります</a>
-//     </li>
-//     <li>
-//       <span class="m-list-date__date">2015年12月11日</span>
-//       <a href="#" class="m-list-date__title">お知らせのタイトルが入ります</a>
-//     </li>
-//   </ul>
-// </div>
-//
-// Styleguide: 9.list-date
-.m-list-date {
-	// common
-	ul {
-		margin: 0 10px;
-	}
-	li {
-		@include my_resetList;
-		position: relative;
-		padding-right: 10px;
-		padding-bottom: 14px;
-		border-bottom: 1px dashed $g_gray-normal;
-	}
-	li + li {
-		padding-top: 14px;
-	}
-}
-.m-list-date__date {
-	color: #777;
-	font-weight: bold;
-	position: absolute;
-	left: 10px;
-}
-.m-list-date__title {
-	position: relative;
-	display: block;
-	margin-left: 12em;
-}
-
-
 
 // List-plain
 //
@@ -135,27 +75,20 @@
 // Styleguide: 9.list-simple
 .m-list-simple {
 	> li {
-		@include my_resetList;
-		padding: 10px 15px 10px 25px;
-		position: relative;
-		list-style-type: none;
-		&:before {
-			content: '';
-			background-color: #777;
-			display: block;
-			position: absolute;
-			left: 10px;
-			top: 18px;
-			height: 5px;
-			width: 5px;
-		}
+		padding-top: 0;
+		padding-bottom: 10px;
 		+ li {
 			padding-top: 10px;
-			border-top: 1px dashed $g_gray-normal;
+			border-top: 1px dashed #ccc;
+		}
+	}
+	&.is-no-mark {
+		> li {
+			@include my_resetList;
+			list-style: none;
 		}
 	}
 }
-
 
 
 // List-stripe
@@ -177,9 +110,36 @@
 		padding: 10px;
 		position: relative;
 		&:nth-child(even) {
-			background-color: $g_gray-thin;
+			background-color: #f7f7f7;
 		}
 	}
 }
+
+
+// List-checked
+//
+// ・チェックリスト<br>
+// ・list-style-typeは削除
+//
+// Markup:
+// <ul class="m-list-checked {{[modifier_class]}}">
+//   <li>リスト</li>
+//   <li>リスト</li>
+//   <li>リスト</li>
+// </ul>
+//
+// Styleguide: 9.list-stripe
+.m-list-checked {
+	> li {
+		@include my_resetList;
+		&:before {
+			@include my_bg-font-awesome("f046", $margin: 0 10px 0 0);
+		}
+		& + li {
+			margin-top: .5em;
+		}
+	}
+}
+
 
 

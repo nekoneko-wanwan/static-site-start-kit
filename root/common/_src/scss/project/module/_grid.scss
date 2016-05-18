@@ -6,64 +6,23 @@
 // Grid
 //
 // ・グリッド型ベースのモジュール<br>
-// ・スタイルガイド上は分かりやすく色をつけている（実際にはつかないので注意）<br>
-// ・class名はプロジェクトによって柔軟に変更する
+// ・スマホでも複数カラムを実装する場合は、my_is-sp() {} 内にmixin: my_omega-reset() を指定する
 //
 // Styleguide: 3
 
 
-// Grid Neat
-//
-// Neatを元にしたグリッドモジュールのサンプル
-// 
-// ・ローカル変数によってカラム数を変更する<br>
-// ・高さが異なるとブラウザによっては崩れるので注意する<br>
-// ・自動でマージンが約1emが付与されるので、余白なしや細かい調整が必要なものは別モジュールを使う<br>
-// ・あまりModifierでレイアウトは変えないと思うので、とりあえずそのまま
-//
-// - @block   : m-sample-grid-neat
-// - @element : m-sample-grid-neat__inner
-//
-// Markup:
-// <div class="m-sample-grid-neat">
-//   <div class="m-sample-grid-neat__inner">
-//     <div style="background: #ccc;">テキストテキスト<br>テキストテキストテキスト</div>
-//   </div>
-//   <div class="m-sample-grid-neat__inner">
-//     <div style="background: #ccc;">テキストテキストテキストテキストテキスト</div>
-//   </div>
-//   <div class="m-sample-grid-neat__inner">
-//      <div style="background: #ccc;">テキストテキストテキストテキストテキスト</div>
-//   </div>
-//   <div class="m-sample-grid-neat__inner">
-//      <div style="background: #ccc;">テキストテキストテキスト<br>テキストテキスト</div>
-//   </div>
-//   <div class="m-sample-grid-neat__inner">
-//     <div style="background: #ccc;">テキストテキストテキストテキストテキスト</div>
-//   </div>
-//   <div class="m-sample-grid-neat__inner">
-//     <div style="background: #ccc;">テキストテキストテキストテキストテキスト</div>
-//   </div>
-// </div>
-// 
-// Styleguide: 3.sample-grid-neat
-
-// http://neat.bourbon.io/examples/ を参考に作成する
-.m-sample-grid-neat {
-	$col-pc: 2;
-	$col-sp: 4;
-
-	@include outer-container(100%);
-
-	&__inner {
-		margin-bottom: 2.35765%;
-		@include span-columns(12/$col-pc);
-		@include omega(#{$col-pc}n);
-		// media
-		@include my_media-query-sp {
-			@include my_omega-reset(#{$col-pc}n);
-			@include span-columns(12/$col-sp);
-			@include omega(#{$col-sp}n);
+// 2分割 (bourbon/neat 依存)
+.m-grid-2col {
+	@include outer-container;
+	&__cell {
+		@include span-columns(6);
+		@include omega(2n);
+		margin-bottom: 2em;
+		@include my_is-sp() {
+			float: none;
+			margin-right: 0;
+			margin-bottom: 1em;
+			width: 100%;
 		}
 	}
 }

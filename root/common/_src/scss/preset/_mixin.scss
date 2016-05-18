@@ -5,37 +5,27 @@
 /////////////////////////////////////////////
 
 
-
 //-------------------------------------------
 // メディアクエリ
-// @use
-//     @include my_media-query-pc {}
 //-------------------------------------------
-@mixin my_media-query-pc {
-	// PC表示: 768+20=788px～
-	@media only screen and (min-width: $g_width-tablet + $g_width-scrollbar) {
-		@content;
-	}
-}
-@mixin my_media-query-tablet {
-	// タブレット表示: 480+20=500px ～ 768+20-1=787px
-	@media only screen and (min-width: $g_width-smartphone + $g_width-scrollbar) and (max-width: $g_width-tablet + $g_width-scrollbar - 1) {
-		@content;
-	}
-}
-@mixin my_media-query-sp {
-	// スマートフォン表示: 480+20-1=499px～
-	@media only screen and (max-width: $g_width-smartphone + $g_width-scrollbar - 1) {
-		@content;
-	}
-}
 
-
+// スマートフォン表示
+@mixin my_is-sp {
+	@media only screen and (max-width: $g_breakpoint) {
+		@content;
+	}
+}
+// スマホの中でも更に最小サイズの微調整用
+@mixin my_is-sp-min {
+	@media only screen and (max-width: $g_breakpoint-min) {
+		@content;
+	}
+}
 
 
 //-------------------------------------------
-// font-awesomeアイコン
-// font-awesomeをbackgroundで使用する
+// webフォント
+// webフォントをbackgroundで使用する
 //
 // @param {str} // 使用する文字列からはエスケープ \ を除外する（後述）
 // @param {margin} // marginを渡す
@@ -51,6 +41,8 @@
 // - sassのバージョンによっては不要になるかも
 //
 //-------------------------------------------
+
+// font-awesome
 @mixin my_bg-font-awesome($content, $margin: 0 .3em 0 0) {
 	font-family: FontAwesome;
 	content: my-unicode($content);
@@ -63,31 +55,17 @@
 	margin: $margin;
 }
 
-
-
-
-
-//-------------------------------------------
-// グラデーション
-// シンプルな縦のグラデーションを生成する
-// 初期値は白→グレー
-//
-// @param {color} $from 
-// @param {color} $to
-// @param {color} $base
-// @param {bool}  $isReverse
-//
-//-------------------------------------------
-// isReverse: trueでfrom<->toを入れ替える
-@mixin my_simple-grad($from: #fff, $to: shade($g_gray-thin, 2%), $base: shade($g_gray-thin, 5%), $isReverse: false) {
-	background-color: $base;
-	@if ($isReverse) {
-		background: -webkit-linear-gradient(#{$to} 0%,#{$from} 100%);
-		background: linear-gradient(#{$to} 0%,#{$from} 100%);
-	} @else {
-		background: -webkit-linear-gradient(#{$from} 0%,#{$to} 100%);
-		background: linear-gradient(#{$from} 0%,#{$to} 100%);
-	}
+// original (by icomoon)
+@mixin my_bg-font-origin($content, $margin: 0 .3em 0 0) {
+	font-family: origin;
+	content: my-unicode($content);
+	display: inline-block;
+	font-style: normal;
+	font-weight: normal;
+	line-height: inherit;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	margin: $margin;
 }
 
 
@@ -103,7 +81,6 @@
 	&:nth-child(#{$nth}) { margin-right: flex-gutter(); }
 	&:nth-child(#{$nth}+1) { clear: none }
 }
-
 
 
 
@@ -143,5 +120,3 @@
     display: table;
   }
 }
-
-

@@ -13,7 +13,6 @@
 
 // text-attention
 //
-//
 // Markup:
 // <span class="m-text-attention">※必須</span>
 //
@@ -27,7 +26,6 @@
 
 // text-note
 //
-//
 // Markup:
 // <span class="m-text-note">※必須</span>
 //
@@ -39,9 +37,23 @@
 }
 
 
+// text-footnote
+//
+// Markup:
+// <span class="m-text-footnote">※必須</span>
+//
+// Styleguide: 12.footnote
+.m-text-footnote {
+	background-color: #f7f7f7;
+	font-weight: normal;
+	font-size: 90%;
+	color: #888;
+	padding: 0 0.2em;
+}
+
+
 // text-bigger
 //
-// - 必要に応じてmodifierでサイズを増減させる
 //
 // Markup:
 // <span class="m-text-bigger">大き</span>くする
@@ -51,15 +63,20 @@
 	font-size: 120%;;
 }
 
-// text-smaller
-//
-// - 必要に応じてmodifierでサイズを増減させる
-//
-// Markup:
-// <span class="m-text-smaller">大き</span>くする
-//
-// Styleguide: 12.smaller
-.m-text-smaller {
-	font-size: 120%;;
-}
 
+.m-text-br {
+	// スマホの時のみ改行する
+	&.is-sp-break {
+		display: none;
+		@include my_is-sp() {
+			display: block;
+		}
+	}
+	// PCの時のみ改行する
+	&.is-sp-none {
+		display: block;
+		@include my_is-sp() {
+			display: none;
+		}
+	}
+}

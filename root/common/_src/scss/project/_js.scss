@@ -6,10 +6,13 @@ js有効時に設定する初期スタイル
 ****************************************** */
 
 html.js {
-  .js-slide-target {
-    display: none;
+  [data-slide-trigger] {
+  }
+  [data-slide-target] {
   }
 }
 
 html.no-js {
+  [data-default-hide] {
+  }
 }

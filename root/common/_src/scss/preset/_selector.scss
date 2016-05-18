@@ -3,7 +3,6 @@
 セレクタの初期値を設定
 ****************************************** */
 
-
 // 全体に関する指定
 html {
 	// IEの文字サイズ拡大を使えるようにするため%指定で行う
@@ -16,11 +15,15 @@ body {
 	line-height: 1.8;
 	word-wrap:break-word;
 	min-width: $g_width-pc;
+	@include my_is-sp() {
+		@include my_rem(16px);
+		min-width: 100%;
+	}
 }
-
 
 // block要素
 h1, h2, h3, h4, h5 {
+	line-height: 1.5;
 	font-weight: bold;
 	margin: 0;
 }
@@ -51,10 +54,11 @@ p, ul, ol, dl, dt, dd {
 // よく出現するパターンなので初期値を設定しておく
 // h はsectionと同時に使うことが多いハズなので指定しない(sectionにモジュールを設定する想定)
 p,ul,ol,dl, {
-	+ p  {margin-top: 1.5em;}
+	+ p  {margin-top: 1em;}
 	+ ul {margin-top: 1.5em;}
 	+ ol {margin-top: 1.5em;}
 	+ dl {margin-top: 1.5em;}
+	+ figure {margin-top: 1.5em;}
 }
 ul,
 ol {
@@ -78,6 +82,9 @@ table {
 		vertical-align: top;
 	}
 }
+figure {
+	margin: 0;
+}
 
 // inline要素
 strong, b {
@@ -85,19 +92,18 @@ strong, b {
 	font-weight: bold;
 }
 a {
-	color: $g_link-color;
-	&:link {
+	color: $g_color-link;
+	text-decoration: underline;
+	// ie用のhack
+	// ieだとbefore,after要素でoverrideができないため、擬似要素にiconを設定しているとiconにもunderlineが引かれてしまう
+	// 別セレクタで再度上書きしてやる必要がある
+	&:before, &:after {
 		text-decoration: underline;
-
-		// ie用のhack
-		// ieだとbefore,after要素でoverrideができないため、擬似要素にiconを設定しているとiconにもunderlineが引かれてしまう
-		// 別セレクタで再度上書きしてやる必要がある
-		&:before, &:after {
-			text-decoration: underline;
-		}
-		&:before, &:after {
-			text-decoration: none;
-		}
+	}
+	&:before, &:after {
+		text-decoration: none;
+	}
+	&:link {
 	}
 	&:visited {
 	}
@@ -105,10 +111,11 @@ a {
 		text-decoration: none;
 	}
 	a:active {
-		color: $g_accent-color;
 	}
 }
-
+em {
+	font-style: normal;
+}
 
 // 置換要素
 img {
@@ -126,19 +133,16 @@ label {
 	}
 }
 input {
-	&[type=text],&[type=password] {
-		border: 1px solid $g_gray-dark;
+	&[type=text],&[type=password],&[type=tel],&[type=email] {
+		border: 1px solid #aaa;
 		margin: 0;
-		padding: 5px 0;
-		min-width: 300px;
-		width: 50%;
+		padding: 3px 0;
+		text-indent: 0.5em;
 	}
 	&[type=submit],&[type=button],&[type=reset] {
 		cursor: pointer;
-		font-weight: bold;
-		margin: 0;
-		padding: 5px 10px;
 		vertical-align: top;
+		display: inline-block;
 		+ input[type=submit],	+ input[type=button],	+ input[type=reset] {
 			margin-left: 1em;
 		}
@@ -151,13 +155,50 @@ input {
 		}
 	}
 }
+button {
+	cursor: pointer;
+	vertical-align: top;
+	display: inline-block;
+}
 select {
-	border: 1px solid $g_gray-dark;
+	border: 1px solid #aaa;
+	white-space: nowrap;
+	max-width: 100%;
 }
 option:nth-child(even) {
-	background-color: $g_gray-thin;
+	background-color: #f7f7f7;
 }
 textarea {
-	border: 1px solid $g_gray-dark;
+	border: 1px solid #aaa;
+	min-height: 6em;
 	width: 90%;
+}
+
+// placeholderの色
+/* Webkit */
+::-webkit-input-placeholder {
+		color: #bbb;
+		opacity: 1;
+}
+/* Firefox 18 以前 */
+:-moz-placeholder {
+		color: #bbb;
+}
+/* Firefox 19 以降 */
+::-moz-placeholder {
+		color: #bbb;
+
+		/* Firefox 19 以降のデフォルトでは */
+		/* color ではなく opacity で色合いを調整しているため */
+		/* 文字色を指定する場合、opacity を 1 にする必要がある */
+		opacity: 1;
+}
+/* IE 10 以降 */
+:-ms-input-placeholder {
+		color: #bbb;
+}
+/* CSS4では以下のような名前の擬似クラスになるらしい */
+/* おそらく今のところ対応ブラウザはない */
+:placeholder-shown {
+		color: #bbb;
 }

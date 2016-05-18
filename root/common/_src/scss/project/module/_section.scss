@@ -5,14 +5,14 @@
 
 // Section
 //
-// ・セクションの余白を管理<br>
+// ・主なブロックの上下余白を管理<br>
+// ・sectionタグ以外で使用しても構わない<br>
 // ・スタイルガイド上は分かりやすく彩色（実際にはつかないので注意）
 //
 // Styleguide: 1
 
 // Section
 //
-// ・主にsectionタグに対して使用
 // ・上にある程度の余白を設定。Modifierを渡すことで調整が可能<br>
 // ・elementを渡せば内側に余白を設定<br>
 // ・見出しには左右の余白は設けない（設ける場合は別途elementを用意するか、指定のところでコメントアウトしているpaddingを有効に）
@@ -134,6 +134,12 @@
 .m-sec-min {
 	margin-top: 30px;
 	// 順番は変えないこと
+	&.is-none {
+		margin-top: 0;
+	}
+	&.is-small {
+		margin-top: 10px;
+	}
 	&__body {
 		margin-left: 20px;
 		margin-right: 20px;

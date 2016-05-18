@@ -21,16 +21,21 @@
 余白の指定
 ------------------------------------------- */
 // 大きさ（主にutilityの余白で使用）
+// $utility-size-list: (
+// 	'none'  : 0px,
+// 	'xsmall': 10px,
+// 	'small' : 20px,
+// 	'middle': 30px,
+// 	'large' : 40px,
+// 	'xlarge': 50px
+// );
+
 $utility-size-list: (
-	'none'  : 0px,
-	'xsmall': 10px,
-	'small' : 20px,
-	'middle': 30px,
-	'large' : 40px,
-	'xlarge': 50px
+	'none'  : 0px
 );
 
 @each $class, $val in $utility-size-list {
+
 	// margin
 	.u-mt-#{$class} {
 		margin-top: $val !important;

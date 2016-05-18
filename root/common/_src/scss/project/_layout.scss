@@ -5,10 +5,12 @@
 ****************************************** */
 
 
-// レイアウトのみで使用する変数
+// 変数
+$header-height-pc: 80px;
+$header-height-sp: 65px;
 
 // import
 @import "layout/_header"; // header, gnav, etc
-@import "layout/_contents"; // contents, etc
-@import "layout/_footer"; // footer, page-top, etc
+@import "layout/_contents"; // contents
 @import "layout/_other"; // topic-path, banner, etc
+@import "layout/_footer"; // footer, page-top, etc

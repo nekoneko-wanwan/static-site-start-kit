@@ -10,94 +10,29 @@
 //
 // Styleguide: 4
 
-// Side Media
-//
-// mixinを元にした左右にメディアを配置する
-//
-// ・引数によって画像とテキストの余白、位置を設定する<br>
-// ・回りこみの有効化はとりあえず別モジュールで対応
-//
-// - @block   : m-side-media
-// - @element : m-side-media__img
-// - @element : m-side-media__text
-// - @modifier: m-side-media__img.is-right
-//
-// .is-right - 右側に配置する
-//
-// Markup:
-// <div class="m-side-media-1">
-//   <div class="m-side-media-1__img {{[modifier_class]}}">
-//     <img src="http://placehold.jp/150x150.png" alt="" />
-//   </div>
-//   <p class="m-side-media-1__text">テキスト<br>テキストテキスト</p>
-// </div>
-//
-// Styleguide: 4.side-media
 
-
-
-//-------------------------------------------
-// 横配置メディア生成mixin
-// 横に画像などを配置したモジュールを生成する
-//
-// - Modifierは左右の位置のみ
-// - 余白の調整と回りこみの調整はモジュール単位で行う
-// - ただし頻繁に調整が必要になりそうな場合は、Modifierで対応できるようにする
-//
-// @block   : 任意
-// @element : {block}__img
-// @element : {block}__text
-// @modifier: {block}__img.is-right
-//
-// @markup
-// <div class="media">
-//   <div class="media__img media__img--right">
-//     <img src="http://placehold.jp/150x150.png" alt="" />
-//   </div>
-//   <p class="media__text">テキスト</p>
-// </div>
-//
-// @paramはmixin内コメントを参照
-//-------------------------------------------
-@mixin my_create-side-media-module(
-		$margin: 30px,
-		$isSneak: false // メディアの下に回り込ませるかどうか
-	){
-
-	@include clearfix;
+// PCとスマホで画像を切り替えるブロック
+// elementとして__imgが必要
+.m-media-switch-breakpoint {
 	&__img {
-		float: left;
-		margin-right: $margin;
-		@if ($isSneak) {
-			margin-bottom: $margin;
+		> img {
+			max-width: 100%;
 		}
-		> * {
-			display: block;
+		&.is-sp {
+			display: none;
+			> img {
+				height: auto;
+				width: 100%;
+				max-width: 500px;
+			}
+		}
+		@include my_is-sp() {
+			&.is-pc {
+				display: none;
+			}
+			&.is-sp {
+				display: block;
+			}
 		}
 	}
-	// テキスト側
-	&__text {
-		@if ($isSneak) {
-			overflow: visible;
-		} @else {
-			overflow: hidden;
-		}
-	}
-
-	// Modifier
-	&__img.is-right {
-		float: right;
-		margin-left: $margin;
-		margin-right: 0;
-	}
-
-	@content;
 }
-
-
-
-.m-side-media {
-	// selectorで指定している隣接セレクタ初期値の2倍を設定している
-	@include my_create-side-media-module($margin: 3em, $isSneak: false);
-}
-

@@ -21,6 +21,7 @@
 @import "preset/_function";      // グローバル関数
 @import "preset/_mixin";         // cssを読み込むmixin
 @import "preset/_selector";      // セレクタの初期値 タグが出力
+@import "preset/_webfont-org";      // セレクタの初期値 タグが出力
 
 // project
 @import "project/_js";      // html.jsによって切り替わるスタイル(modernizr)
@@ -29,5 +30,4 @@
 @import "project/_pages";   // ページ独自のスタイル
 @import "project/_utility"; // アドホックなスタイル
 
-@import "project/_demo";    // 開発時に役立つ参考用スタイル
 
