@@ -11,13 +11,14 @@
 
 // スマートフォン表示
 @mixin my_is-sp {
-	@media only screen and (max-width: $g_breakpoint) {
+	// min-widthを指定しないとIEでtransitionが読み込み時に発動してしまう
+	@media only screen and (min-width:1px) and (max-width: $g_breakpoint) {
 		@content;
 	}
 }
 // スマホの中でも更に最小サイズの微調整用
 @mixin my_is-sp-min {
-	@media only screen and (max-width: $g_breakpoint-min) {
+	@media only screen and (min-width:1px) and (max-width: $g_breakpoint-min) {
 		@content;
 	}
 }
